@@ -37,6 +37,7 @@ extension MoreVC :UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell", for: indexPath) as! menuCell
         cell.lbl_1.text = arrylabel1[indexPath.row]
          cell.lbl_2.text = arrylabel2[indexPath.row]
+        
         cell.iconImageView.image = UIImage(named: arrylabelimag[indexPath.row])
         return cell
     }
@@ -46,6 +47,30 @@ extension MoreVC :UITableViewDelegate,UITableViewDataSource{
         if indexPath.row == 6 {
             let storyBoard : UIStoryboard = UIStoryboard(name: "Player", bundle:nil)
             let cont = storyBoard.instantiateViewController(withIdentifier: "FavaVC")as! FavaVC
+            self.present(cont, animated: true, completion: nil)
+        }
+        else if indexPath.row == 0 {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
+            let cont = storyBoard.instantiateViewController(withIdentifier: "AddMatchVC")as! AddMatchVC
+            self.present(cont, animated: true, completion: nil)
+        }
+        
+        else if indexPath.row == 3 {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
+            let cont = storyBoard.instantiateViewController(withIdentifier: "MyMatchesTableVC")as! MyMatchesTableVC
+            self.present(cont, animated: true, completion: nil)
+        }
+            
+        
+        else if indexPath.row == 4 {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
+            let cont = storyBoard.instantiateViewController(withIdentifier: "AddNewVisaVC")as! AddNewVisaVC
+            self.present(cont, animated: true, completion: nil)
+        }
+            
+        else if indexPath.row == 5 {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
+            let cont = storyBoard.instantiateViewController(withIdentifier: "PaidVC")as! PaidVC
             self.present(cont, animated: true, completion: nil)
         }
         
