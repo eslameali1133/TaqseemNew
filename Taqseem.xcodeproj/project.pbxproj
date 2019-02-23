@@ -69,6 +69,7 @@
 		18B95483220B1EA500FBAC94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B95482220B1EA500FBAC94 /* AppDelegate.swift */; };
 		18B95485220B1EBF00FBAC94 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B95484220B1EBF00FBAC94 /* LoginVC.swift */; };
 		18B95487220B272D00FBAC94 /* EnterVerificationCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B95486220B272D00FBAC94 /* EnterVerificationCodeVC.swift */; };
+		18BFAE112221AADE00D2DADA /* File_test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BFAE102221AADE00D2DADA /* File_test.swift */; };
 		18F3ED8B221972CD008F29F2 /* AMCircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3ED8A221972CC008F29F2 /* AMCircleImageView.swift */; };
 		18F3ED8D22197651008F29F2 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3ED8C22197651008F29F2 /* ChatVC.swift */; };
 		18F3ED8F221976B6008F29F2 /* CahtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3ED8E221976B6008F29F2 /* CahtCell.swift */; };
@@ -158,6 +159,7 @@
 		18B95482220B1EA500FBAC94 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B95484220B1EBF00FBAC94 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		18B95486220B272D00FBAC94 /* EnterVerificationCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterVerificationCodeVC.swift; sourceTree = "<group>"; };
+		18BFAE102221AADE00D2DADA /* File_test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File_test.swift; sourceTree = "<group>"; };
 		18F3ED8A221972CC008F29F2 /* AMCircleImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMCircleImageView.swift; sourceTree = "<group>"; };
 		18F3ED8C22197651008F29F2 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		18F3ED8E221976B6008F29F2 /* CahtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CahtCell.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				F4689F94221DF8F8002EC897 /* PlayerTableVC.swift */,
 				F4E52E6B221FE1CD0062952D /* PaidVC.swift */,
 				F4D39CA222203BB300A6D25B /* AddNewVisaVC.swift */,
+				18BFAE102221AADE00D2DADA /* File_test.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -617,6 +620,7 @@
 			files = (
 				18B95483220B1EA500FBAC94 /* AppDelegate.swift in Sources */,
 				F4E52E6C221FE1CD0062952D /* PaidVC.swift in Sources */,
+				18BFAE112221AADE00D2DADA /* File_test.swift in Sources */,
 				18F3ED8F221976B6008F29F2 /* CahtCell.swift in Sources */,
 				F4689F95221DF8F8002EC897 /* PlayerTableVC.swift in Sources */,
 				F4D39CA322203BB300A6D25B /* AddNewVisaVC.swift in Sources */,
