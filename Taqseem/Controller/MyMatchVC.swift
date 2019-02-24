@@ -27,13 +27,6 @@ class MyMatchVC: UIViewController {
     @IBAction func DismissView(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    @IBAction func BtnPlayer(_ sender: Any) {
-        COMEFROMNear = true
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
-        let cont = storyBoard.instantiateViewController(withIdentifier: "PlayerTableVC")as! PlayerTableVC
-        self.present(cont, animated: true, completion: nil)
-    }
     func setupConstrin(){
         Constain_IconImge_Height.constant = view.frame.width / 16
         Constain_IconImge_Widhtt.constant = view.frame.width / 16

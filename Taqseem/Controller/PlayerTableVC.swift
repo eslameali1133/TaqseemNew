@@ -7,27 +7,13 @@
 //
 
 import UIKit
- var COMEFROMNear = false
-class PlayerTableVC: UIViewController {
-    
 
-    @IBOutlet weak var headerview: UIView!
-    @IBOutlet weak var Tbl_Top_Constrain: NSLayoutConstraint!
+class PlayerTableVC: UIViewController {
+
     @IBOutlet weak var tblPlayer: UITableView!
-    var comfrom = ""
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if COMEFROMNear == false
-        {
-            headerview.isHidden = true
-
-            Tbl_Top_Constrain.constant = 0
-        }else{
-            COMEFROMNear = false
-            headerview.isHidden = false
-        }
         tblPlayer.dataSource = self
         tblPlayer.delegate = self
         tblPlayer.changeView()
