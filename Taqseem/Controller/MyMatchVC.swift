@@ -10,6 +10,8 @@ import UIKit
 
 class MyMatchVC: UIViewController {
 
+    @IBOutlet weak var btn_join: UIButton!
+    @IBOutlet weak var lbl_title: UILabel!
     @IBOutlet weak var Constain_IconImge_Height: NSLayoutConstraint!
         @IBOutlet weak var Constain_IconImge_Widhtt: NSLayoutConstraint!
     
@@ -20,7 +22,13 @@ class MyMatchVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstrin()
-        
+        btn_join.isHidden = true
+        if comedromneartoplay == true
+        {
+           comedromneartoplay = false
+              btn_join.isHidden = false
+            lbl_title.text = "NEAR ME"
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -34,14 +42,6 @@ class MyMatchVC: UIViewController {
         Constain_profileImge_Height.constant = view.frame.width / 5.6
         Constain_profileImge_Widhtt.constant = view.frame.width / 5.6
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+   
 
 }
