@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+var comedromneartoplay = false
 class NearMeVC: UIViewController  , UIPickerViewDataSource , UIPickerViewDelegate{
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -16,9 +16,9 @@ class NearMeVC: UIViewController  , UIPickerViewDataSource , UIPickerViewDelegat
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return 1
     }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        <#code#>
-    }
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//        
+//    }
     
 
     @IBOutlet weak var pickerDate: UIDatePicker!
@@ -29,14 +29,15 @@ class NearMeVC: UIViewController  , UIPickerViewDataSource , UIPickerViewDelegat
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func Search_Reaseult(_ sender: Any) {
+        comedromneartoplay = true
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
+        let cont = storyBoard.instantiateViewController(withIdentifier: "ChoosePlaygroundVC")as! ChoosePlaygroundVC
+        self.present(cont, animated: true, completion: nil)
     }
-    */
-
+    
+    @IBAction func DismissView(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
