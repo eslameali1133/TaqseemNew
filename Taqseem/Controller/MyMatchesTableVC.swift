@@ -9,11 +9,16 @@
 import UIKit
 
 class MyMatchesTableVC: UIViewController {
-
+var comfrom = ""
+    
+     @IBOutlet weak var lbl_title: UILabel!
     @IBOutlet weak var tblMyMatch: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if comfrom == "Near"{
+            lbl_title.text = "NEAR YOU"
+        }
         tblMyMatch.dataSource = self
         tblMyMatch.delegate = self
         tblMyMatch.changeView()
