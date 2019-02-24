@@ -69,6 +69,15 @@
 		18B95483220B1EA500FBAC94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B95482220B1EA500FBAC94 /* AppDelegate.swift */; };
 		18B95485220B1EBF00FBAC94 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B95484220B1EBF00FBAC94 /* LoginVC.swift */; };
 		18B95487220B272D00FBAC94 /* EnterVerificationCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B95486220B272D00FBAC94 /* EnterVerificationCodeVC.swift */; };
+		18BDD5A02222922500B98753 /* ChoosePlaygroundVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDD59F2222922500B98753 /* ChoosePlaygroundVC.swift */; };
+		18BDD5A222229DBF00B98753 /* ChoosebackgroundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDD5A122229DBF00B98753 /* ChoosebackgroundCell.swift */; };
+		18BDD5A422229F4C00B98753 /* playGroundDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDD5A322229F4C00B98753 /* playGroundDetailsVC.swift */; };
+		18BDD5A62222AB6C00B98753 /* AWSegmentAddMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDD5A52222AB6C00B98753 /* AWSegmentAddMatch.swift */; };
+		18BDD5A82222AD6300B98753 /* AddMatchSegmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDD5A72222AD6300B98753 /* AddMatchSegmVC.swift */; };
+		18BDD5AA2222B36800B98753 /* playGroundDetailsSegVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDD5A92222B36800B98753 /* playGroundDetailsSegVC.swift */; };
+		18BDD5AC2222C44E00B98753 /* ChatRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDD5AB2222C44E00B98753 /* ChatRoomVC.swift */; };
+		18BDD5AE2222C55000B98753 /* SendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDD5AD2222C55000B98753 /* SendCell.swift */; };
+		18BDD5B02222C56500B98753 /* RecevieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDD5AF2222C56500B98753 /* RecevieCell.swift */; };
 		18BFAE112221AADE00D2DADA /* File_test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BFAE102221AADE00D2DADA /* File_test.swift */; };
 		18F3ED8B221972CD008F29F2 /* AMCircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3ED8A221972CC008F29F2 /* AMCircleImageView.swift */; };
 		18F3ED8D22197651008F29F2 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3ED8C22197651008F29F2 /* ChatVC.swift */; };
@@ -159,6 +168,15 @@
 		18B95482220B1EA500FBAC94 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B95484220B1EBF00FBAC94 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		18B95486220B272D00FBAC94 /* EnterVerificationCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterVerificationCodeVC.swift; sourceTree = "<group>"; };
+		18BDD59F2222922500B98753 /* ChoosePlaygroundVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePlaygroundVC.swift; sourceTree = "<group>"; };
+		18BDD5A122229DBF00B98753 /* ChoosebackgroundCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosebackgroundCell.swift; sourceTree = "<group>"; };
+		18BDD5A322229F4C00B98753 /* playGroundDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playGroundDetailsVC.swift; sourceTree = "<group>"; };
+		18BDD5A52222AB6C00B98753 /* AWSegmentAddMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSegmentAddMatch.swift; sourceTree = "<group>"; };
+		18BDD5A72222AD6300B98753 /* AddMatchSegmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMatchSegmVC.swift; sourceTree = "<group>"; };
+		18BDD5A92222B36800B98753 /* playGroundDetailsSegVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playGroundDetailsSegVC.swift; sourceTree = "<group>"; };
+		18BDD5AB2222C44E00B98753 /* ChatRoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomVC.swift; sourceTree = "<group>"; };
+		18BDD5AD2222C55000B98753 /* SendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCell.swift; sourceTree = "<group>"; };
+		18BDD5AF2222C56500B98753 /* RecevieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecevieCell.swift; sourceTree = "<group>"; };
 		18BFAE102221AADE00D2DADA /* File_test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File_test.swift; sourceTree = "<group>"; };
 		18F3ED8A221972CC008F29F2 /* AMCircleImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMCircleImageView.swift; sourceTree = "<group>"; };
 		18F3ED8C22197651008F29F2 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
@@ -265,6 +283,11 @@
 				F4E52E6B221FE1CD0062952D /* PaidVC.swift */,
 				F4D39CA222203BB300A6D25B /* AddNewVisaVC.swift */,
 				18BFAE102221AADE00D2DADA /* File_test.swift */,
+				18BDD59F2222922500B98753 /* ChoosePlaygroundVC.swift */,
+				18BDD5A322229F4C00B98753 /* playGroundDetailsVC.swift */,
+				18BDD5A72222AD6300B98753 /* AddMatchSegmVC.swift */,
+				18BDD5A92222B36800B98753 /* playGroundDetailsSegVC.swift */,
+				18BDD5AB2222C44E00B98753 /* ChatRoomVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -284,6 +307,9 @@
 				18F3ED9E221AC19D008F29F2 /* FAVOURITESCell.swift */,
 				F47AEED1221D89D9007146CE /* MyMatchCell.swift */,
 				F4689F96221DF9D4002EC897 /* PlayerCell.swift */,
+				18BDD5A122229DBF00B98753 /* ChoosebackgroundCell.swift */,
+				18BDD5AD2222C55000B98753 /* SendCell.swift */,
+				18BDD5AF2222C56500B98753 /* RecevieCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -293,6 +319,7 @@
 			children = (
 				18F3ED8A221972CC008F29F2 /* AMCircleImageView.swift */,
 				189DB22A22098E6B005118E3 /* Assets.xcassets */,
+				18BDD5A52222AB6C00B98753 /* AWSegmentAddMatch.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -619,6 +646,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18B95483220B1EA500FBAC94 /* AppDelegate.swift in Sources */,
+				18BDD5B02222C56500B98753 /* RecevieCell.swift in Sources */,
 				F4E52E6C221FE1CD0062952D /* PaidVC.swift in Sources */,
 				18BFAE112221AADE00D2DADA /* File_test.swift in Sources */,
 				18F3ED8F221976B6008F29F2 /* CahtCell.swift in Sources */,
@@ -633,18 +661,26 @@
 				18B95487220B272D00FBAC94 /* EnterVerificationCodeVC.swift in Sources */,
 				18F3ED9F221AC19D008F29F2 /* FAVOURITESCell.swift in Sources */,
 				189DB22622098E68005118E3 /* ViewController.swift in Sources */,
+				18BDD5A222229DBF00B98753 /* ChoosebackgroundCell.swift in Sources */,
 				F4689F97221DF9D4002EC897 /* PlayerCell.swift in Sources */,
+				18BDD5AA2222B36800B98753 /* playGroundDetailsSegVC.swift in Sources */,
+				18BDD5A62222AB6C00B98753 /* AWSegmentAddMatch.swift in Sources */,
 				18F3ED8D22197651008F29F2 /* ChatVC.swift in Sources */,
 				180AEC60220D9CD50003C1A6 /* TermsVC.swift in Sources */,
 				18F3ED9B221AB09B008F29F2 /* menuCell.swift in Sources */,
 				F47AEED0221D50FF007146CE /* MyMatchVC.swift in Sources */,
 				18F3ED9D221AB734008F29F2 /* FavaVC.swift in Sources */,
 				18651CDF220C91CC002A3BD6 /* CompleteProfileVC.swift in Sources */,
+				18BDD5AC2222C44E00B98753 /* ChatRoomVC.swift in Sources */,
+				18BDD5A82222AD6300B98753 /* AddMatchSegmVC.swift in Sources */,
 				F445BF9A221C4A2E00B1A18E /* AddMatchVC.swift in Sources */,
+				18BDD5A422229F4C00B98753 /* playGroundDetailsVC.swift in Sources */,
 				18651CDD220C7145002A3BD6 /* RegistrationVC.swift in Sources */,
+				18BDD5A02222922500B98753 /* ChoosePlaygroundVC.swift in Sources */,
 				18F3ED9522198D51008F29F2 /* AccountVC.swift in Sources */,
 				18F3ED9122197CEF008F29F2 /* TableView+EX.swift in Sources */,
 				18B95485220B1EBF00FBAC94 /* LoginVC.swift in Sources */,
+				18BDD5AE2222C55000B98753 /* SendCell.swift in Sources */,
 				18F3ED972219B13A008F29F2 /* EditprofileVC.swift in Sources */,
 				18F3ED9322198CEB008F29F2 /* View+Ex.swift in Sources */,
 			);
