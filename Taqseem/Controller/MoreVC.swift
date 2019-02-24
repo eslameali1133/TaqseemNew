@@ -60,22 +60,8 @@ extension MoreVC :UITableViewDelegate,UITableViewDataSource{
             let cont = storyBoard.instantiateViewController(withIdentifier: "MyMatchesTableVC")as! MyMatchesTableVC
             self.present(cont, animated: true, completion: nil)
         }
-            
-        
-        else if indexPath.row == 4 {
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
-            let cont = storyBoard.instantiateViewController(withIdentifier: "AddNewVisaVC")as! AddNewVisaVC
-            self.present(cont, animated: true, completion: nil)
-        }
-            
-        else if indexPath.row == 5 {
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
-            let cont = storyBoard.instantiateViewController(withIdentifier: "PaidVC")as! PaidVC
-            self.present(cont, animated: true, completion: nil)
-        }
-        
-        print(123)
-    }
+    
+            }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 54
