@@ -55,6 +55,17 @@ extension MoreVC :UITableViewDelegate,UITableViewDataSource{
             self.present(cont, animated: true, completion: nil)
         }
         
+        else if indexPath.row == 1 {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
+            let cont = storyBoard.instantiateViewController(withIdentifier: "NearMeVC")as! NearMeVC
+            self.present(cont, animated: true, completion: nil)
+        }
+        else if indexPath.row == 4 {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
+            let cont = storyBoard.instantiateViewController(withIdentifier: "BookPlayGroundVC")as! BookPlayGroundVC
+            self.present(cont, animated: true, completion: nil)
+        }
+            
         else if indexPath.row == 3 {
             let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
             let cont = storyBoard.instantiateViewController(withIdentifier: "MyMatchesTableVC")as! MyMatchesTableVC
