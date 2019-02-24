@@ -98,6 +98,8 @@
 		F47AEED0221D50FF007146CE /* MyMatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47AEECF221D50FF007146CE /* MyMatchVC.swift */; };
 		F47AEED2221D89D9007146CE /* MyMatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47AEED1221D89D9007146CE /* MyMatchCell.swift */; };
 		F47AEED4221D8AC2007146CE /* MyMatchesTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47AEED3221D8AC2007146CE /* MyMatchesTableVC.swift */; };
+		F497E0DA2222D8B600060327 /* NearMeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497E0D92222D8B600060327 /* NearMeVC.swift */; };
+		F497E0DC2222DD5700060327 /* BookPlayGroundVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497E0DB2222DD5700060327 /* BookPlayGroundVC.swift */; };
 		F4D39CA322203BB300A6D25B /* AddNewVisaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D39CA222203BB300A6D25B /* AddNewVisaVC.swift */; };
 		F4E52E6C221FE1CD0062952D /* PaidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E52E6B221FE1CD0062952D /* PaidVC.swift */; };
 /* End PBXBuildFile section */
@@ -197,6 +199,8 @@
 		F47AEECF221D50FF007146CE /* MyMatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMatchVC.swift; sourceTree = "<group>"; };
 		F47AEED1221D89D9007146CE /* MyMatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMatchCell.swift; sourceTree = "<group>"; };
 		F47AEED3221D8AC2007146CE /* MyMatchesTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMatchesTableVC.swift; sourceTree = "<group>"; };
+		F497E0D92222D8B600060327 /* NearMeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearMeVC.swift; sourceTree = "<group>"; };
+		F497E0DB2222DD5700060327 /* BookPlayGroundVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookPlayGroundVC.swift; sourceTree = "<group>"; };
 		F4D39CA222203BB300A6D25B /* AddNewVisaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewVisaVC.swift; sourceTree = "<group>"; };
 		F4E52E6B221FE1CD0062952D /* PaidVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaidVC.swift; sourceTree = "<group>"; };
 		FDD458EE3C7E70F51D7183C0 /* Pods-Taqseem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taqseem.release.xcconfig"; path = "Pods/Target Support Files/Pods-Taqseem/Pods-Taqseem.release.xcconfig"; sourceTree = "<group>"; };
@@ -288,6 +292,8 @@
 				18BDD5A72222AD6300B98753 /* AddMatchSegmVC.swift */,
 				18BDD5A92222B36800B98753 /* playGroundDetailsSegVC.swift */,
 				18BDD5AB2222C44E00B98753 /* ChatRoomVC.swift */,
+				F497E0D92222D8B600060327 /* NearMeVC.swift */,
+				F497E0DB2222DD5700060327 /* BookPlayGroundVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -647,6 +653,7 @@
 			files = (
 				18B95483220B1EA500FBAC94 /* AppDelegate.swift in Sources */,
 				18BDD5B02222C56500B98753 /* RecevieCell.swift in Sources */,
+				F497E0DC2222DD5700060327 /* BookPlayGroundVC.swift in Sources */,
 				F4E52E6C221FE1CD0062952D /* PaidVC.swift in Sources */,
 				18BFAE112221AADE00D2DADA /* File_test.swift in Sources */,
 				18F3ED8F221976B6008F29F2 /* CahtCell.swift in Sources */,
@@ -677,6 +684,7 @@
 				18BDD5A422229F4C00B98753 /* playGroundDetailsVC.swift in Sources */,
 				18651CDD220C7145002A3BD6 /* RegistrationVC.swift in Sources */,
 				18BDD5A02222922500B98753 /* ChoosePlaygroundVC.swift in Sources */,
+				F497E0DA2222D8B600060327 /* NearMeVC.swift in Sources */,
 				18F3ED9522198D51008F29F2 /* AccountVC.swift in Sources */,
 				18F3ED9122197CEF008F29F2 /* TableView+EX.swift in Sources */,
 				18B95485220B1EBF00FBAC94 /* LoginVC.swift in Sources */,
