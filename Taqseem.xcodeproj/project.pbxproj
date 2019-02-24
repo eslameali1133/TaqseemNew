@@ -78,6 +78,7 @@
 		18BDD5AC2222C44E00B98753 /* ChatRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDD5AB2222C44E00B98753 /* ChatRoomVC.swift */; };
 		18BDD5AE2222C55000B98753 /* SendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDD5AD2222C55000B98753 /* SendCell.swift */; };
 		18BDD5B02222C56500B98753 /* RecevieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDD5AF2222C56500B98753 /* RecevieCell.swift */; };
+		18BDD5B222234C6000B98753 /* PlayerNormalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDD5B122234C6000B98753 /* PlayerNormalVC.swift */; };
 		18BFAE112221AADE00D2DADA /* File_test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BFAE102221AADE00D2DADA /* File_test.swift */; };
 		18F3ED8B221972CD008F29F2 /* AMCircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3ED8A221972CC008F29F2 /* AMCircleImageView.swift */; };
 		18F3ED8D22197651008F29F2 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3ED8C22197651008F29F2 /* ChatVC.swift */; };
@@ -179,6 +180,7 @@
 		18BDD5AB2222C44E00B98753 /* ChatRoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomVC.swift; sourceTree = "<group>"; };
 		18BDD5AD2222C55000B98753 /* SendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCell.swift; sourceTree = "<group>"; };
 		18BDD5AF2222C56500B98753 /* RecevieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecevieCell.swift; sourceTree = "<group>"; };
+		18BDD5B122234C6000B98753 /* PlayerNormalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNormalVC.swift; sourceTree = "<group>"; };
 		18BFAE102221AADE00D2DADA /* File_test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File_test.swift; sourceTree = "<group>"; };
 		18F3ED8A221972CC008F29F2 /* AMCircleImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMCircleImageView.swift; sourceTree = "<group>"; };
 		18F3ED8C22197651008F29F2 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				18BDD5AB2222C44E00B98753 /* ChatRoomVC.swift */,
 				F497E0D92222D8B600060327 /* NearMeVC.swift */,
 				F497E0DB2222DD5700060327 /* BookPlayGroundVC.swift */,
+				18BDD5B122234C6000B98753 /* PlayerNormalVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -683,6 +686,7 @@
 				F445BF9A221C4A2E00B1A18E /* AddMatchVC.swift in Sources */,
 				18BDD5A422229F4C00B98753 /* playGroundDetailsVC.swift in Sources */,
 				18651CDD220C7145002A3BD6 /* RegistrationVC.swift in Sources */,
+				18BDD5B222234C6000B98753 /* PlayerNormalVC.swift in Sources */,
 				18BDD5A02222922500B98753 /* ChoosePlaygroundVC.swift in Sources */,
 				F497E0DA2222D8B600060327 /* NearMeVC.swift in Sources */,
 				18F3ED9522198D51008F29F2 /* AccountVC.swift in Sources */,

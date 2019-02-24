@@ -11,15 +11,38 @@ import UIKit
 class ChoosePlaygroundVC: UIViewController {
 @IBOutlet weak var TBL_Background: UITableView!
     
+     @IBOutlet weak var lbl_title: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if comedromneartoplay == true
+        {
+            
+            lbl_title.text = "NEAR ME"
+        }
         TBL_Background.dataSource = self
         TBL_Background.delegate = self
         TBL_Background.changeView()
         // Do any additional setup after loading the view.
     }
    
+    @IBAction func btn_choose(_ sender: UIButton) {
+        if comedromneartoplay == true
+        {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
+            let cont = storyBoard.instantiateViewController(withIdentifier: "MyMatchVC")as! MyMatchVC
+            self.present(cont, animated: true, completion: nil)
+            
+        }else{
+            
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
+            let cont = storyBoard.instantiateViewController(withIdentifier: "playGroundDetailsVC")as! playGroundDetailsVC
+            self.present(cont, animated: true, completion: nil)
+            
+        }
+    }
+    
+    
 
 }
 extension ChoosePlaygroundVC :UITableViewDelegate,UITableViewDataSource{
@@ -45,4 +68,9 @@ extension ChoosePlaygroundVC :UITableViewDelegate,UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
+    @IBAction func DismissView(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
