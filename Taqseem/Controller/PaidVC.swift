@@ -10,6 +10,8 @@ import UIKit
 
 class PaidVC: UIViewController {
 
+    @IBOutlet weak var VisaView: UIView!
+    @IBOutlet weak var cashView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,14 +19,21 @@ class PaidVC: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func Btn_cash(_ sender: Any) {
+        cashView.backgroundColor = UIColor(red: 37, green: 159, blue: 161, alpha: 1)
+         VisaView.backgroundColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
     }
-    */
+    
 
+    @IBAction func btn_visa(_ sender: Any) {
+           VisaView.backgroundColor = UIColor(red: 37, green: 159, blue: 161, alpha: 1)
+        
+        cashView.backgroundColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
+        let cont = storyBoard.instantiateViewController(withIdentifier: "AddNewVisaVC")as! AddNewVisaVC
+        self.present(cont, animated: true, completion: nil)
+        
+    }
 }
