@@ -16,6 +16,7 @@ class MyMatchCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.dropShadow()
         // Initialization code
     }
 
