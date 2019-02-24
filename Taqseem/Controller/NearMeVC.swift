@@ -16,9 +16,7 @@ class NearMeVC: UIViewController  , UIPickerViewDataSource , UIPickerViewDelegat
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return 1
     }
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        
-//    }
+
     
 
     @IBOutlet weak var pickerDate: UIDatePicker!

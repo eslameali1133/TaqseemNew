@@ -71,6 +71,12 @@ extension MoreVC :UITableViewDelegate,UITableViewDataSource{
             let cont = storyBoard.instantiateViewController(withIdentifier: "MyMatchesTableVC")as! MyMatchesTableVC
             self.present(cont, animated: true, completion: nil)
         }
+        else if indexPath.row == 5 {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
+            let cont = storyBoard.instantiateViewController(withIdentifier: "BookPlayGroundVC")as! BookPlayGroundVC
+            self.present(cont, animated: true, completion: nil)
+        }
+        
     
             }
     
