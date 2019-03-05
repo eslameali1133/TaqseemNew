@@ -51,8 +51,8 @@ extension OwnerMoreVC :UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
             if indexPath.row == 0 {
-                let storyBoard : UIStoryboard = UIStoryboard(name: "Owner", bundle:nil)
-                let cont = storyBoard.instantiateViewController(withIdentifier: "OwnerADDMatchVC")as! OwnerADDMatchVC
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
+                let cont = storyBoard.instantiateViewController(withIdentifier: "AddMatchVC")as! AddMatchVC
                 self.present(cont, animated: true, completion: nil)
             }
             else if indexPath.row == 1 {
