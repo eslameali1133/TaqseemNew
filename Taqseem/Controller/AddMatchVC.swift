@@ -131,7 +131,6 @@ class AddMatchVC: UIViewController , UIPickerViewDataSource , UIPickerViewDelega
         }
         
     }
-    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if PickerFlag == "Duration" {
         lblDuration.text = String(Duration[row])
