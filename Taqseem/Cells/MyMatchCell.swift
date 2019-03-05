@@ -10,13 +10,13 @@ import UIKit
 
 class MyMatchCell: UITableViewCell {
 
-    
+     @IBOutlet weak var viewcontent: UIView!
     
     @IBOutlet weak var lbl_nq: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.dropShadow()
+        viewcontent.dropShadow()
         // Initialization code
     }
 

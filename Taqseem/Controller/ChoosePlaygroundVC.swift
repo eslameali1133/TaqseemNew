@@ -52,7 +52,7 @@ extension ChoosePlaygroundVC :UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChoosebackgroundCell", for: indexPath) as! ChoosebackgroundCell
-        
+        cell.contentView.dropShadow()
         return cell
     }
     
@@ -63,7 +63,7 @@ extension ChoosePlaygroundVC :UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 152
+        return 165
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

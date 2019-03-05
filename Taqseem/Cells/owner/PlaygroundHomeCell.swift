@@ -1,19 +1,19 @@
 //
-//  ChoosebackgroundCell.swift
+//  PlaygroundHomeCell.swift
 //  Taqseem
 //
-//  Created by apple on 2/24/19.
+//  Created by apple on 3/4/19.
 //  Copyright © 2019 OnTime. All rights reserved.
 //
 
 import UIKit
 
-class ChoosebackgroundCell: UITableViewCell {
-  @IBOutlet weak var viewcontent: UIView!
+class PlaygroundHomeCell: UITableViewCell {
+    @IBOutlet weak var contentview: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        viewcontent.dropShadow()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

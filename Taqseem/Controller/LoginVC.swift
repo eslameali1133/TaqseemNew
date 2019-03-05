@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+var memberType = ""
 class LoginVC: UIViewController {
 
     @IBOutlet weak var TXT_UserName: UITextField!
@@ -38,9 +38,20 @@ class LoginVC: UIViewController {
         
         if TXT_UserName.text == "player"
         {
+            memberType = "player"
             let delegate = UIApplication.shared.delegate as! AppDelegate
             //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let storyboard = UIStoryboard.init(name: "Player", bundle: nil); delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
+        } else if TXT_UserName.text == "team" {
+            memberType = "team"
+            let delegate = UIApplication.shared.delegate as! AppDelegate
+            //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let storyboard = UIStoryboard.init(name: "Player", bundle: nil); delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
+        }else{
+            
+            let delegate = UIApplication.shared.delegate as! AppDelegate
+            //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let storyboard = UIStoryboard.init(name: "Owner", bundle: nil); delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
         }
     }
     
