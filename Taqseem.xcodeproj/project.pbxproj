@@ -116,6 +116,7 @@
 		F47AEED4221D8AC2007146CE /* MyMatchesTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47AEED3221D8AC2007146CE /* MyMatchesTableVC.swift */; };
 		F497E0DA2222D8B600060327 /* NearMeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497E0D92222D8B600060327 /* NearMeVC.swift */; };
 		F497E0DC2222DD5700060327 /* BookPlayGroundVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497E0DB2222DD5700060327 /* BookPlayGroundVC.swift */; };
+		F49DB5EE222E976200131DCD /* AddPlayGroundVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49DB5ED222E976200131DCD /* AddPlayGroundVC.swift */; };
 		F4D39CA322203BB300A6D25B /* AddNewVisaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D39CA222203BB300A6D25B /* AddNewVisaVC.swift */; };
 		F4E52E6C221FE1CD0062952D /* PaidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E52E6B221FE1CD0062952D /* PaidVC.swift */; };
 /* End PBXBuildFile section */
@@ -233,6 +234,7 @@
 		F47AEED3221D8AC2007146CE /* MyMatchesTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMatchesTableVC.swift; sourceTree = "<group>"; };
 		F497E0D92222D8B600060327 /* NearMeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearMeVC.swift; sourceTree = "<group>"; };
 		F497E0DB2222DD5700060327 /* BookPlayGroundVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookPlayGroundVC.swift; sourceTree = "<group>"; };
+		F49DB5ED222E976200131DCD /* AddPlayGroundVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayGroundVC.swift; sourceTree = "<group>"; };
 		F4D39CA222203BB300A6D25B /* AddNewVisaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewVisaVC.swift; sourceTree = "<group>"; };
 		F4E52E6B221FE1CD0062952D /* PaidVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaidVC.swift; sourceTree = "<group>"; };
 		FDD458EE3C7E70F51D7183C0 /* Pods-Taqseem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taqseem.release.xcconfig"; path = "Pods/Target Support Files/Pods-Taqseem/Pods-Taqseem.release.xcconfig"; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				F497E0D92222D8B600060327 /* NearMeVC.swift */,
 				F497E0DB2222DD5700060327 /* BookPlayGroundVC.swift */,
 				18BDD5B122234C6000B98753 /* PlayerNormalVC.swift */,
+				F49DB5ED222E976200131DCD /* AddPlayGroundVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -742,6 +745,7 @@
 				F47AEED4221D8AC2007146CE /* MyMatchesTableVC.swift in Sources */,
 				18F3ED992219CC45008F29F2 /* MoreVC.swift in Sources */,
 				18651CD9220C67BC002A3BD6 /* ResetPasswordVC.swift in Sources */,
+				F49DB5EE222E976200131DCD /* AddPlayGroundVC.swift in Sources */,
 				18B95487220B272D00FBAC94 /* EnterVerificationCodeVC.swift in Sources */,
 				18F3ED9F221AC19D008F29F2 /* FAVOURITESCell.swift in Sources */,
 				189DB22622098E68005118E3 /* ViewController.swift in Sources */,

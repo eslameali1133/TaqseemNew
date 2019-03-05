@@ -61,6 +61,12 @@ extension OwnerMoreVC :UITableViewDelegate,UITableViewDataSource{
                 self.present(cont, animated: true, completion: nil)
             }
         
+            else if indexPath.row == 2 {
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Owner", bundle:nil)
+                let cont = storyBoard.instantiateViewController(withIdentifier: "AddPlayGroundVC")as! AddPlayGroundVC
+                self.present(cont, animated: true, completion: nil)
+        }
+        
         
     }
     
