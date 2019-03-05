@@ -1,52 +1,44 @@
 //
-//  AddMatchVC.swift
+//  ADDMatchVC.swift
 //  Taqseem
 //
-//  Created by Husseinomda16 on 2/19/19.
+//  Created by apple on 3/5/19.
 //  Copyright © 2019 OnTime. All rights reserved.
 //
 
 import UIKit
 
-class AddMatchVC: UIViewController , UIPickerViewDataSource , UIPickerViewDelegate {
+class OwnerADDMatchVC: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
+    
+     @IBOutlet weak var lblDuration: UILabel!
     var PickerFlag = ""
+     var Duration = ["Playground 1", "Playground 2" , "Playground 3"]
     var toolBar = UIToolbar()
     var picker  = UIPickerView()
-    var Duration = [0 , 15 , 30 , 45 , 60 , 75 , 90 , 105 , 120]
-    var TeamCapacity = [0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 , 11 , 12]
-    var Fees = [0 , 1,2,3,4,5,6,7,8,9,10]
-    @IBOutlet weak var lblDuration: UILabel!
-    @IBOutlet weak var lblDate: UILabel!
-    @IBOutlet weak var lblCapacity: UILabel!
-    @IBOutlet weak var lblFees: UILabel!
-    //Uidate picker
-    let datePicker = UIDatePicker()
+      @IBOutlet weak var lblDate: UILabel!
+     let datePicker = UIDatePicker()
+    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
     }
-    @IBAction func DismissView(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+    
+    @IBAction func btnDate(_ sender: Any) {
+        showDatePicker(isDate: true)
+    }
+    @IBAction func btnFrom(_ sender: Any) {
+        showDatePicker(isDate: false)
+    }
+    @IBAction func btnTo(_ sender: Any) {
+        showDatePicker(isDate: false)
     }
     @IBAction func btnDuration(_ sender: Any) {
         PickerFlag = "Duration"
         configurePicker()
     }
-    @IBAction func btnCapacity(_ sender: Any) {
-        PickerFlag = "Capacity"
-        configurePicker()
-    }
-    @IBAction func btnFees(_ sender: Any) {
-        PickerFlag = "Fees"
-        configurePicker()
-    }
-    @IBAction func btnTime(_ sender: Any) {
-        showDatePicker(isDate: false)
-    }
-    @IBAction func btnDate(_ sender: Any) {
-    showDatePicker(isDate: true)
+    @IBAction func DismissView(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     func showDatePicker(isDate: Bool){
         //Formate Date //Formate Date
@@ -76,7 +68,6 @@ class AddMatchVC: UIViewController , UIPickerViewDataSource , UIPickerViewDelega
         //dismiss date picker dialog
         self.view.endEditing(true)
     }
-    
     func configurePicker (){
         picker = UIPickerView.init()
         picker.delegate = self
@@ -96,51 +87,35 @@ class AddMatchVC: UIViewController , UIPickerViewDataSource , UIPickerViewDelega
         toolBar.removeFromSuperview()
         picker.removeFromSuperview()
     }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    
+    lblDuration.text = String(Duration[row])
+    
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        
+            if row == 0{
+                return "Select playground "
+            }
+            return String(Duration[row])
+
+       
+       
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if PickerFlag == "Duration"{
-        return Duration.count
-    }
-        else if PickerFlag == "Capacity"{
-            return TeamCapacity.count
-        } else {
-            return Fees.count
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if PickerFlag == "Duration" {
-        if row == 0{
-            return "Select The Match Duration "
-        }
-        return String(Duration[row])
-            
-        } else if PickerFlag == "Capacity" {
-            if row == 0{
-                return "Select The Team Capacity "
-            }
-            return String(TeamCapacity[row])
-        } else {
-            if row == 0{
-                return "Select The Fees"
-            }
-            return String(Fees[row])
-        }
+     
+
+            return Duration.count
+
         
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if PickerFlag == "Duration" {
-        lblDuration.text = String(Duration[row])
-    }else if PickerFlag == "Capacity" {
-            lblCapacity.text = String(TeamCapacity[row])
-        } else {
-            lblFees.text = String(Fees[row])
-        }
-    }
 }
-
-
