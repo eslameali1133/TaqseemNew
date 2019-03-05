@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		180AEC60220D9CD50003C1A6 /* TermsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180AEC5F220D9CD50003C1A6 /* TermsVC.swift */; };
+		186023F6222D38D700B598F2 /* Owner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 186023F5222D38D700B598F2 /* Owner.storyboard */; };
+		186023F9222D395C00B598F2 /* OwnerMoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186023F8222D395C00B598F2 /* OwnerMoreVC.swift */; };
+		186023FB222D426700B598F2 /* OwnerHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186023FA222D426700B598F2 /* OwnerHomeVC.swift */; };
+		186023FE222D439900B598F2 /* PlaygroundHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186023FD222D439900B598F2 /* PlaygroundHomeCell.swift */; };
+		18602400222D4C8A00B598F2 /* OwnerMatchDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186023FF222D4C8A00B598F2 /* OwnerMatchDetailsVC.swift */; };
+		18602402222D520000B598F2 /* OwnerNextMatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18602401222D520000B598F2 /* OwnerNextMatchVC.swift */; };
+		18602404222D5A1D00B598F2 /* OwnerPLAYgroundInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18602403222D5A1D00B598F2 /* OwnerPLAYgroundInfoVC.swift */; };
 		18651CD9220C67BC002A3BD6 /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18651CD8220C67BC002A3BD6 /* ResetPasswordVC.swift */; };
 		18651CDB220C68F3002A3BD6 /* MobileVerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18651CDA220C68F3002A3BD6 /* MobileVerificationVC.swift */; };
 		18651CDD220C7145002A3BD6 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18651CDC220C7145002A3BD6 /* RegistrationVC.swift */; };
@@ -69,6 +76,13 @@
 		18B95483220B1EA500FBAC94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B95482220B1EA500FBAC94 /* AppDelegate.swift */; };
 		18B95485220B1EBF00FBAC94 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B95484220B1EBF00FBAC94 /* LoginVC.swift */; };
 		18B95487220B272D00FBAC94 /* EnterVerificationCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B95486220B272D00FBAC94 /* EnterVerificationCodeVC.swift */; };
+		18BCB2092227DA5200ABB59E /* TEAM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18BCB2082227DA5200ABB59E /* TEAM.storyboard */; };
+		18BCB20C2227DAA700ABB59E /* TeaminfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCB20B2227DAA700ABB59E /* TeaminfoVC.swift */; };
+		18BCB20E2227E1C000ABB59E /* MYTEAMVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCB20D2227E1C000ABB59E /* MYTEAMVC.swift */; };
+		18BCB2102227E4E400ABB59E /* AddPlayerForTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCB20F2227E4E400ABB59E /* AddPlayerForTeamVC.swift */; };
+		18BCB2122228195900ABB59E /* NEXTMATCHVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCB2112228195900ABB59E /* NEXTMATCHVC.swift */; };
+		18BCB21422281CE700ABB59E /* PLAYEROTHERTEAMVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCB21322281CE700ABB59E /* PLAYEROTHERTEAMVC.swift */; };
+		18BCB2162228211700ABB59E /* INFROTEAMVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCB2152228211700ABB59E /* INFROTEAMVC.swift */; };
 		18BDD5A02222922500B98753 /* ChoosePlaygroundVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDD59F2222922500B98753 /* ChoosePlaygroundVC.swift */; };
 		18BDD5A222229DBF00B98753 /* ChoosebackgroundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDD5A122229DBF00B98753 /* ChoosebackgroundCell.swift */; };
 		18BDD5A422229F4C00B98753 /* playGroundDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDD5A322229F4C00B98753 /* playGroundDetailsVC.swift */; };
@@ -108,6 +122,13 @@
 /* Begin PBXFileReference section */
 		034D193F115BD52FFA5CFC5E /* Pods-Taqseem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taqseem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Taqseem/Pods-Taqseem.debug.xcconfig"; sourceTree = "<group>"; };
 		180AEC5F220D9CD50003C1A6 /* TermsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsVC.swift; sourceTree = "<group>"; };
+		186023F5222D38D700B598F2 /* Owner.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Owner.storyboard; sourceTree = "<group>"; };
+		186023F8222D395C00B598F2 /* OwnerMoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerMoreVC.swift; sourceTree = "<group>"; };
+		186023FA222D426700B598F2 /* OwnerHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerHomeVC.swift; sourceTree = "<group>"; };
+		186023FD222D439900B598F2 /* PlaygroundHomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundHomeCell.swift; sourceTree = "<group>"; };
+		186023FF222D4C8A00B598F2 /* OwnerMatchDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerMatchDetailsVC.swift; sourceTree = "<group>"; };
+		18602401222D520000B598F2 /* OwnerNextMatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerNextMatchVC.swift; sourceTree = "<group>"; };
+		18602403222D5A1D00B598F2 /* OwnerPLAYgroundInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerPLAYgroundInfoVC.swift; sourceTree = "<group>"; };
 		18651CD8220C67BC002A3BD6 /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
 		18651CDA220C68F3002A3BD6 /* MobileVerificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileVerificationVC.swift; sourceTree = "<group>"; };
 		18651CDC220C7145002A3BD6 /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
@@ -171,6 +192,13 @@
 		18B95482220B1EA500FBAC94 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B95484220B1EBF00FBAC94 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		18B95486220B272D00FBAC94 /* EnterVerificationCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterVerificationCodeVC.swift; sourceTree = "<group>"; };
+		18BCB2082227DA5200ABB59E /* TEAM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TEAM.storyboard; sourceTree = "<group>"; };
+		18BCB20B2227DAA700ABB59E /* TeaminfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaminfoVC.swift; sourceTree = "<group>"; };
+		18BCB20D2227E1C000ABB59E /* MYTEAMVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MYTEAMVC.swift; sourceTree = "<group>"; };
+		18BCB20F2227E4E400ABB59E /* AddPlayerForTeamVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerForTeamVC.swift; sourceTree = "<group>"; };
+		18BCB2112228195900ABB59E /* NEXTMATCHVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEXTMATCHVC.swift; sourceTree = "<group>"; };
+		18BCB21322281CE700ABB59E /* PLAYEROTHERTEAMVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PLAYEROTHERTEAMVC.swift; sourceTree = "<group>"; };
+		18BCB2152228211700ABB59E /* INFROTEAMVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INFROTEAMVC.swift; sourceTree = "<group>"; };
 		18BDD59F2222922500B98753 /* ChoosePlaygroundVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePlaygroundVC.swift; sourceTree = "<group>"; };
 		18BDD5A122229DBF00B98753 /* ChoosebackgroundCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosebackgroundCell.swift; sourceTree = "<group>"; };
 		18BDD5A322229F4C00B98753 /* playGroundDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playGroundDetailsVC.swift; sourceTree = "<group>"; };
@@ -220,6 +248,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		186023F7222D394100B598F2 /* owner */ = {
+			isa = PBXGroup;
+			children = (
+				186023F8222D395C00B598F2 /* OwnerMoreVC.swift */,
+				186023FA222D426700B598F2 /* OwnerHomeVC.swift */,
+				186023FF222D4C8A00B598F2 /* OwnerMatchDetailsVC.swift */,
+				18602401222D520000B598F2 /* OwnerNextMatchVC.swift */,
+				18602403222D5A1D00B598F2 /* OwnerPLAYgroundInfoVC.swift */,
+			);
+			path = owner;
+			sourceTree = "<group>";
+		};
+		186023FC222D435D00B598F2 /* owner */ = {
+			isa = PBXGroup;
+			children = (
+				186023FD222D439900B598F2 /* PlaygroundHomeCell.swift */,
+			);
+			path = owner;
+			sourceTree = "<group>";
+		};
 		189DB21722098E68005118E3 = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +310,8 @@
 				189DB22722098E68005118E3 /* Player.storyboard */,
 				189DB23C2209C438005118E3 /* Profile.storyboard */,
 				F445BF97221C32F600B1A18E /* Match.storyboard */,
+				18BCB2082227DA5200ABB59E /* TEAM.storyboard */,
+				186023F5222D38D700B598F2 /* Owner.storyboard */,
 			);
 			path = StoryBord;
 			sourceTree = "<group>";
@@ -269,6 +319,8 @@
 		189DB2362209BB6D005118E3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				186023F7222D394100B598F2 /* owner */,
+				18BCB20A2227DA8400ABB59E /* TEAM */,
 				189DB22522098E68005118E3 /* ViewController.swift */,
 				18B95484220B1EBF00FBAC94 /* LoginVC.swift */,
 				18B95486220B272D00FBAC94 /* EnterVerificationCodeVC.swift */,
@@ -311,6 +363,7 @@
 		189DB2382209BB8B005118E3 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				186023FC222D435D00B598F2 /* owner */,
 				18F3ED8E221976B6008F29F2 /* CahtCell.swift */,
 				18F3ED9A221AB09B008F29F2 /* menuCell.swift */,
 				18F3ED9E221AC19D008F29F2 /* FAVOURITESCell.swift */,
@@ -421,6 +474,19 @@
 			path = santana;
 			sourceTree = "<group>";
 		};
+		18BCB20A2227DA8400ABB59E /* TEAM */ = {
+			isa = PBXGroup;
+			children = (
+				18BCB20B2227DAA700ABB59E /* TeaminfoVC.swift */,
+				18BCB20D2227E1C000ABB59E /* MYTEAMVC.swift */,
+				18BCB20F2227E4E400ABB59E /* AddPlayerForTeamVC.swift */,
+				18BCB2112228195900ABB59E /* NEXTMATCHVC.swift */,
+				18BCB21322281CE700ABB59E /* PLAYEROTHERTEAMVC.swift */,
+				18BCB2152228211700ABB59E /* INFROTEAMVC.swift */,
+			);
+			path = TEAM;
+			sourceTree = "<group>";
+		};
 		42210F4D4F9C5743B462FA12 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -501,6 +567,7 @@
 			files = (
 				18B01F872209CCFF003EFDDD /* HelveticaNeue-MediumCond.otf in Resources */,
 				18B01F8E2209CCFF003EFDDD /* HelveticaNeue-BoldCondObl.otf in Resources */,
+				186023F6222D38D700B598F2 /* Owner.storyboard in Resources */,
 				F445BF98221C32F600B1A18E /* Match.storyboard in Resources */,
 				18B01F722209CCFF003EFDDD /* HelveticaNeue-UltraLigCondObl.otf in Resources */,
 				18B01F8A2209CCFF003EFDDD /* HelveticaNeue-ExtBlackCondObl.otf in Resources */,
@@ -544,6 +611,7 @@
 				18B01F842209CCFF003EFDDD /* HelveticaNeue-HeavyItalic.otf in Resources */,
 				18B01F752209CCFF003EFDDD /* HelveticaNeue-HeavyExtObl.otf in Resources */,
 				18B01F902209CCFF003EFDDD /* HelveticaNeue-Heavy.otf in Resources */,
+				18BCB2092227DA5200ABB59E /* TEAM.storyboard in Resources */,
 				18B01F702209CCFF003EFDDD /* HelveticaNeue-BlackExtObl.otf in Resources */,
 				18B01F6A2209CCFF003EFDDD /* HelveticaNeue-BoldExt.otf in Resources */,
 				18B01F712209CCFF003EFDDD /* HelveticaNeue-ThinItalic.otf in Resources */,
@@ -657,11 +725,14 @@
 				18B95483220B1EA500FBAC94 /* AppDelegate.swift in Sources */,
 				18BDD5B02222C56500B98753 /* RecevieCell.swift in Sources */,
 				F497E0DC2222DD5700060327 /* BookPlayGroundVC.swift in Sources */,
+				18BCB21422281CE700ABB59E /* PLAYEROTHERTEAMVC.swift in Sources */,
 				F4E52E6C221FE1CD0062952D /* PaidVC.swift in Sources */,
+				18BCB2102227E4E400ABB59E /* AddPlayerForTeamVC.swift in Sources */,
 				18BFAE112221AADE00D2DADA /* File_test.swift in Sources */,
 				18F3ED8F221976B6008F29F2 /* CahtCell.swift in Sources */,
 				F4689F95221DF8F8002EC897 /* PlayerTableVC.swift in Sources */,
 				F4D39CA322203BB300A6D25B /* AddNewVisaVC.swift in Sources */,
+				18602404222D5A1D00B598F2 /* OwnerPLAYgroundInfoVC.swift in Sources */,
 				18651CDB220C68F3002A3BD6 /* MobileVerificationVC.swift in Sources */,
 				F47AEED2221D89D9007146CE /* MyMatchCell.swift in Sources */,
 				18F3ED8B221972CD008F29F2 /* AMCircleImageView.swift in Sources */,
@@ -673,6 +744,7 @@
 				189DB22622098E68005118E3 /* ViewController.swift in Sources */,
 				18BDD5A222229DBF00B98753 /* ChoosebackgroundCell.swift in Sources */,
 				F4689F97221DF9D4002EC897 /* PlayerCell.swift in Sources */,
+				18BCB2162228211700ABB59E /* INFROTEAMVC.swift in Sources */,
 				18BDD5AA2222B36800B98753 /* playGroundDetailsSegVC.swift in Sources */,
 				18BDD5A62222AB6C00B98753 /* AWSegmentAddMatch.swift in Sources */,
 				18F3ED8D22197651008F29F2 /* ChatVC.swift in Sources */,
@@ -680,13 +752,21 @@
 				18F3ED9B221AB09B008F29F2 /* menuCell.swift in Sources */,
 				F47AEED0221D50FF007146CE /* MyMatchVC.swift in Sources */,
 				18F3ED9D221AB734008F29F2 /* FavaVC.swift in Sources */,
+				18602402222D520000B598F2 /* OwnerNextMatchVC.swift in Sources */,
+				18602400222D4C8A00B598F2 /* OwnerMatchDetailsVC.swift in Sources */,
 				18651CDF220C91CC002A3BD6 /* CompleteProfileVC.swift in Sources */,
+				18BCB20C2227DAA700ABB59E /* TeaminfoVC.swift in Sources */,
 				18BDD5AC2222C44E00B98753 /* ChatRoomVC.swift in Sources */,
 				18BDD5A82222AD6300B98753 /* AddMatchSegmVC.swift in Sources */,
+				186023FE222D439900B598F2 /* PlaygroundHomeCell.swift in Sources */,
 				F445BF9A221C4A2E00B1A18E /* AddMatchVC.swift in Sources */,
+				18BCB2122228195900ABB59E /* NEXTMATCHVC.swift in Sources */,
+				186023F9222D395C00B598F2 /* OwnerMoreVC.swift in Sources */,
 				18BDD5A422229F4C00B98753 /* playGroundDetailsVC.swift in Sources */,
 				18651CDD220C7145002A3BD6 /* RegistrationVC.swift in Sources */,
+				186023FB222D426700B598F2 /* OwnerHomeVC.swift in Sources */,
 				18BDD5B222234C6000B98753 /* PlayerNormalVC.swift in Sources */,
+				18BCB20E2227E1C000ABB59E /* MYTEAMVC.swift in Sources */,
 				18BDD5A02222922500B98753 /* ChoosePlaygroundVC.swift in Sources */,
 				F497E0DA2222D8B600060327 /* NearMeVC.swift in Sources */,
 				18F3ED9522198D51008F29F2 /* AccountVC.swift in Sources */,
@@ -842,7 +922,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = M4GL8RY9H9;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Taqseem/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -863,7 +943,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = M4GL8RY9H9;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Taqseem/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

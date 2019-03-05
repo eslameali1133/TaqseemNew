@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+var bookingplayground = false
 class PaidVC: UIViewController {
 
     @IBOutlet weak var VisaView: UIView!
@@ -19,6 +19,22 @@ class PaidVC: UIViewController {
     }
     
 
+    @IBAction func btn_join(_ sender: Any) {
+        
+        if bookingplayground == true
+        {
+            bookingplayground = false
+            let delegate = UIApplication.shared.delegate as! AppDelegate
+            let storyboard = UIStoryboard.init(name: "Player", bundle: nil); delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
+        }else
+        {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
+        let cont = storyBoard.instantiateViewController(withIdentifier: "AddMatchSegmVC")as! AddMatchSegmVC
+        self.present(cont, animated: true, completion: nil)
+        }
+        
+        
+    }
     
     @IBAction func Btn_cash(_ sender: Any) {
         cashView.backgroundColor = UIColor(red: 37, green: 159, blue: 161, alpha: 1)

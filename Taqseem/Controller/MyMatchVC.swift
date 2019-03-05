@@ -22,6 +22,7 @@ class MyMatchVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstrin()
+        lbl_title.text = title
         btn_join.isHidden = true
         if comedromneartoplay == true
         {

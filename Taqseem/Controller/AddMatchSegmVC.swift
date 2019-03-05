@@ -10,32 +10,46 @@ import UIKit
 
 class AddMatchSegmVC: UIViewController {
 
-     @IBOutlet weak var Segm: AWSegmentAddMatch!
+    @IBOutlet weak var btn_mem: UIButton!
+        @IBOutlet weak var btn_chat: UIButton!
+        @IBOutlet weak var btn_playground: UIButton!
+
     
     @IBOutlet weak var member: UIView!
     @IBOutlet weak var chat: UIView!
     @IBOutlet weak var Playground: UIView!
     
-    @IBAction func Segment(_ sender: AWSegmentAddMatch) {
-        switch Segm.selectedIndex
-        {
-        case 0:
-            member.isHidden = false
-            chat.isHidden = true
-            Playground.isHidden = true
-        case 1:
-            member.isHidden = true
-            Playground.isHidden = true
-            chat.isHidden = false
-        case 2:
-            chat.isHidden = true
-            Playground.isHidden = false
-            member.isHidden = true
-        default:
-            break;
-        }
+    @IBAction func btnPlayGround(_ sender: Any) {
+        chat.isHidden = true
+        Playground.isHidden = false
+        member.isHidden = true
+        btn_playground.setTitleColor(.white, for: .normal)
+        btn_chat.setTitleColor(.darkGray, for: .normal)
+        btn_mem.setTitleColor(.darkGray, for: .normal)
+       
         
     }
+    @IBAction func btnChat(_ sender: Any) {
+        member.isHidden = true
+        Playground.isHidden = true
+        chat.isHidden = false
+        
+        btn_chat.setTitleColor(.white, for: .normal)
+        btn_playground.setTitleColor(.darkGray, for: .normal)
+        btn_mem.setTitleColor(.darkGray, for: .normal)
+        
+    }
+    @IBAction func btnMember(_ sender: Any) {
+        member.isHidden = false
+        chat.isHidden = true
+        Playground.isHidden = true
+        
+        btn_mem.setTitleColor(.white, for: .normal)
+        btn_chat.setTitleColor(.darkGray, for: .normal)
+        btn_playground.setTitleColor(.darkGray, for: .normal)
+        
+    }
+    
     
   
     override func viewDidLoad() {
