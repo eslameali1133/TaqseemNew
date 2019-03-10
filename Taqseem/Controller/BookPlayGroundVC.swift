@@ -35,6 +35,9 @@ class BookPlayGroundVC: UIViewController , UIPickerViewDelegate , UIPickerViewDa
     
     @IBAction func btnTime(_ sender: Any) {
         showDatePicker(isDate: false)
+        // 8
+        datePicker.addTarget(self, action: #selector(BookPlayGroundVC.datePickerValueChanged), for: UIControl.Event.valueChanged)
+        
     }
     @IBAction func btnCity(_ sender: Any) {
         PickerFlag = "City"
@@ -42,7 +45,7 @@ class BookPlayGroundVC: UIViewController , UIPickerViewDelegate , UIPickerViewDa
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     @IBAction func DismissView(_ sender: Any) {
@@ -72,11 +75,22 @@ class BookPlayGroundVC: UIViewController , UIPickerViewDelegate , UIPickerViewDa
         //For date formate
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
-       // txtTime.text = formatter.string(from: datePicker.date)
+        // txtTime.text = formatter.string(from: datePicker.date)
         //dismiss date picker dialog
         self.view.endEditing(true)
     }
-    
+    @objc func datePickerValueChanged (datePicker: UIDatePicker) {
+        
+        let dateformatter = DateFormatter()
+        
+        dateformatter.dateStyle = DateFormatter.Style.none
+        dateformatter.timeStyle = DateFormatter.Style.medium
+        
+        let dateValue = dateformatter.string(from: datePicker.date)
+        
+        lblTime.text = dateValue
+        
+    }
     func configurePicker (){
         picker = UIPickerView.init()
         picker.delegate = self

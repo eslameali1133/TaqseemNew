@@ -97,7 +97,9 @@ extension MoreVC :UITableViewDelegate,UITableViewDataSource{
                 let cont = storyBoard.instantiateViewController(withIdentifier: "FavaVC")as! FavaVC
                 self.present(cont, animated: true, completion: nil)
             }
-            
+            else if indexPath.row == 11{
+                AppCommon.sharedInstance.showlogin(vc: self)
+            }
         }else
             // team action
         {
@@ -138,6 +140,9 @@ extension MoreVC :UITableViewDelegate,UITableViewDataSource{
                 let storyBoard : UIStoryboard = UIStoryboard(name: "Player", bundle:nil)
                 let cont = storyBoard.instantiateViewController(withIdentifier: "FavaVC")as! FavaVC
                 self.present(cont, animated: true, completion: nil)
+            }
+            else if indexPath.row == 12{
+               AppCommon.sharedInstance.showlogin(vc: self)
             }
             
         }

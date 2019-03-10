@@ -9,9 +9,10 @@
 import UIKit
 
 class AddPlayGroundVC: UIViewController  , UIPickerViewDelegate , UIPickerViewDataSource{
+    var dateis = " "
     var toolBar = UIToolbar()
     var picker  = UIPickerView()
-    let datePicker = UIDatePicker()
+    var datePicker = UIDatePicker()
     var TeamCapacity = [0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 , 11 , 12]
     @IBOutlet weak var lblCapacity: UILabel!
     @IBOutlet weak var lblFrom: UILabel!
@@ -33,15 +34,23 @@ class AddPlayGroundVC: UIViewController  , UIPickerViewDelegate , UIPickerViewDa
     @IBOutlet weak var imgLogo: AMCircleImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
     @IBAction func btnTo(_ sender: Any) {
+        dateis = "To"
         showDatePicker()
+        onDoneButtonTapped()
+        datePicker.addTarget(self, action: #selector(AddPlayGroundVC.datePickerValueChanged), for: UIControl.Event.valueChanged)
+        
     }
     @IBAction func btnFrom(_ sender: Any) {
+        dateis = "From"
         showDatePicker()
+        onDoneButtonTapped()
+        datePicker.addTarget(self, action: #selector(AddPlayGroundVC.datePickerValueChanged), for: UIControl.Event.valueChanged)
+        
     }
     @IBAction func btnCapacity(_ sender: Any) {
         configurePicker()
@@ -64,6 +73,7 @@ class AddPlayGroundVC: UIViewController  , UIPickerViewDelegate , UIPickerViewDa
     }
     
     func configurePicker (){
+        picker  = UIPickerView()
         picker = UIPickerView.init()
         picker.delegate = self
         picker.backgroundColor = UIColor.white
@@ -77,7 +87,27 @@ class AddPlayGroundVC: UIViewController  , UIPickerViewDelegate , UIPickerViewDa
         toolBar.barStyle = .default
         toolBar.items = [UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(onDoneButtonTapped))]
         self.view.addSubview(toolBar)
+        
+        // DPicker.addTarget(self, action: #selector(AddPlayGroundVC.ChangeDate(sender:)), for: UIControl.Event.valueChanged)
+        
     }
+    
+    @objc func datePickerValueChanged (datePicker: UIDatePicker) {
+        
+        let dateformatter = DateFormatter()
+        
+        dateformatter.dateStyle = DateFormatter.Style.none
+        dateformatter.timeStyle = DateFormatter.Style.medium
+        
+        let dateValue = dateformatter.string(from: datePicker.date)
+        if dateis == "From" {
+            lblFrom.text = dateValue
+        }else{
+            lblTo.text = dateValue
+        }
+        
+    }
+    
     func showDatePicker(){
         
         datePicker.datePickerMode = .time
@@ -90,6 +120,7 @@ class AddPlayGroundVC: UIViewController  , UIPickerViewDelegate , UIPickerViewDa
         tempInput.inputView = self.datePicker       // Your picker
         self.view.addSubview( tempInput )
         tempInput.becomeFirstResponder()
+        
     }
     @objc func donedatePicker(){
         self.view.endEditing(true)
@@ -104,20 +135,23 @@ class AddPlayGroundVC: UIViewController  , UIPickerViewDelegate , UIPickerViewDa
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
-            return TeamCapacity.count
+        return TeamCapacity.count
         
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-            if row == 0{
-                return "Select The PlayGround Capacity "
-            }
-            return String(TeamCapacity[row])
-        
+        if row == 0{
+            return "Select The PlayGround Capacity "
         }
+        return String(TeamCapacity[row])
+        
+    }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         lblCapacity.text = String(TeamCapacity[row])
     }
-        
+    
+    @IBAction func DismissView(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
+}
