@@ -16,6 +16,7 @@ class AddMatchVC: UIViewController , UIPickerViewDataSource , UIPickerViewDelega
     var TeamCapacity = [0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 , 11 , 12]
     var Fees = [0 , 1,2,3,4,5,6,7,8,9,10]
     @IBOutlet weak var lblDuration: UILabel!
+    @IBOutlet weak var lblTime: UILabel!
     @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var lblCapacity: UILabel!
     @IBOutlet weak var lblFees: UILabel!
@@ -43,10 +44,14 @@ class AddMatchVC: UIViewController , UIPickerViewDataSource , UIPickerViewDelega
         configurePicker()
     }
     @IBAction func btnTime(_ sender: Any) {
+        PickerFlag = "Time"
         showDatePicker(isDate: false)
+        datePicker.addTarget(self, action: #selector(AddPlayGroundVC.datePickerValueChanged), for: UIControl.Event.valueChanged)
     }
     @IBAction func btnDate(_ sender: Any) {
-    showDatePicker(isDate: true)
+        PickerFlag = "Date"
+        showDatePicker(isDate: true)
+        datePicker.addTarget(self, action: #selector(AddPlayGroundVC.datePickerValueChanged), for: UIControl.Event.valueChanged)
     }
     func showDatePicker(isDate: Bool){
         //Formate Date //Formate Date
@@ -76,6 +81,24 @@ class AddMatchVC: UIViewController , UIPickerViewDataSource , UIPickerViewDelega
         //dismiss date picker dialog
         self.view.endEditing(true)
     }
+    @objc func datePickerValueChanged (datePicker: UIDatePicker) {
+        
+        let dateformatter = DateFormatter()
+        if PickerFlag == "Time" {
+            dateformatter.dateStyle = DateFormatter.Style.none
+            dateformatter.timeStyle = DateFormatter.Style.medium
+            let dateValue = dateformatter.string(from: datePicker.date)
+            lblTime.text = dateValue
+        }else {
+            dateformatter.dateStyle = DateFormatter.Style.medium
+            dateformatter.timeStyle = DateFormatter.Style.none
+            let dateValue = dateformatter.string(from: datePicker.date)
+            lblDate.text = dateValue
+            
+            
+        }
+        
+    }
     
     func configurePicker (){
         picker = UIPickerView.init()
@@ -92,6 +115,7 @@ class AddMatchVC: UIViewController , UIPickerViewDataSource , UIPickerViewDelega
         toolBar.items = [UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(onDoneButtonTapped))]
         self.view.addSubview(toolBar)
     }
+    
     @objc func onDoneButtonTapped() {
         toolBar.removeFromSuperview()
         picker.removeFromSuperview()
@@ -102,8 +126,8 @@ class AddMatchVC: UIViewController , UIPickerViewDataSource , UIPickerViewDelega
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if PickerFlag == "Duration"{
-        return Duration.count
-    }
+            return Duration.count
+        }
         else if PickerFlag == "Capacity"{
             return TeamCapacity.count
         } else {
@@ -113,10 +137,10 @@ class AddMatchVC: UIViewController , UIPickerViewDataSource , UIPickerViewDelega
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if PickerFlag == "Duration" {
-        if row == 0{
-            return "Select The Match Duration "
-        }
-        return String(Duration[row])
+            if row == 0{
+                return "Select The Match Duration "
+            }
+            return String(Duration[row])
             
         } else if PickerFlag == "Capacity" {
             if row == 0{
@@ -133,13 +157,11 @@ class AddMatchVC: UIViewController , UIPickerViewDataSource , UIPickerViewDelega
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if PickerFlag == "Duration" {
-        lblDuration.text = String(Duration[row])
-    }else if PickerFlag == "Capacity" {
+            lblDuration.text = String(Duration[row])
+        }else if PickerFlag == "Capacity" {
             lblCapacity.text = String(TeamCapacity[row])
         } else {
             lblFees.text = String(Fees[row])
         }
     }
 }
-
-
