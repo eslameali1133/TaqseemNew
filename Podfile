@@ -19,6 +19,9 @@ pod 'IBLocalizable'
 pod 'SVProgressHUD'
 pod 'Localize-Swift'
 pod 'Cosmos', '~> 18.0'
+pod 'FBSDKCoreKit'
+pod 'FBSDKShareKit'
+pod 'FBSDKLoginKit'
 
 
 end
