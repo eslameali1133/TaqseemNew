@@ -90,9 +90,18 @@
     "Password and Confirm password is not match!" : "Password and Confirm password is not match!",
     "Password must be at least 6 characters long" : "Password must be at least 6 characters long",
     "Password field cannot be left blank" : "Password field cannot be left blank",
-    "Phone field cannot be left blank" : "Phone field cannot be left blank",
+    "User Name field cannot be left blank" : "User Name field cannot be left blank",
     "Phone number must be between 7 and 17 characters long" : "Phone number nust be 11 bumber",
     "Name field cannot be left blank" : "Name field cannot be left blank",
+    
+    "Wait Code Has been Sent" : "Wait Code Has been Sent",
+    "please enter code you received":"please enter code you received"،
+    "check your email or password":"check your email or password",
+    "The user name has already been taken.":"The user name has already been taken.",
+    "The phone has already been taken.":"The phone has already been taken.",
+    "The Email has already been taken.":"The Email has already been taken.",
+    "The code field is required.":"The code field is required.",
+    
     "Duplicated user" : "phone are already used for another user",
     "thankYouForSignup" : "Thank you for signup",
     "startUsingApp" : "Start using the app",

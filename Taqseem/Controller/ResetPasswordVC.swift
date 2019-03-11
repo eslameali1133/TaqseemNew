@@ -7,12 +7,22 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 class ResetPasswordVC: UIViewController {
-
+var http = HttpHelper()
+var Token = ""
+var Phone = ""
+    
+    
+    
+    @IBOutlet weak var txtConfirmPassword: UITextField!
+    @IBOutlet weak var txtNewPassword: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        http.delegate = self
+        
+        print(Phone)
+        print(Token)
         // Do any additional setup after loading the view.
     }
     
@@ -21,5 +31,95 @@ class ResetPasswordVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-
+    @IBAction func btnReset(_ sender: Any) {
+        if validation(){
+            ResetPassword()
+        }
+    }
+    
+    
+    func validation () -> Bool {
+        var isValid = true
+        if txtConfirmPassword.text! != txtNewPassword.text { Loader.showError(message: AppCommon.sharedInstance.localization("Password and Confirm password is not match!"))
+            isValid = false
+        }
+        
+        if (txtNewPassword.text?.count)! < 6 { Loader.showError(message: AppCommon.sharedInstance.localization("Password must be at least 6 characters long"))
+            isValid = false
+        }
+        if txtNewPassword.text! == "" { Loader.showError(message: AppCommon.sharedInstance.localization("Password field cannot be left blank"))
+            isValid = false
+        }
+        
+        
+        return isValid
+    }
+    
+    func ResetPassword(){
+        let params = ["token": Token , "password":txtNewPassword.text! , "phone":Phone] as [String: Any]
+        print(Phone)
+        print(Token)
+        let headers = ["Accept-Type": "application/json" , "Content-Type": "application/json"]
+        
+        AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
+        http.requestWithBody(url: APIConstants.ResetPassword, method: .post, parameters: params, tag: 1, header: headers)
+    }
 }
+extension ResetPasswordVC : HttpHelperDelegate {
+    func receivedResponse(dictResponse: Any, Tag: Int) {
+        print(dictResponse)
+        AppCommon.sharedInstance.dismissLoader(self.view)
+        let json = JSON(dictResponse)
+        print(json)
+        let forbiddenMail : String = AppCommon.sharedInstance.localization("Duplicated user")
+        
+        if Tag == 1 {
+            let status =  json["status"]
+            let access_token =  json["access_token"]
+            let token_type =  json["token_type"]
+            let data =  json["data"]
+            let expires_at =  json["expires_at"]
+            
+            print(status)
+            print(data)
+            
+            //print(json["status"])
+            if status.stringValue == "1" {
+                
+                
+                UserDefaults.standard.set(access_token.stringValue, forKey: "access_token")
+                UserDefaults.standard.set(token_type.stringValue, forKey: "token_type")
+                UserDefaults.standard.set(data.array, forKey: "Profiledata")
+                UserDefaults.standard.set(expires_at.stringValue, forKey: "expires_at")
+                // let storyboard = UIStoryboard(name: "StoryBord", bundle: nil)
+                let sb = UIStoryboard(name: "Profile", bundle: nil)
+                let controller = sb.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+                self.show(controller, sender: true)
+                
+                
+            }else if  status.stringValue == "5"{
+                Loader.showError(message: AppCommon.sharedInstance.localization("The code field is required."))
+            }
+            else {
+                Loader.showError(message: (forbiddenMail))
+            }
+            
+            
+        } else {
+            
+            Loader.showError(message: (forbiddenMail))
+        }
+    }
+    func receivedErrorWithStatusCode(statusCode: Int) {
+        print(statusCode)
+        AppCommon.sharedInstance.alert(title: "Error", message: "\(statusCode)", controller: self, actionTitle: AppCommon.sharedInstance.localization("ok"), actionStyle: .default)
+        
+        AppCommon.sharedInstance.dismissLoader(self.view)
+    }
+    func retryResponse(numberOfrequest: Int) {
+        
+    }
+    
+}
+
+
