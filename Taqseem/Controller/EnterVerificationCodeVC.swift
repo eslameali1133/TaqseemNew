@@ -7,9 +7,12 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 class EnterVerificationCodeVC: UIViewController {
 
+    var http = HttpHelper()
+    var vereficationCode = ""
+    var Phone = ""
     @IBOutlet weak var Text1: UITextField!
         {
         didSet{
@@ -42,11 +45,85 @@ class EnterVerificationCodeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+http.delegate = self
+        print(vereficationCode,Phone)
         // Do any additional setup after loading the view.
     }
     
     @IBAction func DismissView(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func btnReset(_ sender: Any) {
+        if validation(){
+            ResetCode()
+        }
+    }
+    func validation () -> Bool {
+        var isValid = true
+        if Text1.text! == "" {
+            Loader.showError(message: AppCommon.sharedInstance.localization("Phone field cannot be left blank"))
+            isValid = false
+        }
+        if Text1.text! != vereficationCode {
+            Loader.showError(message: AppCommon.sharedInstance.localization("please enter code you received"))
+            isValid = false
+        }
+        
+        return isValid
+    }
+    
+    func ResetCode(){
+        let params = ["code": Text1.text!] as [String: Any]
+        let headers = ["Accept-Type": "application/json" , "Content-Type": "application/json"]
+        print(Text1.text!)
+        print(vereficationCode)
+        AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
+        http.requestWithBody(url: APIConstants.SendCode, method: .post, parameters: params, tag: 1, header: headers)
+    }
+}
+extension EnterVerificationCodeVC : HttpHelperDelegate {
+    func receivedResponse(dictResponse: Any, Tag: Int) {
+        print(dictResponse)
+        AppCommon.sharedInstance.dismissLoader(self.view)
+        let json = JSON(dictResponse)
+        let forbiddenMail : String = AppCommon.sharedInstance.localization("Duplicated user")
+        
+          if Tag == 1 {
+            let status =  json["status"]
+            let token = json["token"]
+            let message = json["message"]
+        print(status)
+            print(token)
+        
+                //print(json["status"])
+                if status.stringValue == "2" {
+                   // let storyboard = UIStoryboard(name: "StoryBord", bundle: nil)
+                    let sb = UIStoryboard(name: "Profile", bundle: nil)
+                    let controller = sb.instantiateViewController(withIdentifier: "ResetPasswordVC") as! ResetPasswordVC
+                    print(json["token"].stringValue,Phone)
+                    controller.Token = json["token"].stringValue
+                    controller.Phone = Phone
+                    self.show(controller, sender: true)
+
+                    
+                }
+                
+                
+            } else {
+                
+                Loader.showError(message: (forbiddenMail))
+            }
+        }
+    
+    func receivedErrorWithStatusCode(statusCode: Int) {
+        print(statusCode)
+        AppCommon.sharedInstance.alert(title: "Error", message: "\(statusCode)", controller: self, actionTitle: AppCommon.sharedInstance.localization("ok"), actionStyle: .default)
+        
+        AppCommon.sharedInstance.dismissLoader(self.view)
+    }
+    func retryResponse(numberOfrequest: Int) {
+        
+    }
+
 }

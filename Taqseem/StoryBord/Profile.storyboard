@@ -290,6 +290,7 @@
                         <outlet property="Btn_Ar" destination="YWc-V3-hPG" id="Wpt-Yo-zYp"/>
                         <outlet property="Btn_Eng" destination="A9J-sp-VVU" id="o9b-cH-2zn"/>
                         <outlet property="TXT_UserName" destination="qlQ-NT-meK" id="heD-Y2-KO5"/>
+                        <outlet property="txtPassword" destination="Yh9-QN-n4r" id="f3g-HK-Pjn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M0y-6V-Ykf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -396,7 +397,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <segue destination="G3b-rv-FPi" kind="presentation" id="OP9-rt-mlq"/>
+                                                            <action selector="btnVerify:" destination="Apc-Ww-z44" eventType="touchUpInside" id="ENn-6D-IsF"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -473,10 +474,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qfi-Nb-1uG"/>
                     </view>
+                    <connections>
+                        <outlet property="txtPhone" destination="JvH-Zf-pxX" id="4Rt-go-REI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uXy-ac-9p5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1559" y="-38"/>
+            <point key="canvasLocation" x="1338" y="-38"/>
         </scene>
         <!--Enter Verification CodeVC-->
         <scene sceneID="S19-LX-h8x">
@@ -609,7 +613,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <segue destination="sjQ-PL-R91" kind="presentation" id="16w-Kn-B3h"/>
+                                                            <action selector="btnReset:" destination="G3b-rv-FPi" eventType="touchUpInside" id="Nii-mu-FKM"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -697,7 +701,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0td-Jc-jRG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2241" y="-38"/>
+            <point key="canvasLocation" x="2082" y="-38"/>
         </scene>
         <!--Reset PasswordVC-->
         <scene sceneID="Vdf-G3-0VV">
@@ -823,6 +827,9 @@
                                                         <state key="normal" title="Confirm">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="btnReset:" destination="sjQ-PL-R91" eventType="touchUpInside" id="0dv-nC-bvu"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.0" green="0.61176470589999998" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -863,6 +870,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="d37-i2-43f"/>
                     </view>
+                    <connections>
+                        <outlet property="txtConfirmPassword" destination="2py-f1-FHa" id="O15-Xu-2SA"/>
+                        <outlet property="txtNewPassword" destination="0Uk-eI-iFt" id="Ne5-1N-wHR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iqv-lx-4pc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -895,6 +906,9 @@
                                                 <state key="normal" title="PLAYER">
                                                     <color key="titleColor" red="0.0" green="0.61176470589999998" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnPlayer:" destination="fdh-IH-iTu" eventType="touchUpInside" id="6YT-6s-G8g"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3nn-Ka-G3V">
                                                 <rect key="frame" x="99.5" y="0.0" width="67" height="49"/>
@@ -903,6 +917,9 @@
                                                 <state key="normal" title="Team">
                                                     <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnTeam:" destination="fdh-IH-iTu" eventType="touchUpInside" id="sWp-cO-Jt3"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeM-44-igS">
                                                 <rect key="frame" x="167.5" y="0.0" width="147.5" height="49"/>
@@ -911,6 +928,9 @@
                                                 <state key="normal" title="Pitch owner">
                                                     <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnOwner:" destination="fdh-IH-iTu" eventType="touchUpInside" id="g4P-lZ-n6h"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -1093,6 +1113,9 @@
                                                         <state key="normal" title="Register">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="btnRegister:" destination="fdh-IH-iTu" eventType="touchUpInside" id="wva-DH-eGe"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.0" green="0.61176470589999998" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1208,6 +1231,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QcL-fd-arQ"/>
                     </view>
+                    <connections>
+                        <outlet property="btnOwner" destination="QeM-44-igS" id="urv-V8-buy"/>
+                        <outlet property="btnPlayer" destination="7c3-tp-nrw" id="6iP-5q-4fs"/>
+                        <outlet property="btnTeam" destination="3nn-Ka-G3V" id="kaI-Zb-SUx"/>
+                        <outlet property="txtConfirmPassword" destination="NJD-x2-apX" id="R4s-jw-eKW"/>
+                        <outlet property="txtEmail" destination="xy7-yk-dt0" id="M9H-Dl-H9H"/>
+                        <outlet property="txtName" destination="fXI-UU-XC0" id="LQ5-tw-KHE"/>
+                        <outlet property="txtPassword" destination="uil-9S-6So" id="XDt-BA-k2y"/>
+                        <outlet property="txtPhoneNumber" destination="gu2-K7-hPO" id="vXI-1C-2Av"/>
+                        <outlet property="txtUserName" destination="SOw-hT-J3V" id="SdM-qo-x0g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QcD-8C-8s9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1606,6 +1640,6 @@
         <image name="user" width="11" height="11"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uMf-ER-Mux"/>
+        <segue reference="XUF-3N-lub"/>
     </inferredMetricsTieBreakers>
 </document>
