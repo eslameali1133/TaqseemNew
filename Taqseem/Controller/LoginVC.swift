@@ -9,8 +9,25 @@
 import UIKit
 var memberType = ""
 import SwiftyJSON
-class LoginVC: UIViewController {
+import FBSDKLoginKit
+class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("Did log out of facebook")
+    }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if error != nil {
+            print(error)
+            return
+        }
+        if let token = FBSDKAccessToken.current(){
+            fetchProfile()
+        }
+        print("Successfully logged in with facebook...")
+    }
+    
 
+    @IBOutlet weak var lblFB: UIButton!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var TXT_UserName: UITextField!
     var http = HttpHelper()
@@ -28,10 +45,43 @@ class LoginVC: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        let loginButton = FBSDKLoginButton()
+        view.addSubview(loginButton)
+        loginButton.frame = CGRect(x: 16, y: 648, width: view.frame.width - 32, height: 50)
+        loginButton.delegate = self
         http.delegate = self
+        
         // Do any additional setup after loading the view.
     }
     
+    func fetchProfile(){
+    print("fetchProfile")
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id, email"])
+        
+        graphRequest.start(completionHandler: { (connection, result, error) -> Void in
+            if ((error) != nil)
+            {
+                print("Error took place: \(String(describing: error))")
+            }
+            else
+            {
+                print("Print entire fetched result: \(String(describing: result))")
+                
+                if let resultInfo = result as? [String: Any] {
+                    let id = resultInfo["id"] as? String
+                    print("User ID is: \(String(describing: id))")
+                }
+                
+                
+               
+        
+//                let id : NSString = result.valueForKey("id") as! String
+//                print("User ID is: \(id)")
+                
+            }
+        
+    })
+    }
     @IBAction func DismissView(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

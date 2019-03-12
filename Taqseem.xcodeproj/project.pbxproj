@@ -299,6 +299,9 @@
 		18F62625223159D200030773 /* RequestDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDetailsVC.swift; sourceTree = "<group>"; };
 		18F62626223159D200030773 /* RequestListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestListVC.swift; sourceTree = "<group>"; };
 		2329402FA44DE7A7CCCDD63D /* Pods_Taqseem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Taqseem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F428857E2236A7B300E85C9C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		F428857F2236A7B400E85C9C /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		F42885802236ABD500E85C9C /* Taqseem-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Taqseem-Bridging-Header.h"; sourceTree = "<group>"; };
 		F445BF97221C32F600B1A18E /* Match.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Match.storyboard; sourceTree = "<group>"; };
 		F445BF99221C4A2E00B1A18E /* AddMatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMatchVC.swift; sourceTree = "<group>"; };
 		F4689F94221DF8F8002EC897 /* PlayerTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTableVC.swift; sourceTree = "<group>"; };
@@ -354,6 +357,8 @@
 			isa = PBXGroup;
 			children = (
 				189DB22222098E68005118E3 /* Taqseem */,
+				F428857E2236A7B300E85C9C /* FBSDKCoreKit.framework */,
+				F428857F2236A7B400E85C9C /* FBSDKLoginKit.framework */,
 				189DB22122098E68005118E3 /* Products */,
 				42210F4D4F9C5743B462FA12 /* Pods */,
 				6E019237B3A1288BD44B2090 /* Frameworks */,
@@ -385,6 +390,7 @@
 				189DB2372209BB84005118E3 /* Models */,
 				189DB2362209BB6D005118E3 /* Controller */,
 				189DB2352209BB4A005118E3 /* StoryBord */,
+				F42885802236ABD500E85C9C /* Taqseem-Bridging-Header.h */,
 			);
 			path = Taqseem;
 			sourceTree = "<group>";
@@ -776,6 +782,7 @@
 				TargetAttributes = {
 					189DB21F22098E68005118E3 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -1214,6 +1221,7 @@
 			baseConfigurationReference = 034D193F115BD52FFA5CFC5E /* Pods-Taqseem.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M4GL8RY9H9;
 				ENABLE_BITCODE = YES;
@@ -1224,6 +1232,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Ontime24.Taqseem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Taqseem/Taqseem-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_REFLECTION_METADATA_LEVEL = all;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1235,6 +1245,7 @@
 			baseConfigurationReference = FDD458EE3C7E70F51D7183C0 /* Pods-Taqseem.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M4GL8RY9H9;
 				ENABLE_BITCODE = YES;
@@ -1245,6 +1256,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Ontime24.Taqseem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Taqseem/Taqseem-Bridging-Header.h";
 				SWIFT_REFLECTION_METADATA_LEVEL = all;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
