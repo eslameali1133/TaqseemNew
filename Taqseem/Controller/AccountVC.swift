@@ -10,8 +10,11 @@ import UIKit
 
 class AccountVC: UIViewController {
 
+    @IBOutlet weak var lblEmail: UILabel!
+    @IBOutlet weak var lblPhone: UILabel!
+    @IBOutlet weak var lblPosition: UILabel!
+    @IBOutlet weak var lblnumOfMatches: UILabel!
     @IBOutlet weak var MatchedPlayedView: UIView!
-     @IBOutlet weak var MatchesDeffV: UIView!
     
       @IBOutlet weak var PositionV: UIView!
       @IBOutlet weak var PhoneV: UIView!
@@ -20,7 +23,7 @@ class AccountVC: UIViewController {
         super.viewDidLoad()
 
          MatchedPlayedView.dropShadow()
-          MatchesDeffV.dropShadow()
+//          MatchesDeffV.dropShadow()
         PositionV.dropShadow()
         PhoneV.dropShadow()
         EmailV.dropShadow()
