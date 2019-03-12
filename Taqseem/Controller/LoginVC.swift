@@ -8,9 +8,14 @@
 
 import UIKit
 var memberType = ""
+var FBID = ""
 import SwiftyJSON
 import FBSDKLoginKit
 class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
+    
+    
+    @IBOutlet weak var facebookloginview: UIView!
+    
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("Did log out of facebook")
     }
@@ -47,7 +52,8 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
         super.viewDidLoad()
         let loginButton = FBSDKLoginButton()
         view.addSubview(loginButton)
-        loginButton.frame = CGRect(x: 16, y: 648, width: view.frame.width - 32, height: 50)
+        facebookloginview.addSubview(loginButton)
+        loginButton.frame = CGRect(x: 0, y: 0, width:facebookloginview.frame.width + 40, height: facebookloginview.frame.height + 10)
         loginButton.delegate = self
         http.delegate = self
         
@@ -70,6 +76,9 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
                 if let resultInfo = result as? [String: Any] {
                     let id = resultInfo["id"] as? String
                     print("User ID is: \(String(describing: id))")
+                    FBID = id ?? ""
+                    print(FBID)
+                    self.FBLogin()
                 }
                 
                 
@@ -113,8 +122,15 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
         let headers = ["Accept": "application/json" , "Content-Type": "application/json"]
         AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
         http.requestWithBody(url: APIConstants.Login, method: .post, parameters: params, tag: 1, header: headers)
-    }}
-        
+    }
+    func FBLogin() {
+        let params = ["facebook_id":FBID] as [String: Any]
+        let headers = ["Accept": "application/json" , "Content-Type": "application/json"]
+        AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
+        http.requestWithBody(url: APIConstants.facebookLogin, method: .post, parameters: params, tag: 2, header: headers)
+    }
+}
+    
 //        if TXT_UserName.text == "player"
 //        {
 //            memberType = "player"
@@ -146,8 +162,8 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
                 let status =  json["status"]
                 let access_token = json["access_token"]
                 let token_type = json["token_type"]
-               // let data = json["data"]
-                let data =  JSON(json["data"])
+                let data = json["data"]
+                //let data =  JSON(json["data"])
                 print(status)
                 print(access_token)
                 print(token_type)
@@ -157,10 +173,11 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
                 if status.stringValue  == "1" {
                     UserDefaults.standard.set(access_token.stringValue, forKey: "access_token")
                     UserDefaults.standard.set(token_type.stringValue, forKey: "token_type")
-                    UserDefaults.standard.set(data.array, forKey: "Profiledata")
-                    UserDefaults.standard.array(forKey: "Profiledata")
+                  
+                     AppCommon.sharedInstance.saveJSON(json: data, key: "Profiledata")
+                   // UserDefaults.standard.array(forKey: "Profiledata")
                    // print(data["email"])
-                    
+                    print(AppCommon.sharedInstance.getJSON("Profiledata")["phone"].stringValue)
                     SharedData.SharedInstans.SetIsLogin(true)
                     if data["type"] == "user" {
                         let delegate = UIApplication.shared.delegate as! AppDelegate
@@ -175,15 +192,51 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
                     Loader.showError(message: AppCommon.sharedInstance.localization("check your email or password"))
                 }
                 else {
-                    
                     Loader.showError(message: (forbiddenMail))
-                    
                 }
                 
-                
             }
-            
+            else if  Tag == 2 {
+                let status =  json["status"]
+                let access_token = json["access_token"]
+                let token_type = json["token_type"]
+                let data =  JSON(json["data"])
+                let expires_at = json["expires_at"]
+                
+                if status.stringValue  == "4" {
+                    Loader.showError(message: AppCommon.sharedInstance.localization("User not Exists"))
+                    let sb = UIStoryboard(name: "Profile", bundle: nil)
+                    let controller = sb.instantiateViewController(withIdentifier: "RegistrationVC") as! RegistrationVC
+                    controller.ComeFromFaceBook = true
+                    controller.facebook_id = FBID
+                    self.show(controller, sender: true)
+                }
+                
+                else if status.stringValue  == "1" {
+                    UserDefaults.standard.set(access_token.stringValue, forKey: "access_token")
+                    UserDefaults.standard.set(token_type.stringValue, forKey: "token_type")
+//                    UserDefaults.standard.set(data.array, forKey: "Profiledata")
+                    UserDefaults.standard.set(expires_at.stringValue, forKey: "expires_at")
+//                    UserDefaults.standard.array(forKey: "Profiledata")
+                    
+                    AppCommon.sharedInstance.saveJSON(json: data, key: "Profiledata")
+                
+                    print(AppCommon.sharedInstance.getJSON("Profiledata")["phone"].stringValue)
+                    
+                    SharedData.SharedInstans.SetIsLogin(true)
+                    if data["type"] == "user" {
+                        let delegate = UIApplication.shared.delegate as! AppDelegate
+                        //  let storyboard = UIStoryboard(name: "StoryBord", bundle: nil)
+                        let storyboard = UIStoryboard.init(name: "Player", bundle: nil); delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
+                    }else{
+                        let delegate = UIApplication.shared.delegate as! AppDelegate
+                        // let storyboard = UIStoryboard(name: "StoryBord", bundle: nil)
+                        let storyboard = UIStoryboard.init(name: "Owner", bundle: nil); delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
+                    }
+                }
+            }
         }
+            
         
         func receivedErrorWithStatusCode(statusCode: Int) {
             print(statusCode)
@@ -195,5 +248,7 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
         func retryResponse(numberOfrequest: Int) {
             
         }
+        
+     
     }
 
