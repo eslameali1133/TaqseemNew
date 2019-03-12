@@ -164,9 +164,6 @@
                                                         <state key="normal">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
-                                                        <connections>
-                                                            <segue destination="7MN-y5-Zfp" kind="presentation" id="rs0-YG-3SN"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.16862745098039217" green="0.50980392156862742" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -548,47 +545,24 @@
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="50"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Xp5-tx-35W">
-                                                <rect key="frame" x="45.5" y="0.0" width="224" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="315" height="50"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iar-Rr-kIg">
-                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iar-Rr-kIg" customClass="KKPinCodeTextField">
+                                                        <rect key="frame" x="0.0" y="0.0" width="315" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="50" id="LIG-G7-zit"/>
                                                             <constraint firstAttribute="height" constant="50" id="bX4-Wo-sn6"/>
                                                         </constraints>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
-                                                    </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HhG-BP-0YK">
-                                                        <rect key="frame" x="58" y="0.0" width="50" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="50" id="1Ue-2b-ruj"/>
-                                                            <constraint firstAttribute="height" constant="50" id="O07-6F-o7b"/>
-                                                        </constraints>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
-                                                    </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ynp-Ur-we6">
-                                                        <rect key="frame" x="116" y="0.0" width="50" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="50" id="F8S-cx-R4L"/>
-                                                            <constraint firstAttribute="height" constant="50" id="tb4-xh-iup"/>
-                                                        </constraints>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
-                                                    </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RSA-aW-FNq">
-                                                        <rect key="frame" x="174" y="0.0" width="50" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="Qb1-hZ-QKQ"/>
-                                                            <constraint firstAttribute="width" constant="50" id="qQB-vd-81s"/>
-                                                        </constraints>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="filledDigitBorderColor">
+                                                                <color key="value" red="0.14420261979999999" green="0.62189048530000002" blue="0.63047534230000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="emptyDigitBorderColor">
+                                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -597,6 +571,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="2EY-gA-cYz"/>
                                             <constraint firstItem="Xp5-tx-35W" firstAttribute="centerX" secondItem="DA9-w3-qsR" secondAttribute="centerX" id="IMB-lf-L1t"/>
+                                            <constraint firstItem="Xp5-tx-35W" firstAttribute="width" secondItem="DA9-w3-qsR" secondAttribute="width" id="Jpf-0A-bHa"/>
                                             <constraint firstItem="Xp5-tx-35W" firstAttribute="top" secondItem="DA9-w3-qsR" secondAttribute="top" id="Svq-hG-fID"/>
                                         </constraints>
                                     </view>
@@ -694,9 +669,6 @@
                     </view>
                     <connections>
                         <outlet property="Text1" destination="iar-Rr-kIg" id="IZH-2S-umd"/>
-                        <outlet property="Text2" destination="HhG-BP-0YK" id="Ehl-DR-q66"/>
-                        <outlet property="Text3" destination="Ynp-Ur-we6" id="FOC-tm-eVj"/>
-                        <outlet property="Text4" destination="RSA-aW-FNq" id="AcI-oe-tPE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0td-Jc-jRG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -904,7 +876,7 @@
                                                 <color key="backgroundColor" red="0.1843137255" green="0.18039215689999999" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                 <state key="normal" title="PLAYER">
-                                                    <color key="titleColor" red="0.0" green="0.61176470589999998" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="btnPlayer:" destination="fdh-IH-iTu" eventType="touchUpInside" id="6YT-6s-G8g"/>
@@ -915,7 +887,7 @@
                                                 <color key="backgroundColor" red="0.1843137255" green="0.18039215689999999" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                 <state key="normal" title="Team">
-                                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="btnTeam:" destination="fdh-IH-iTu" eventType="touchUpInside" id="sWp-cO-Jt3"/>
@@ -926,7 +898,7 @@
                                                 <color key="backgroundColor" red="0.1843137255" green="0.18039215689999999" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                 <state key="normal" title="Pitch owner">
-                                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="btnOwner:" destination="fdh-IH-iTu" eventType="touchUpInside" id="g4P-lZ-n6h"/>
@@ -1235,6 +1207,8 @@
                         <outlet property="btnOwner" destination="QeM-44-igS" id="urv-V8-buy"/>
                         <outlet property="btnPlayer" destination="7c3-tp-nrw" id="6iP-5q-4fs"/>
                         <outlet property="btnTeam" destination="3nn-Ka-G3V" id="kaI-Zb-SUx"/>
+                        <outlet property="passConfirmWordView" destination="g27-Yr-nXs" id="Ajb-dR-Ncr"/>
+                        <outlet property="passWordView" destination="svq-sB-wka" id="z8P-Vz-pqB"/>
                         <outlet property="txtConfirmPassword" destination="NJD-x2-apX" id="R4s-jw-eKW"/>
                         <outlet property="txtEmail" destination="xy7-yk-dt0" id="M9H-Dl-H9H"/>
                         <outlet property="txtName" destination="fXI-UU-XC0" id="LQ5-tw-KHE"/>
@@ -1569,9 +1543,6 @@
                                                         <state key="normal" title="Terms of use">
                                                             <color key="titleColor" red="0.0" green="0.61176470589999998" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
-                                                        <connections>
-                                                            <segue destination="LFX-UY-vXd" kind="presentation" id="uMf-ER-Mux"/>
-                                                        </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cRl-ai-7Ig">
                                                         <rect key="frame" x="238.5" y="34.5" width="89" height="1"/>
@@ -1639,7 +1610,4 @@
         <image name="sms" width="68" height="68"/>
         <image name="user" width="11" height="11"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="XUF-3N-lub"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -8,18 +8,19 @@
 
 import UIKit
 import SwiftyJSON
+import KKPinCodeTextField
 class EnterVerificationCodeVC: UIViewController {
 
     var http = HttpHelper()
     var vereficationCode = ""
     var Phone = ""
-    @IBOutlet weak var Text1: UITextField!
-        {
-        didSet{
-            Text1.layer.cornerRadius = Text1.frame.width / 2
-            Text1.clipsToBounds = true
-        }
-    }
+    @IBOutlet weak var Text1: KKPinCodeTextField!
+//        {
+//        didSet{
+//            Text1.layer.cornerRadius = Text1.frame.width / 2
+//            Text1.clipsToBounds = true
+//        }
+//    }
     
     @IBOutlet weak var Text2: UITextField!
         {

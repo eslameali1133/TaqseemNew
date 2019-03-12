@@ -22,6 +22,6 @@ pod 'Cosmos', '~> 18.0'
 pod 'FBSDKCoreKit'
 pod 'FBSDKShareKit'
 pod 'FBSDKLoginKit'
-
+pod 'KKPinCodeTextField'
 
 end

@@ -11,6 +11,12 @@ import SwiftyJSON
 class RegistrationVC: UIViewController {
     var http = HttpHelper()
     var type = "user"
+    var facebook_id = ""
+    var ComeFromFaceBook = false
+    
+    @IBOutlet weak var passWordView: UIView!
+    @IBOutlet weak var passConfirmWordView: UIView!
+    
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPhoneNumber: UITextField!
     @IBOutlet weak var txtConfirmPassword: UITextField!
@@ -23,6 +29,12 @@ class RegistrationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         http.delegate = self
+        
+        if ComeFromFaceBook == true
+        {
+            passWordView.isHidden = true
+             passConfirmWordView.isHidden = true
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -60,18 +72,24 @@ class RegistrationVC: UIViewController {
     func validation () -> Bool {
         var isValid = true
         
-        
-        if txtPassword.text! != txtPassword.text { Loader.showError(message: AppCommon.sharedInstance.localization("Password and Confirm password is not match!"))
-            isValid = false
+        if ComeFromFaceBook == true
+        {
+
+        }else{
+            if txtPassword.text! != txtPassword.text { Loader.showError(message: AppCommon.sharedInstance.localization("Password and Confirm password is not match!"))
+                isValid = false
+            }
+            
+            if (txtPassword.text?.count)! < 6 { Loader.showError(message: AppCommon.sharedInstance.localization("Password must be at least 6 characters long"))
+                isValid = false
+            }
+            if txtPassword.text! == "" { Loader.showError(message: AppCommon.sharedInstance.localization("Password field cannot be left blank"))
+                isValid = false
+            }
+            
         }
         
-        if (txtPassword.text?.count)! < 6 { Loader.showError(message: AppCommon.sharedInstance.localization("Password must be at least 6 characters long"))
-            isValid = false
-        }
-        if txtPassword.text! == "" { Loader.showError(message: AppCommon.sharedInstance.localization("Password field cannot be left blank"))
-            isValid = false
-        }
-        
+      
         
         if (txtPhoneNumber.text?.count)! != 11  {
             Loader.showError(message: AppCommon.sharedInstance.localization("Phone number must be between 7 and 17 characters long"))
@@ -98,10 +116,23 @@ class RegistrationVC: UIViewController {
     
     
     func signup () {
-        let params = ["name":txtName.text!, "email":txtEmail.text!,"user_name":txtUserName.text!,"password": txtPassword.text!,"phone": txtPhoneNumber.text! , "type": type] as [String: Any]
-        let headers = ["Accept-Type": "application/json" , "Content-Type": "application/json"]
-        AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
-        http.requestWithBody(url: APIConstants.Register, method: .post, parameters: params, tag: 1, header: headers)
+        
+        if ComeFromFaceBook == true
+        {
+            
+            let params = ["name":txtName.text!, "email":txtEmail.text!,"user_name":txtUserName.text!,"facebook_id": facebook_id,"phone": txtPhoneNumber.text! , "type": type] as [String: Any]
+            let headers = ["Accept-Type": "application/json" , "Content-Type": "application/json"]
+            AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
+            http.requestWithBody(url: APIConstants.facebookregister, method: .post, parameters: params, tag: 1, header: headers)
+            
+            
+        }else{
+            let params = ["name":txtName.text!, "email":txtEmail.text!,"user_name":txtUserName.text!,"password": txtPassword.text!,"phone": txtPhoneNumber.text! , "type": type] as [String: Any]
+            let headers = ["Accept-Type": "application/json" , "Content-Type": "application/json"]
+            AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
+            http.requestWithBody(url: APIConstants.Register, method: .post, parameters: params, tag: 1, header: headers)
+        }
+       
     }
 }
 extension RegistrationVC: HttpHelperDelegate {
