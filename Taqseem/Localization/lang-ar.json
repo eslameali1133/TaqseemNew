@@ -95,6 +95,7 @@
     "The phone has already been taken.":"رقم الهاتف مستخدم من قبل",
     "The Email has already been taken.":"الايميل مستخدم من قبل",
     "The code field is required.":"حقل الكود مطلوب",
+    "User not Exists":"مستخدم غير موجود",
     
     "Duplicated user" : " رقم الهاتف مستخدم بالفعل",
     "thankYouForSignup" : "شكراً للتسجيل",

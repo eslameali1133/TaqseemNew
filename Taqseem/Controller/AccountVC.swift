@@ -28,10 +28,14 @@ class AccountVC: UIViewController {
         PhoneV.dropShadow()
         EmailV.dropShadow()
         
+            lblEmail.text = AppCommon.sharedInstance.getJSON("Profiledata")["email"].stringValue
+            lblPhone.text = AppCommon.sharedInstance.getJSON("Profiledata")["phone"].stringValue
+            lblPosition.text = AppCommon.sharedInstance.getJSON("Profiledata")["position"].stringValue
+            lblnumOfMatches.text = AppCommon.sharedInstance.getJSON("Profiledata")["matches"].stringValue
+        }
 
     }
     
 
     
 
-}

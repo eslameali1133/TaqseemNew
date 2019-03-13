@@ -89,8 +89,12 @@ extension ResetPasswordVC : HttpHelperDelegate {
                 
                 UserDefaults.standard.set(access_token.stringValue, forKey: "access_token")
                 UserDefaults.standard.set(token_type.stringValue, forKey: "token_type")
-                UserDefaults.standard.set(data.array, forKey: "Profiledata")
+              //  UserDefaults.standard.set(data.array, forKey: "Profiledata")
                 UserDefaults.standard.set(expires_at.stringValue, forKey: "expires_at")
+                AppCommon.sharedInstance.saveJSON(json: data, key: "Profiledata")
+                // UserDefaults.standard.array(forKey: "Profiledata")
+                // print(data["email"])
+                print(AppCommon.sharedInstance.getJSON("Profiledata")["phone"].stringValue)
                 // let storyboard = UIStoryboard(name: "StoryBord", bundle: nil)
                 let sb = UIStoryboard(name: "Profile", bundle: nil)
                 let controller = sb.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
