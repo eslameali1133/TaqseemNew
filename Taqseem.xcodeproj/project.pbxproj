@@ -95,6 +95,7 @@
 		18BDD5B02222C56500B98753 /* RecevieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDD5AF2222C56500B98753 /* RecevieCell.swift */; };
 		18BDD5B222234C6000B98753 /* PlayerNormalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDD5B122234C6000B98753 /* PlayerNormalVC.swift */; };
 		18BFAE112221AADE00D2DADA /* File_test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BFAE102221AADE00D2DADA /* File_test.swift */; };
+		18F2D32D2238FCED00D8AAA6 /* CusImageview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F2D32C2238FCED00D8AAA6 /* CusImageview.swift */; };
 		18F3ED8B221972CD008F29F2 /* AMCircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3ED8A221972CC008F29F2 /* AMCircleImageView.swift */; };
 		18F3ED8D22197651008F29F2 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3ED8C22197651008F29F2 /* ChatVC.swift */; };
 		18F3ED8F221976B6008F29F2 /* CahtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3ED8E221976B6008F29F2 /* CahtCell.swift */; };
@@ -248,6 +249,7 @@
 		18BDD5AF2222C56500B98753 /* RecevieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecevieCell.swift; sourceTree = "<group>"; };
 		18BDD5B122234C6000B98753 /* PlayerNormalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNormalVC.swift; sourceTree = "<group>"; };
 		18BFAE102221AADE00D2DADA /* File_test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File_test.swift; sourceTree = "<group>"; };
+		18F2D32C2238FCED00D8AAA6 /* CusImageview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CusImageview.swift; sourceTree = "<group>"; };
 		18F3ED8A221972CC008F29F2 /* AMCircleImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMCircleImageView.swift; sourceTree = "<group>"; };
 		18F3ED8C22197651008F29F2 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		18F3ED8E221976B6008F29F2 /* CahtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CahtCell.swift; sourceTree = "<group>"; };
@@ -625,6 +627,7 @@
 				18F625EA22313A9F00030773 /* Constant */,
 				18F625EC22313A9F00030773 /* DateView.swift */,
 				18F625EE22313A9F00030773 /* Country */,
+				18F2D32C2238FCED00D8AAA6 /* CusImageview.swift */,
 			);
 			path = SupportFiles;
 			sourceTree = "<group>";
@@ -1002,6 +1005,7 @@
 				18F625FE22313AA000030773 /* HttpHelper.swift in Sources */,
 				F4D39CA322203BB300A6D25B /* AddNewVisaVC.swift in Sources */,
 				18602404222D5A1D00B598F2 /* OwnerPLAYgroundInfoVC.swift in Sources */,
+				18F2D32D2238FCED00D8AAA6 /* CusImageview.swift in Sources */,
 				18F6261922313AA000030773 /* Countries.swift in Sources */,
 				18651CDB220C68F3002A3BD6 /* MobileVerificationVC.swift in Sources */,
 				18F6262222313ED700030773 /* UITextField.swift in Sources */,

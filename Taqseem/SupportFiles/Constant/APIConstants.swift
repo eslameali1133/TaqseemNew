@@ -10,6 +10,7 @@ import Foundation
 
 open class APIConstants {
    static let SERVER_URL = "http://172.107.175.8/api/"
+      static let Base_Image_URL = "http://172.107.175.8/taqsema/public/"
 //   static let SERVER_URL = "http://192.168.1.111:8080/cartime-1.1/cartime/api/"
     
     static let Login = SERVER_URL + "login"
