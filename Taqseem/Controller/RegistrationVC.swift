@@ -159,11 +159,14 @@ extension RegistrationVC: HttpHelperDelegate {
                 
                 UserDefaults.standard.set(access_token.stringValue, forKey: "access_token")
                 UserDefaults.standard.set(token_type.stringValue, forKey: "token_type")
-                UserDefaults.standard.set(data.array, forKey: "Profiledata")
+               // UserDefaults.standard.set(data.array, forKey: "Profiledata")
                 UserDefaults.standard.set(expires_at.stringValue, forKey: "expires_at")
                 UserDefaults.standard.set(code.stringValue, forKey: "code")
-                UserDefaults.standard.array(forKey: "Profiledata")
-                
+             //   UserDefaults.standard.array(forKey: "Profiledata")
+                AppCommon.sharedInstance.saveJSON(json: data, key: "Profiledata")
+                // UserDefaults.standard.array(forKey: "Profiledata")
+                // print(data["email"])
+                print(AppCommon.sharedInstance.getJSON("Profiledata")["phone"].stringValue)
                 
                 if type == "user" {
                     let delegate = UIApplication.shared.delegate as! AppDelegate

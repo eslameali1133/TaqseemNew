@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import  SwiftyJSON
 //import JBWebViewController
 //import SwiftyJSON
 
@@ -27,6 +28,29 @@ class AppCommon: UIViewController {
     }
 
     
+    func saveJSON(json: JSON, key:String){
+        let jsonString = json.rawString()!
+        UserDefaults.standard.setValue(jsonString, forKey: key)
+        //            UserDefaults.synchronize()
+    }
+    
+    func getJSON(_ key: String)->JSON {
+        var p = ""
+        if let buildNumber = UserDefaults.standard.value(forKey: key) as? String {
+            p = buildNumber
+        }else {
+            p = ""
+        }
+        if  p != "" {
+            if let json = p.data(using: String.Encoding.utf8, allowLossyConversion: false) {
+                return try! JSON(data: json)
+            } else {
+                return JSON("nil")
+            }
+        } else {
+            return JSON("nil")
+        }
+    }
     
     func GotoVerificationcode(vc: UIViewController,UserID: String,userType:Bool,Mobile:String) {
 //        let sb = UIStoryboard(name: "Authstory", bundle: nil)

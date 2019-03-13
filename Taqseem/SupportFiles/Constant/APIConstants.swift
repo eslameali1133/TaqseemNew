@@ -18,6 +18,7 @@ open class APIConstants {
     static let SendCode = SERVER_URL + "send-code"
     static let ResetPassword = SERVER_URL + "reset-password"
     static let facebookregister = SERVER_URL + "facebook-register"
+    static let facebookLogin = SERVER_URL + "facebook-login"
     
     
     

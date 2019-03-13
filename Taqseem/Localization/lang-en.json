@@ -101,6 +101,7 @@
     "The phone has already been taken.":"The phone has already been taken.",
     "The Email has already been taken.":"The Email has already been taken.",
     "The code field is required.":"The code field is required.",
+    "User not Exists":"User not Exists",
     
     "Duplicated user" : "phone are already used for another user",
     "thankYouForSignup" : "Thank you for signup",
