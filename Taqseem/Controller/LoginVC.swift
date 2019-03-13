@@ -21,6 +21,8 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        //let loginManager = FBSDKLoginManager()
+        //loginManager.logIn(readPermissions: [.publicProfile, .email, .userFriends], viewController: self)
         if error != nil {
             print(error)
             return
@@ -53,8 +55,10 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
         let loginButton = FBSDKLoginButton()
         view.addSubview(loginButton)
         facebookloginview.addSubview(loginButton)
-        loginButton.frame = CGRect(x: 0, y: 0, width:facebookloginview.frame.width + 40, height: facebookloginview.frame.height + 10)
+        facebookloginview.backgroundColor = UIColor.blue
+        loginButton.frame = CGRect(x: 0, y: 0, width:facebookloginview.frame.width, height: facebookloginview.frame.height)
         loginButton.delegate = self
+        loginButton.readPermissions = ["email" , "public_profile"]
         http.delegate = self
         
         // Do any additional setup after loading the view.
