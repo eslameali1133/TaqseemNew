@@ -654,6 +654,8 @@
                     <connections>
                         <outlet property="addViewplayer" destination="eMf-bf-Tn7" id="cn5-V4-O0u"/>
                         <outlet property="tblPlayer" destination="n03-NK-jbN" id="eDl-SB-Epq"/>
+                        <outlet property="txtPhoneNumber" destination="W5I-4x-SQI" id="3SC-4i-dcv"/>
+                        <outlet property="txtPlayerName" destination="eC8-vp-hfH" id="RiS-7n-2XC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e2f-uu-qT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
