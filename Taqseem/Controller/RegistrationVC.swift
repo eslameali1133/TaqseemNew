@@ -159,10 +159,10 @@ extension RegistrationVC: HttpHelperDelegate {
                 
                 UserDefaults.standard.set(access_token.stringValue, forKey: "access_token")
                 UserDefaults.standard.set(token_type.stringValue, forKey: "token_type")
-               // UserDefaults.standard.set(data.array, forKey: "Profiledata")
+                // UserDefaults.standard.set(data.array, forKey: "Profiledata")
                 UserDefaults.standard.set(expires_at.stringValue, forKey: "expires_at")
                 UserDefaults.standard.set(code.stringValue, forKey: "code")
-             //   UserDefaults.standard.array(forKey: "Profiledata")
+                //   UserDefaults.standard.array(forKey: "Profiledata")
                 AppCommon.sharedInstance.saveJSON(json: data, key: "Profiledata")
                 // UserDefaults.standard.array(forKey: "Profiledata")
                 // print(data["email"])
@@ -173,9 +173,9 @@ extension RegistrationVC: HttpHelperDelegate {
                     //  let storyboard = UIStoryboard(name: "StoryBord", bundle: nil)
                     let storyboard = UIStoryboard.init(name: "Player", bundle: nil); delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
                 }else if type == "team"{
-                    let delegate = UIApplication.shared.delegate as! AppDelegate
-                    // let storyboard = UIStoryboard(name: "StoryBord", bundle: nil)
-                    let storyboard = UIStoryboard.init(name: "Player", bundle: nil); delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
+                    let sb = UIStoryboard(name: "TEAM", bundle: nil)
+                    let controller = sb.instantiateViewController(withIdentifier: "TeaminfoVC") as! TeaminfoVC
+                    self.show(controller, sender: true)
                 }else{
                     let delegate = UIApplication.shared.delegate as! AppDelegate
                     // let storyboard = UIStoryboard(name: "StoryBord", bundle: nil)
@@ -183,16 +183,12 @@ extension RegistrationVC: HttpHelperDelegate {
                     
             }
             }else if status.stringValue == "5"{
-                if message == "The user name has already been taken."{
-                Loader.showError(message:AppCommon.sharedInstance.localization("The user name has already been taken."))
-                }else if message=="The phone has already been taken."{
-                    Loader.showError(message:AppCommon.sharedInstance.localization("The phone has already been taken."))
-                }else{
-                   Loader.showError(message: AppCommon.sharedInstance.localization("The Email has already been taken."))
-                }
+                let message = json["message"]
+                Loader.showError(message: message.stringValue )
             } else {
                 
-                Loader.showError(message: (forbiddenMail))
+                let message = json["message"]
+                Loader.showError(message: message.stringValue )
             }
         }
     

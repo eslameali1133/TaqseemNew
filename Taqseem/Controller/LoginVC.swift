@@ -14,6 +14,7 @@ import FBSDKLoginKit
 class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
     
     
+    @IBOutlet var mainView: UIView!
     @IBOutlet weak var facebookloginview: UIView!
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
@@ -56,9 +57,13 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
         view.addSubview(loginButton)
         facebookloginview.addSubview(loginButton)
         facebookloginview.backgroundColor = UIColor.blue
-        loginButton.frame = CGRect(x: 0, y: 0, width:facebookloginview.frame.width, height: facebookloginview.frame.height)
+
+        loginButton.layoutMargins.left = 0
+        loginButton.layoutMargins.top = 0
+        loginButton.frame = CGRect(x: -1, y: -1, width:0.86 * (mainView.frame.width), height: 0.07 * (mainView.frame.height))
         loginButton.delegate = self
         loginButton.readPermissions = ["email" , "public_profile"]
+      
         http.delegate = self
         
         // Do any additional setup after loading the view.
@@ -183,17 +188,20 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
                    // print(data["email"])
                     print(AppCommon.sharedInstance.getJSON("Profiledata")["phone"].stringValue)
                     SharedData.SharedInstans.SetIsLogin(true)
-                    if data["type"] == "user" {
+                    if data["type"] == "ground_owner"{
                         let delegate = UIApplication.shared.delegate as! AppDelegate
-                      //  let storyboard = UIStoryboard(name: "StoryBord", bundle: nil)
-                        let storyboard = UIStoryboard.init(name: "Player", bundle: nil); delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
-                    }else{
-                        let delegate = UIApplication.shared.delegate as! AppDelegate
-                       // let storyboard = UIStoryboard(name: "StoryBord", bundle: nil)
+                        // let storyboard = UIStoryboard(name: "StoryBord", bundle: nil)
                         let storyboard = UIStoryboard.init(name: "Owner", bundle: nil); delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
                     }
+                    else {
+                        let delegate = UIApplication.shared.delegate as! AppDelegate
+                        //  let storyboard = UIStoryboard(name: "StoryBord", bundle: nil)
+                        let storyboard = UIStoryboard.init(name: "Player", bundle: nil); delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
+                    }
+                    
                 }else if status.stringValue  == "4" {
-                    Loader.showError(message: AppCommon.sharedInstance.localization("check your email or password"))
+                    let message = json["message"]
+                    Loader.showError(message: message.stringValue )
                 }
                 else {
                     Loader.showError(message: (forbiddenMail))
@@ -208,7 +216,8 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
                 let expires_at = json["expires_at"]
                 
                 if status.stringValue  == "4" {
-                    Loader.showError(message: AppCommon.sharedInstance.localization("User not Exists"))
+                    let message = json["message"]
+                    Loader.showError(message: message.stringValue )
                     let sb = UIStoryboard(name: "Profile", bundle: nil)
                     let controller = sb.instantiateViewController(withIdentifier: "RegistrationVC") as! RegistrationVC
                     controller.ComeFromFaceBook = true
@@ -228,14 +237,16 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
                     print(AppCommon.sharedInstance.getJSON("Profiledata")["phone"].stringValue)
                     
                     SharedData.SharedInstans.SetIsLogin(true)
-                    if data["type"] == "user" {
-                        let delegate = UIApplication.shared.delegate as! AppDelegate
-                        //  let storyboard = UIStoryboard(name: "StoryBord", bundle: nil)
-                        let storyboard = UIStoryboard.init(name: "Player", bundle: nil); delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
-                    }else{
+                    
+                    if data["type"] == "ground_owner"{
                         let delegate = UIApplication.shared.delegate as! AppDelegate
                         // let storyboard = UIStoryboard(name: "StoryBord", bundle: nil)
                         let storyboard = UIStoryboard.init(name: "Owner", bundle: nil); delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
+                    }
+                    else {
+                        let delegate = UIApplication.shared.delegate as! AppDelegate
+                        //  let storyboard = UIStoryboard(name: "StoryBord", bundle: nil)
+                        let storyboard = UIStoryboard.init(name: "Player", bundle: nil); delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
                     }
                 }
             }

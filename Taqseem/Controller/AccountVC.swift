@@ -30,18 +30,22 @@ class AccountVC: UIViewController {
     @IBOutlet weak var PositionV: UIView!
       @IBOutlet weak var PhoneV: UIView!
     @IBOutlet weak var EmailV: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.reloadInputViews()
          MatchedPlayedView.dropShadow()
 //          MatchesDeffV.dropShadow()
         PositionV.dropShadow()
         PhoneV.dropShadow()
         EmailV.dropShadow()
         
-        SetData()
-        
+    
         }
+    override func viewWillAppear(_ animated: Bool) {
+        SetData()
+    }
     
     func  SetData(){
         lbl_name.text = AppCommon.sharedInstance.getJSON("Profiledata")["name"].stringValue
@@ -52,6 +56,8 @@ class AccountVC: UIViewController {
         ProfileImageView.loadimageUsingUrlString(url: "\(APIConstants.Base_Image_URL)\(AppCommon.sharedInstance.getJSON("Profiledata")["photo"].stringValue)")
         
     }
+    
+    
 
     }
     

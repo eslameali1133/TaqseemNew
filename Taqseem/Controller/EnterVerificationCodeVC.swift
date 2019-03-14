@@ -112,8 +112,8 @@ extension EnterVerificationCodeVC : HttpHelperDelegate {
                 
                 
             } else {
-                
-                Loader.showError(message: (forbiddenMail))
+            let message = json["message"]
+            Loader.showError(message: message.stringValue )
             }
         }
     
