@@ -102,6 +102,7 @@
     "The Email has already been taken.":"The Email has already been taken.",
     "The code field is required.":"The code field is required.",
     "User not Exists":"User not Exists",
+    "Team Name field cannot be left blank":"Team Name field cannot be left blank",
     
     "Duplicated user" : "phone are already used for another user",
     "thankYouForSignup" : "Thank you for signup",

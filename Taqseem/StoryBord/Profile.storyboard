@@ -289,6 +289,7 @@
                         <outlet property="TXT_UserName" destination="qlQ-NT-meK" id="heD-Y2-KO5"/>
                         <outlet property="facebookloginview" destination="tUa-je-C2I" id="GoO-pl-WK4"/>
                         <outlet property="lblFB" destination="mWN-Df-CQK" id="LlO-ij-tun"/>
+                        <outlet property="mainView" destination="wt0-JX-dVU" id="RG6-tD-6eK"/>
                         <outlet property="txtPassword" destination="Yh9-QN-n4r" id="f3g-HK-Pjn"/>
                     </connections>
                 </viewController>

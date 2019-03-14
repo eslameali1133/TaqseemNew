@@ -76,11 +76,13 @@ extension MobileVerificationVC : HttpHelperDelegate {
                 
             } else if status.stringValue  == "3" {
                 
-                Loader.showError(message: "Wait Code Has been Sent")
+                let message = json["message"]
+                Loader.showError(message: message.stringValue )
                 
             } else {
                 
-                Loader.showError(message: (forbiddenMail))
+                let message = json["message"]
+                Loader.showError(message: message.stringValue )
                 
             }
             

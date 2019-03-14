@@ -484,7 +484,7 @@
         <!--Account-->
         <scene sceneID="3Ho-JG-VpL">
             <objects>
-                <viewController id="hDC-J4-KMe" customClass="AccountVC" customModule="Taqseem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AccountVC" id="hDC-J4-KMe" customClass="AccountVC" customModule="Taqseem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Ia-LI-aaB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -978,7 +978,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1DK-g5-vrj">
                                         <rect key="frame" x="112" y="10" width="151" height="130"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 1684" translatesAutoresizingMaskIntoConstraints="NO" id="Ku2-rX-P7U" customClass="AMCircleImageView" customModule="Taqseem" customModuleProvider="target">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 1684" translatesAutoresizingMaskIntoConstraints="NO" id="Ku2-rX-P7U" customClass="customImageView" customModule="Taqseem" customModuleProvider="target">
                                                 <rect key="frame" x="10.5" y="0.0" width="130" height="130"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -1001,6 +1001,9 @@
                                                     <constraint firstAttribute="width" constant="30" id="fuR-RT-qVO"/>
                                                 </constraints>
                                                 <state key="normal" image="photo-camera"/>
+                                                <connections>
+                                                    <action selector="btnChangeImage:" destination="9uZ-PS-K22" eventType="touchUpInside" id="OZg-BY-pxz"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1150,6 +1153,9 @@
                                         <state key="normal" title="Save">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="btnSaveChanges:" destination="9uZ-PS-K22" eventType="touchUpInside" id="c4Y-Wd-6Rh"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.61176470589999998" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1185,6 +1191,11 @@
                     <tabBarItem key="tabBarItem" title="Account" image="avatar" selectedImage="man-user" id="vKR-Xc-rP0"/>
                     <connections>
                         <outlet property="ProfileImgeView" destination="Ku2-rX-P7U" id="Bua-IL-kfo"/>
+                        <outlet property="imgProfile" destination="Ku2-rX-P7U" id="76P-k8-QUO"/>
+                        <outlet property="txtEmail" destination="SuW-Gh-Ud8" id="0So-fF-Vj4"/>
+                        <outlet property="txtPhoneNumber" destination="ICf-nr-hUB" id="2Q9-eI-GeP"/>
+                        <outlet property="txtPosition" destination="xj2-dK-l4S" id="YxC-TC-bmX"/>
+                        <outlet property="txtUserName" destination="K4Z-bC-CnO" id="pR2-cP-Pse"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W72-ab-yDt" userLabel="First Responder" sceneMemberID="firstResponder"/>

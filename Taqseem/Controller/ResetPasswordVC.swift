@@ -102,16 +102,19 @@ extension ResetPasswordVC : HttpHelperDelegate {
                 
                 
             }else if  status.stringValue == "5"{
-                Loader.showError(message: AppCommon.sharedInstance.localization("The code field is required."))
+                let message = json["message"]
+                Loader.showError(message: message.stringValue )
             }
             else {
-                Loader.showError(message: (forbiddenMail))
+                let message = json["message"]
+                Loader.showError(message: message.stringValue )
             }
             
             
         } else {
             
-            Loader.showError(message: (forbiddenMail))
+    let message = json["message"]
+            Loader.showError(message: message.stringValue )
         }
     }
     func receivedErrorWithStatusCode(statusCode: Int) {
