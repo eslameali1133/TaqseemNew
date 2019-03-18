@@ -96,6 +96,7 @@
 		18BDD5B222234C6000B98753 /* PlayerNormalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDD5B122234C6000B98753 /* PlayerNormalVC.swift */; };
 		18BFAE112221AADE00D2DADA /* File_test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BFAE102221AADE00D2DADA /* File_test.swift */; };
 		18F2D32D2238FCED00D8AAA6 /* CusImageview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F2D32C2238FCED00D8AAA6 /* CusImageview.swift */; };
+		18F2D32F223936D000D8AAA6 /* ChooseLocationToShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F2D32E223936CF00D8AAA6 /* ChooseLocationToShareViewController.swift */; };
 		18F3ED8B221972CD008F29F2 /* AMCircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3ED8A221972CC008F29F2 /* AMCircleImageView.swift */; };
 		18F3ED8D22197651008F29F2 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3ED8C22197651008F29F2 /* ChatVC.swift */; };
 		18F3ED8F221976B6008F29F2 /* CahtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3ED8E221976B6008F29F2 /* CahtCell.swift */; };
@@ -253,6 +254,7 @@
 		18BDD5B122234C6000B98753 /* PlayerNormalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNormalVC.swift; sourceTree = "<group>"; };
 		18BFAE102221AADE00D2DADA /* File_test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File_test.swift; sourceTree = "<group>"; };
 		18F2D32C2238FCED00D8AAA6 /* CusImageview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CusImageview.swift; sourceTree = "<group>"; };
+		18F2D32E223936CF00D8AAA6 /* ChooseLocationToShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseLocationToShareViewController.swift; sourceTree = "<group>"; };
 		18F3ED8A221972CC008F29F2 /* AMCircleImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMCircleImageView.swift; sourceTree = "<group>"; };
 		18F3ED8C22197651008F29F2 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		18F3ED8E221976B6008F29F2 /* CahtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CahtCell.swift; sourceTree = "<group>"; };
@@ -420,6 +422,7 @@
 		189DB2362209BB6D005118E3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				18F2D32E223936CF00D8AAA6 /* ChooseLocationToShareViewController.swift */,
 				186023F7222D394100B598F2 /* owner */,
 				18BCB20A2227DA8400ABB59E /* TEAM */,
 				189DB22522098E68005118E3 /* ViewController.swift */,
@@ -1090,6 +1093,7 @@
 				18BDD5AE2222C55000B98753 /* SendCell.swift in Sources */,
 				18F62627223159D300030773 /* RequestDetailsVC.swift in Sources */,
 				18F3ED972219B13A008F29F2 /* EditprofileVC.swift in Sources */,
+				18F2D32F223936D000D8AAA6 /* ChooseLocationToShareViewController.swift in Sources */,
 				18F3ED9322198CEB008F29F2 /* View+Ex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
