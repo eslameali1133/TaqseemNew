@@ -9,8 +9,12 @@
 import UIKit
 
 class PlaygroundHomeCell: UITableViewCell {
+    var Ground_ID = ""
     @IBOutlet weak var contentview: UIView!
-    
+    @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var lblCapacity: UILabel!
+    @IBOutlet weak var imgGround: UIImage!
+    @IBOutlet weak var lblPrice: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

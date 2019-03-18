@@ -60,7 +60,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pap-P1-juI" userLabel="shadowview">
                                                     <rect key="frame" x="10" y="8" width="355" height="112"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mask Group 17" translatesAutoresizingMaskIntoConstraints="NO" id="1mp-Ad-Dnr" customClass="AMCircleImageView" customModule="Taqseem" customModuleProvider="target">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mask Group 17" translatesAutoresizingMaskIntoConstraints="NO" id="1mp-Ad-Dnr" customClass="customImageView" customModule="Taqseem" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="114" height="112"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isCircle" value="NO"/>
@@ -202,6 +202,10 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="contentview" destination="Pap-P1-juI" id="Vm1-Ti-c3S"/>
+                                            <outlet property="imgGround" destination="1mp-Ad-Dnr" id="WAW-qs-F7v"/>
+                                            <outlet property="lblCapacity" destination="1J3-5P-g5C" id="ng7-co-E5z"/>
+                                            <outlet property="lblName" destination="mvT-N7-j2i" id="jiy-ix-XWs"/>
+                                            <outlet property="lblPrice" destination="7D5-xz-1PH" id="ZQG-pY-f8A"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2450,7 +2454,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N8j-Q5-Th7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2490" y="309"/>
+            <point key="canvasLocation" x="2449" y="308"/>
         </scene>
         <!--Item-->
         <scene sceneID="si9-ph-sfe">
@@ -2472,10 +2476,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CYl-TB-Q5d">
-                                                    <rect key="frame" x="3" y="5" width="439" height="145"/>
+                                                    <rect key="frame" x="3" y="5" width="421" height="145"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mask Group 16" translatesAutoresizingMaskIntoConstraints="NO" id="Cgt-eI-jV0" customClass="AMCircleImageView" customModule="Taqseem" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="132" height="145"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mask Group 16" translatesAutoresizingMaskIntoConstraints="NO" id="Cgt-eI-jV0" customClass="customImageView" customModule="Taqseem" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="126" height="145"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isCircle" value="NO"/>
                                                                 <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -2484,7 +2488,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vn8-wm-4bg">
-                                                            <rect key="frame" x="142" y="13" width="136" height="19"/>
+                                                            <rect key="frame" x="136" y="13" width="124" height="19"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="EL MOTHTRFIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSl-OG-vyV">
                                                                     <rect key="frame" x="0.0" y="0.0" width="94" height="14.5"/>
@@ -2509,12 +2513,12 @@
                                                             </constraints>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GJd-aJ-Bzk">
-                                                            <rect key="frame" x="137" y="32" width="199" height="79"/>
+                                                            <rect key="frame" x="131" y="32" width="187" height="79"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="VVX-0v-Llm">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="199" height="39.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="187" height="39.5"/>
                                                                     <subviews>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 1684" translatesAutoresizingMaskIntoConstraints="NO" id="1bE-Lg-awn" customClass="AMCircleImageView" customModule="Taqseem" customModuleProvider="target">
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 1684" translatesAutoresizingMaskIntoConstraints="NO" id="1bE-Lg-awn" customClass="customImageView" customModule="Taqseem" customModuleProvider="target">
                                                                             <rect key="frame" x="0.0" y="0.0" width="39.5" height="39.5"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="39.5" id="YMO-c8-Cba"/>
@@ -2528,13 +2532,13 @@
                                                                             </userDefinedRuntimeAttributes>
                                                                         </imageView>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AkS-f4-qJh">
-                                                                            <rect key="frame" x="44.5" y="0.0" width="99.5" height="39.5"/>
+                                                                            <rect key="frame" x="44.5" y="0.0" width="93.5" height="39.5"/>
                                                                             <subviews>
                                                                                 <stackView opaque="NO" contentMode="left" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="uyy-3y-fOl">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="99.5" height="39.5"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="93.5" height="39.5"/>
                                                                                     <subviews>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AHMED AMIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cg6-ci-ZXy">
-                                                                                            <rect key="frame" x="0.0" y="0.0" width="99.5" height="39.5"/>
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="93.5" height="39.5"/>
                                                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
@@ -2548,7 +2552,7 @@
                                                                             </constraints>
                                                                         </stackView>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1R-de-VCO">
-                                                                            <rect key="frame" x="149" y="0.0" width="50" height="39.5"/>
+                                                                            <rect key="frame" x="143" y="0.0" width="44" height="39.5"/>
                                                                             <subviews>
                                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group -1" translatesAutoresizingMaskIntoConstraints="NO" id="aoY-6j-CZm">
                                                                                     <rect key="frame" x="5" y="11" width="17" height="17"/>
@@ -2558,7 +2562,7 @@
                                                                                     </constraints>
                                                                                 </imageView>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7*7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27B-eh-eJ3">
-                                                                                    <rect key="frame" x="25" y="10" width="25" height="19.5"/>
+                                                                                    <rect key="frame" x="22" y="10" width="22" height="19.5"/>
                                                                                     <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="10"/>
                                                                                     <color key="textColor" red="0.0" green="0.61176470589999998" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     <nil key="highlightedColor"/>
@@ -2569,7 +2573,7 @@
                                                                                 <constraint firstItem="aoY-6j-CZm" firstAttribute="centerY" secondItem="s1R-de-VCO" secondAttribute="centerY" id="0Jb-1J-DU5"/>
                                                                                 <constraint firstItem="27B-eh-eJ3" firstAttribute="height" secondItem="s1R-de-VCO" secondAttribute="height" multiplier="0.5" id="GPy-ce-DTa"/>
                                                                                 <constraint firstAttribute="trailing" secondItem="27B-eh-eJ3" secondAttribute="trailing" id="IBS-cl-xLA"/>
-                                                                                <constraint firstItem="27B-eh-eJ3" firstAttribute="leading" secondItem="aoY-6j-CZm" secondAttribute="leading" constant="20" id="KxX-2j-3bw"/>
+                                                                                <constraint firstItem="27B-eh-eJ3" firstAttribute="leading" secondItem="aoY-6j-CZm" secondAttribute="trailing" id="KxX-2j-3bw"/>
                                                                                 <constraint firstItem="aoY-6j-CZm" firstAttribute="leading" secondItem="s1R-de-VCO" secondAttribute="leading" constant="5" id="RZe-ZO-SvB"/>
                                                                                 <constraint firstItem="27B-eh-eJ3" firstAttribute="top" secondItem="s1R-de-VCO" secondAttribute="top" constant="10" id="UJU-NH-Q7A"/>
                                                                                 <constraint firstItem="27B-eh-eJ3" firstAttribute="width" secondItem="s1R-de-VCO" secondAttribute="width" multiplier="0.5" id="vdT-bw-y4s"/>
@@ -2582,7 +2586,7 @@
                                                                     </constraints>
                                                                 </stackView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="azG-af-KcR">
-                                                                    <rect key="frame" x="0.0" y="39.5" width="199" height="39.5"/>
+                                                                    <rect key="frame" x="0.0" y="39.5" width="187" height="39.5"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1x4-NQ-qS5">
                                                                             <rect key="frame" x="0.0" y="0.0" width="142.5" height="39.5"/>
@@ -2613,7 +2617,7 @@
                                                                             </constraints>
                                                                         </view>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qMu-WZ-Aeo">
-                                                                            <rect key="frame" x="142.5" y="0.0" width="56.5" height="39.5"/>
+                                                                            <rect key="frame" x="142.5" y="0.0" width="44.5" height="39.5"/>
                                                                             <subviews>
                                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_clock" translatesAutoresizingMaskIntoConstraints="NO" id="15o-fp-K5N">
                                                                                     <rect key="frame" x="5" y="8.5" width="22" height="22"/>
@@ -2653,7 +2657,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m10-nf-zo7">
-                                                            <rect key="frame" x="142" y="112.5" width="87.5" height="29"/>
+                                                            <rect key="frame" x="136" y="112.5" width="84.5" height="29"/>
                                                             <color key="backgroundColor" red="0.17997255919999999" green="0.39129891989999999" blue="0.39359503979999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                             <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="2" maxY="0.0"/>
@@ -2696,6 +2700,13 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cntntView" destination="CYl-TB-Q5d" id="Ca2-aa-ETi"/>
+                                            <outlet property="imgGround" destination="Cgt-eI-jV0" id="pqd-Bw-fhS"/>
+                                            <outlet property="imgUser" destination="1bE-Lg-awn" id="in0-Dm-Wru"/>
+                                            <outlet property="lblCapacity" destination="27B-eh-eJ3" id="3MS-dX-gUu"/>
+                                            <outlet property="lblDate" destination="UOe-b0-EfP" id="zue-h0-tOn"/>
+                                            <outlet property="lblGroundName" destination="bSl-OG-vyV" id="v7O-qh-I2g"/>
+                                            <outlet property="lblPlayerName" destination="Cg6-ci-ZXy" id="qJ3-Ph-Vag"/>
+                                            <outlet property="lblTime" destination="Np9-v1-WSK" id="uLK-ue-0KR"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2718,7 +2729,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wpA-WC-MHd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="145" y="233"/>
+            <point key="canvasLocation" x="144.80000000000001" y="232.53373313343329"/>
         </scene>
     </scenes>
     <resources>
@@ -2749,7 +2760,7 @@
         <image name="pencil" width="16.5" height="16.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0hH-ae-atD"/>
+        <segue reference="I7j-ud-YqK"/>
         <segue reference="hiZ-Du-7tT"/>
     </inferredMetricsTieBreakers>
 </document>
