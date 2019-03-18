@@ -21,7 +21,7 @@ class customImageView: UIImageView{
         //            URL(string:url)
         let urlRequest = URLRequest(url: Url!)
         
-        image = #imageLiteral(resourceName: "Group 1684")
+        image = #imageLiteral(resourceName: "officePlaceholder-1")
         if let imageForCash = imageCash.object(forKey: Url as AnyObject) as? UIImage{
             
             self.image = imageForCash
@@ -57,7 +57,7 @@ class customImageView: UIImageView{
                         imageCash.setObject(imageToCash!, forKey: Url as AnyObject)
                     }else
                     {
-                        self.image = #imageLiteral(resourceName: "Group 1684")
+                        self.image = #imageLiteral(resourceName: "officePlaceholder-1")
                     }
                 }
                 
