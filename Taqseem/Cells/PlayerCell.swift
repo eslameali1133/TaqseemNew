@@ -7,9 +7,11 @@
 //
 
 import UIKit
-
+import SwiftyJSON
+import Alamofire
 class PlayerCell: UITableViewCell {
-
+    var PlayerID = ""
+    @IBOutlet weak var lblPlayerName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +23,64 @@ class PlayerCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-}
+    @IBAction func btnDelete(_ sender: Any) {
+        DeleteMember()
+    }
+    
+    
+    func DeleteMember ()
+    {
+        let AccessToken = UserDefaults.standard.string(forKey: "access_token")!
+        let token_type = UserDefaults.standard.string(forKey: "token_type")!
+        
+       // let params = ["member_id":PlayerID] as [String: Any]
+        
+//        let headers = [
+//            "Accept-Type": "application/json" ,
+//            "Content-Type": "application/json" ,
+//            "Authorization": "\(token_type) \(AccessToken)"
+//        ]
+
+        guard let urll = URL(string: APIConstants.DeleteMember) else {
+            print("error url")
+            return
+        }
+        var urlreq = URLRequest(url: urll)
+        urlreq.httpMethod = "DELETE"
+        urlreq.setValue("application/json", forHTTPHeaderField: "Accept-Type")
+        urlreq.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlreq.setValue("\(token_type) \(AccessToken)", forHTTPHeaderField: "Authorization")
+        
+        let jsondic = NSMutableDictionary()
+        jsondic.setValue(PlayerID, forKey: "member_id")
+        let jsondata : Data
+        do {
+            jsondata = try JSONSerialization.data(withJSONObject: jsondic, options: JSONSerialization.WritingOptions())
+            urlreq.httpBody = jsondata
+        }catch{
+            print("error Json")
+        }
+        
+        
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        let task = session.dataTask(with: urlreq, completionHandler: {(data : Data? , response : URLResponse? , error : Error?)in
+            
+            print(response)
+            print(data)
+        })
+        task.resume()
+        
+//        //Alamofire.request(urlRequest).responseJSON { response in
+//        Alamofire.request(APIConstants.DeleteMember, method: .delete, parameters: params, encoding: JSONEncoding.default, headers: headers)
+//        .responseJSON { response in
+//
+//
+//                // do stuff with the JSON or error
+//                let result = response.result
+//print(result)
+//
+                }
+        }
+
+

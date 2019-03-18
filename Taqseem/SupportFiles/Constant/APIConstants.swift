@@ -20,6 +20,14 @@ open class APIConstants {
     static let ResetPassword = SERVER_URL + "reset-password"
     static let facebookregister = SERVER_URL + "facebook-register"
     static let facebookLogin = SERVER_URL + "facebook-login"
+    static let AddMember = SERVER_URL + "add-team_member"
+    static let GetMember = SERVER_URL + "get-member"
+    static let DeleteMember = SERVER_URL + "delete-team_member"
+    
+    //owner
+    static let GetGround = SERVER_URL + "owner/ground"
+    static let GetRequest = SERVER_URL + "owner/get-requests"
+    
     
     
     

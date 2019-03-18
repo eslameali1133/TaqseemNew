@@ -147,6 +147,7 @@
 		F445BF9A221C4A2E00B1A18E /* AddMatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445BF99221C4A2E00B1A18E /* AddMatchVC.swift */; };
 		F4689F95221DF8F8002EC897 /* PlayerTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4689F94221DF8F8002EC897 /* PlayerTableVC.swift */; };
 		F4689F97221DF9D4002EC897 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4689F96221DF9D4002EC897 /* PlayerCell.swift */; };
+		F4705B37223E5AA000E2424F /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4705B36223E5AA000E2424F /* PlayerModel.swift */; };
 		F47AEED0221D50FF007146CE /* MyMatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47AEECF221D50FF007146CE /* MyMatchVC.swift */; };
 		F47AEED2221D89D9007146CE /* MyMatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47AEED1221D89D9007146CE /* MyMatchCell.swift */; };
 		F47AEED4221D8AC2007146CE /* MyMatchesTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47AEED3221D8AC2007146CE /* MyMatchesTableVC.swift */; };
@@ -155,6 +156,8 @@
 		F49DB5EE222E976200131DCD /* AddPlayGroundVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49DB5ED222E976200131DCD /* AddPlayGroundVC.swift */; };
 		F4D39CA322203BB300A6D25B /* AddNewVisaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D39CA222203BB300A6D25B /* AddNewVisaVC.swift */; };
 		F4E52E6C221FE1CD0062952D /* PaidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E52E6B221FE1CD0062952D /* PaidVC.swift */; };
+		F4FA3B49223F8FD900ABE719 /* PlaygroundModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA3B48223F8FD900ABE719 /* PlaygroundModel.swift */; };
+		F4FA3B4B223FA9B500ABE719 /* RequestListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA3B4A223FA9B500ABE719 /* RequestListModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -308,6 +311,7 @@
 		F445BF99221C4A2E00B1A18E /* AddMatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMatchVC.swift; sourceTree = "<group>"; };
 		F4689F94221DF8F8002EC897 /* PlayerTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTableVC.swift; sourceTree = "<group>"; };
 		F4689F96221DF9D4002EC897 /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
+		F4705B36223E5AA000E2424F /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
 		F47AEECF221D50FF007146CE /* MyMatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMatchVC.swift; sourceTree = "<group>"; };
 		F47AEED1221D89D9007146CE /* MyMatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMatchCell.swift; sourceTree = "<group>"; };
 		F47AEED3221D8AC2007146CE /* MyMatchesTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMatchesTableVC.swift; sourceTree = "<group>"; };
@@ -316,6 +320,8 @@
 		F49DB5ED222E976200131DCD /* AddPlayGroundVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayGroundVC.swift; sourceTree = "<group>"; };
 		F4D39CA222203BB300A6D25B /* AddNewVisaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewVisaVC.swift; sourceTree = "<group>"; };
 		F4E52E6B221FE1CD0062952D /* PaidVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaidVC.swift; sourceTree = "<group>"; };
+		F4FA3B48223F8FD900ABE719 /* PlaygroundModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundModel.swift; sourceTree = "<group>"; };
+		F4FA3B4A223FA9B500ABE719 /* RequestListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestListModel.swift; sourceTree = "<group>"; };
 		FDD458EE3C7E70F51D7183C0 /* Pods-Taqseem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taqseem.release.xcconfig"; path = "Pods/Target Support Files/Pods-Taqseem/Pods-Taqseem.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -378,6 +384,7 @@
 		189DB22222098E68005118E3 /* Taqseem */ = {
 			isa = PBXGroup;
 			children = (
+				F4705B35223E5A7600E2424F /* Model */,
 				18F625C222313A9D00030773 /* HttpHelper */,
 				18F625C422313A9D00030773 /* Localization */,
 				18F625C022313A9C00030773 /* SharedData */,
@@ -750,6 +757,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F4705B35223E5A7600E2424F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F4705B36223E5AA000E2424F /* PlayerModel.swift */,
+				F4FA3B48223F8FD900ABE719 /* PlaygroundModel.swift */,
+				F4FA3B4A223FA9B500ABE719 /* RequestListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1028,6 +1045,7 @@
 				F49DB5EE222E976200131DCD /* AddPlayGroundVC.swift in Sources */,
 				18B95487220B272D00FBAC94 /* EnterVerificationCodeVC.swift in Sources */,
 				18F3ED9F221AC19D008F29F2 /* FAVOURITESCell.swift in Sources */,
+				F4705B37223E5AA000E2424F /* PlayerModel.swift in Sources */,
 				189DB22622098E68005118E3 /* ViewController.swift in Sources */,
 				18F6261222313AA000030773 /* LocalizableUISearchBar.swift in Sources */,
 				18BDD5A222229DBF00B98753 /* ChoosebackgroundCell.swift in Sources */,
@@ -1064,6 +1082,8 @@
 				F497E0DA2222D8B600060327 /* NearMeVC.swift in Sources */,
 				18F6260422313AA000030773 /* SidemenuEnum.swift in Sources */,
 				18F3ED9522198D51008F29F2 /* AccountVC.swift in Sources */,
+				F4FA3B49223F8FD900ABE719 /* PlaygroundModel.swift in Sources */,
+				F4FA3B4B223FA9B500ABE719 /* RequestListModel.swift in Sources */,
 				18F3ED9122197CEF008F29F2 /* TableView+EX.swift in Sources */,
 				18B95485220B1EBF00FBAC94 /* LoginVC.swift in Sources */,
 				18F625FD22313AA000030773 /* SharedData.swift in Sources */,

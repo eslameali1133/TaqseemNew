@@ -7,14 +7,20 @@
 //
 
 import UIKit
-
+import SwiftyJSON
+import Alamofire
 class OwnerHomeVC: UIViewController {
 
+    var http = HttpHelper()
+    var items = [PlaygroundModelClass]()
+    var itemSelectedid:[Int] = []
+    
+    
     @IBOutlet weak var TBL_Playground: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        http.delegate = self
         TBL_Playground.dataSource = self
         TBL_Playground.delegate = self
         TBL_Playground.changeView()
@@ -26,17 +32,97 @@ class OwnerHomeVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        fillData()
+    }
+    
+    
+    func fillData()  {
+        items.removeAll()
+        AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
+        let AccessToken = UserDefaults.standard.string(forKey: "access_token")!
+        let token_type = UserDefaults.standard.string(forKey: "token_type")!
+        print(token_type , AccessToken)
+        print(AccessToken)
+        let headers: HTTPHeaders = ["Authorization" : "\(token_type) \(AccessToken)"]
+        http.Get(url: "\(APIConstants.GetGround)", Tag: 2, headers: headers)
+    }
     
 }
 
+
+extension OwnerHomeVC: HttpHelperDelegate {
+    func receivedResponse(dictResponse: Any, Tag: Int) {
+        
+         if Tag == 2 {
+            print(dictResponse)
+            AppCommon.sharedInstance.dismissLoader(self.view)
+            let json = JSON(dictResponse)
+            print(json)
+            let status =  json["status"]
+            let message = json["message"]
+            print(status)
+            print(json["status"])
+            if status.stringValue  == "1" {
+                let result =  json["data"].arrayValue
+                for json in result{
+                    let obj = PlaygroundModelClass(
+                        owner_id: json["owner_id"].stringValue,
+                        updated_at: json["updated_at"].stringValue,
+                        name: json["name"].stringValue,
+                        lng: json["lng"].stringValue,
+                        hour_to: json["hour_to"].stringValue,
+                        phone: json["phone"].stringValue,
+                        image: json["image"].stringValue,
+                        note: json["note"].stringValue,
+                        lat: json["lat"].stringValue,
+                        capacity: json["capacity"].stringValue,
+                        address: json["address"].stringValue,
+                        name_en: json["name_en"].stringValue,
+                        city_id: json["city_id"].stringValue,
+                        id: json["id"].stringValue,
+                        name_ar: json["name_ar"].stringValue,
+                        created_at: json["created_at"].stringValue,
+                        hour_from: json["hour_from"].stringValue,
+                        cancel_fee: json["cancel_fee"].stringValue,
+                        price: json["price"].stringValue,
+                        cancelation_time: json["cancelation_time"].stringValue)
+                    items.append(obj)
+                }
+                TBL_Playground.reloadData()
+            } else {
+                Loader.showError(message: message.stringValue)
+            }
+            
+        }
+        
+    }
+    func receivedErrorWithStatusCode(statusCode: Int) {
+        print(statusCode)
+        AppCommon.sharedInstance.alert(title: "Error", message: "\(statusCode)", controller: self, actionTitle: AppCommon.sharedInstance.localization("ok"), actionStyle: .default)
+        
+        AppCommon.sharedInstance.dismissLoader(self.view)
+    }
+    func retryResponse(numberOfrequest: Int) {
+        
+    }
+}
+
+
 extension OwnerHomeVC :UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  4
+        return items.count
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlaygroundHomeCell", for: indexPath) as! PlaygroundHomeCell
         cell.contentview.dropShadow()
+        cell.lblName.text = items[indexPath.row]._name
+        cell.Ground_ID = items[indexPath.row]._id
+        cell.lblCapacity.text = items[indexPath.row]._capacity
+        cell.lblPrice.text = items[indexPath.row]._price
+        cell.imgGround = UIImage(named: items[indexPath.row]._image)
+        
         return cell
     }
     
