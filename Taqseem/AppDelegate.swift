@@ -8,14 +8,19 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import GooglePlaces
+import GoogleMaps
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+  let googleMapsApiKey = "AIzaSyB-3KGui1I1wguVGxALFNa5cld4ijK8fS4"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
             IQKeyboardManager.shared.enable = true
+        GMSServices.provideAPIKey(googleMapsApiKey)
+        GMSPlacesClient.provideAPIKey(googleMapsApiKey)
+        
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         return true
