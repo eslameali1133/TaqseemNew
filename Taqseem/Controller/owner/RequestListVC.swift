@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 class RequestListVC: UIViewController {
-
+    var RequestStatus = ""
     var http = HttpHelper()
     var items = [RequestListModelClass]()
     var itemSelectedid:[Int] = []
@@ -30,6 +30,7 @@ class RequestListVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         fillData()
+        tblRequestDetails.reloadData()
     }
     
     func fillData()  {
@@ -110,10 +111,20 @@ extension RequestListVC: HttpHelperDelegate {
             cell.lblCapacity.text = items[indexPath.row]._capacity
             cell.lblDate.text = items[indexPath.row]._date
             cell.lblTime.text = items[indexPath.row]._time
+            cell.btnStatus.setTitle(items[indexPath.row]._reservation_status, for : .normal)
             cell.lblGroundName.text = items[indexPath.row]._ground_name
             cell.lblPlayerName.text = items[indexPath.row]._user_name
             cell.imgGround.loadimageUsingUrlString(url: items[indexPath.row]._ground_image)
             cell.imgUser.loadimageUsingUrlString(url: items[indexPath.row]._photo)
+            if items[indexPath.row]._reservation_status == "ACCEPTED"
+            {
+                //cell.btnStatus.backgroundColor = UIColor(hex: "#259FA1")
+                cell.btnStatus.backgroundColor = UIColor.hexColor(string: "#259FA1")
+            } else if items[indexPath.row]._reservation_status == "REJECTED" {
+                cell.btnStatus.backgroundColor = UIColor.red
+            }else {
+                cell.btnStatus.backgroundColor = UIColor.yellow
+            }
             return cell
         }
         
@@ -121,7 +132,10 @@ extension RequestListVC: HttpHelperDelegate {
             
             let storyBoard : UIStoryboard = UIStoryboard(name: "Owner", bundle:nil)
             let cont = storyBoard.instantiateViewController(withIdentifier: "RequestDetailsVC")as! RequestDetailsVC
+            
+            cont.items = items[indexPath.row]
             self.present(cont, animated: true, completion: nil)
+            
         }
         
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

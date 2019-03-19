@@ -8,8 +8,7 @@
 import UIKit
 
 class OwnerMatchDetailsVC: UIViewController {
-
-    
+    var items : PlaygroundModelClass!
     @IBOutlet weak var btn_next: UIButton!
     @IBOutlet weak var btn_previc: UIButton!
     @IBOutlet weak var btn_info: UIButton!

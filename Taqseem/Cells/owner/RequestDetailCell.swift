@@ -27,6 +27,7 @@ class RequestDetailCell: UITableViewCell {
         }
     }
     @IBOutlet weak var lblDate: UILabel!
+    @IBOutlet weak var btnStatus: UIButton!
     @IBOutlet weak var lblCapacity: UILabel!
     @IBOutlet weak var lblPlayerName: UILabel!
     @IBOutlet weak var lblGroundName: UILabel!

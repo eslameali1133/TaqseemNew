@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 import Alamofire
+var GlobalGroundDetails : PlaygroundModelClass!
 class OwnerHomeVC: UIViewController {
 
     var http = HttpHelper()
@@ -130,6 +131,8 @@ extension OwnerHomeVC :UITableViewDelegate,UITableViewDataSource{
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Owner", bundle:nil)
         let cont = storyBoard.instantiateViewController(withIdentifier: "OwnerMatchDetailsVC")as! OwnerMatchDetailsVC
+        
+        GlobalGroundDetails = items[indexPath.row]
         self.present(cont, animated: true, completion: nil)
     }
     

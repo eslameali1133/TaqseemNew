@@ -27,6 +27,7 @@ open class APIConstants {
     //owner
     static let GetGround = SERVER_URL + "owner/ground"
     static let GetRequest = SERVER_URL + "owner/get-requests"
+    static let ChangeStatus = SERVER_URL + "owner/change-status"
     
     
     
