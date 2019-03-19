@@ -9,22 +9,39 @@
 import UIKit
 
 class OwnerPLAYgroundInfoVC: UIViewController {
-
+    var items = GlobalGroundDetails
+    
+    @IBOutlet weak var lblLocation: UILabel!
+    @IBOutlet weak var lblTimes: UILabel!
+    @IBOutlet weak var lblDayes: UILabel!
+    @IBOutlet weak var lblCapacity: UILabel!
+    @IBOutlet weak var lblMatchPlayed: UILabel!
+    @IBOutlet weak var lblPrice: UILabel!
+    @IBOutlet weak var lblGroundName: UILabel!
+    @IBOutlet weak var imgGround: customImageView!{
+        didSet{
+            
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        FillData()
     }
-    */
+    
+    func FillData(){
+       lblDayes.text = "Sat" ///////
+        lblPrice.text = items?._price
+        lblTimes.text = "From : \(items!._hour_from)   To : \(items!._hour_to)"
+        lblCapacity.text = items?._capacity
+        lblLocation.text = items?._address
+        lblGroundName.text = items?._name
+        lblMatchPlayed.text = "25" //////
+        imgGround.loadimageUsingUrlString(url: (items?._image)!)
+    }
+    
 
 }
