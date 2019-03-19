@@ -103,7 +103,27 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IhU-Qu-Ei4">
                                                                     <rect key="frame" x="0.0" y="0.0" width="217" height="33.5"/>
                                                                     <subviews>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 170" translatesAutoresizingMaskIntoConstraints="NO" id="KO1-Ko-oLm" customClass="AMCircleImageView" customModule="Taqseem" customModuleProvider="target">
+
+                                                                        <view contentMode="scaleAspectFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0xb-6g-KXf" customClass="CosmosView" customModule="Cosmos">
+                                                                            <rect key="frame" x="10" y="6.5" width="96" height="20"/>
+                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <userDefinedRuntimeAttributes>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                                                                    <real key="value" value="20"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                                                                    <integer key="value" value="5"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                                                    <real key="value" value="5"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
+                                                                                    <real key="value" value="-1"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                            </userDefinedRuntimeAttributes>
+                                                                        </view>
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Group 170" translatesAutoresizingMaskIntoConstraints="NO" id="KO1-Ko-oLm" customClass="AMCircleImageView" customModule="Taqseem" customModuleProvider="target">
+
                                                                             <rect key="frame" x="126" y="5" width="30" height="23.5"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="30" id="dMz-cx-Txz"/>
@@ -115,11 +135,13 @@
                                                                                 </userDefinedRuntimeAttribute>
                                                                             </userDefinedRuntimeAttributes>
                                                                         </imageView>
+
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7 * 7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1J3-5P-g5C">
                                                                             <rect key="frame" x="166" y="0.0" width="33" height="33.5"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="33" id="EdZ-6u-U07"/>
                                                                             </constraints>
+
                                                                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                                                             <color key="textColor" red="0.14420261979999999" green="0.62189048530000002" blue="0.63047534230000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
