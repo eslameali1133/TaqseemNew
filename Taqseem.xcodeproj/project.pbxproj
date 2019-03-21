@@ -24,6 +24,7 @@
 		189DB22B22098E6B005118E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 189DB22A22098E6B005118E3 /* Assets.xcassets */; };
 		189DB22E22098E6B005118E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 189DB22C22098E6B005118E3 /* LaunchScreen.storyboard */; };
 		189DB23D2209C438005118E3 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 189DB23C2209C438005118E3 /* Profile.storyboard */; };
+		18A731062242974000287947 /* CountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A731052242974000287947 /* CountryModel.swift */; };
 		18A845FE222EEE3A00D13EED /* ADDMatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A845FD222EEE3A00D13EED /* ADDMatchVC.swift */; };
 		18B01F692209CCFF003EFDDD /* HelveticaNeue-Roman.otf in Resources */ = {isa = PBXBuildFile; fileRef = 18B01F372209CCFF003EFDDD /* HelveticaNeue-Roman.otf */; };
 		18B01F6A2209CCFF003EFDDD /* HelveticaNeue-BoldExt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 18B01F382209CCFF003EFDDD /* HelveticaNeue-BoldExt.otf */; };
@@ -185,6 +186,7 @@
 		189DB22D22098E6B005118E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		189DB22F22098E6B005118E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		189DB23C2209C438005118E3 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		18A731052242974000287947 /* CountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryModel.swift; sourceTree = "<group>"; };
 		18A845FD222EEE3A00D13EED /* ADDMatchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADDMatchVC.swift; sourceTree = "<group>"; };
 		18B01F372209CCFF003EFDDD /* HelveticaNeue-Roman.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HelveticaNeue-Roman.otf"; sourceTree = "<group>"; };
 		18B01F382209CCFF003EFDDD /* HelveticaNeue-BoldExt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HelveticaNeue-BoldExt.otf"; sourceTree = "<group>"; };
@@ -774,7 +776,11 @@
 				F4705B36223E5AA000E2424F /* PlayerModel.swift */,
 				F4FA3B48223F8FD900ABE719 /* PlaygroundModel.swift */,
 				F4FA3B4A223FA9B500ABE719 /* RequestListModel.swift */,
+
+				18A731052242974000287947 /* CountryModel.swift */,
+
 				F499B4E722414E9C00F52D69 /* RequestPlayerModel.swift */,
+
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1069,6 +1075,7 @@
 				18BDD5A62222AB6C00B98753 /* AWSegmentAddMatch.swift in Sources */,
 				18F3ED8D22197651008F29F2 /* ChatVC.swift in Sources */,
 				180AEC60220D9CD50003C1A6 /* TermsVC.swift in Sources */,
+				18A731062242974000287947 /* CountryModel.swift in Sources */,
 				18F6261722313AA000030773 /* DateView.swift in Sources */,
 				18F3ED9B221AB09B008F29F2 /* menuCell.swift in Sources */,
 				F47AEED0221D50FF007146CE /* MyMatchVC.swift in Sources */,
