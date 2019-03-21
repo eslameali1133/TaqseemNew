@@ -90,9 +90,9 @@ class RequestDetailsVC: UIViewController {
         imgUser.loadimageUsingUrlString(url: items._photo)
         Status = items._reservation_status
         
-//       if (Status == "ACCEPTED") || (Status == "REJECTED"){
-//             viewButtons.isHidden = true
-//        }
+       if (Status == "ACCEPTED") || (Status == "REJECTED"){
+             viewButtons.isHidden = true
+        }
     }
 }
 extension RequestDetailsVC: HttpHelperDelegate {

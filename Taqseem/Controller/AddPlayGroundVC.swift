@@ -7,24 +7,36 @@
 //
 
 import UIKit
-
+import  Alamofire
+import SwiftyJSON
 protocol shareLocationDelegate {
     func shareLocationDelegate(lat: String, Long: String)
 }
 class AddPlayGroundVC: UIViewController  , UIPickerViewDelegate , UIPickerViewDataSource{
+   
+  var  daysname = ["sat","sun","mon","tue","wed","thu","fri"]
+    var CityArray: [CityModelClass] = [CityModelClass]()
+    var AreaArray: [AreaModelClass] = [AreaModelClass]()
+    var days:[DayModel] = [DayModel]()
     
+    var CityID = ""
+    var AreaID = ""
+    
+      var PickerFlag = ""
     var AlertController: UIAlertController!
     let Imagepicker = UIImagePickerController()
-    
     var dateis = " "
     var toolBar = UIToolbar()
     var picker  = UIPickerView()
     var datePicker = UIDatePicker()
     var TeamCapacity = [0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 , 11 , 12]
     @IBOutlet weak var lblCapacity: UILabel!
+      @IBOutlet weak var lblCity: UILabel!
+      @IBOutlet weak var lblAream: UILabel!
     @IBOutlet weak var lblFrom: UILabel!
     @IBOutlet weak var lblTo: UILabel!
     @IBOutlet weak var txtFees: UITextField!
+    @IBOutlet weak var txtAddress: UITextField!
     @IBOutlet weak var txtHours: UITextField!
     @IBOutlet weak var txtPhoneNum: UITextField!
     @IBOutlet weak var txtPrice: UITextField!
@@ -34,6 +46,11 @@ class AddPlayGroundVC: UIViewController  , UIPickerViewDelegate , UIPickerViewDa
      @IBOutlet weak var MapImageView: customImageView!
     var LatPosition = "0.0"
     var LngPosition = "0.0"
+    var address = ""
+      var HourFrom = ""
+      var HourTo = ""
+    var Area_id = ""
+       var City_id = ""
     @IBOutlet weak var btnFri: UIButton!
     @IBOutlet weak var btnThu: UIButton!
     @IBOutlet weak var btnWed: UIButton!
@@ -50,17 +67,43 @@ class AddPlayGroundVC: UIViewController  , UIPickerViewDelegate , UIPickerViewDa
     var isbtnSun = false
     var isbtnSat = false
 
+     var http = HttpHelper()
+    
     @IBOutlet weak var imageProfile: customImageView!{
         didSet{
             imageProfile.layer.cornerRadius = imageProfile.frame.width/2
             imageProfile.clipsToBounds = true
         }
     }
+    
+    func setupDaysData(){
+        for i in 0...6 {
+            var obj:DayModel = DayModel()
+            obj.index = i
+            obj.isselected = false
+            obj.name = daysname[i]
+            days.append(obj)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupDaysData()
         LoadMapImage(lat: LatPosition, Long: LngPosition)
          SetupUploadImage()
+        http.delegate = self
+        loadCityData()
         // Do any additional setup after loading the view.
+    }
+    
+    func loadCityData(){
+        AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
+        http.GetWithoutHeader(url: APIConstants.GetCity, Tag: 2)
+    }
+    
+    func loadAreamData(city_id:String){
+        let params = ["country_id":city_id] as [String: Any]
+        AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
+        http.GetWithoutHeader(url: APIConstants.GetArea, parameters: params, Tag: 3)
     }
     
     @IBAction func btnTo(_ sender: Any) {
@@ -78,76 +121,94 @@ class AddPlayGroundVC: UIViewController  , UIPickerViewDelegate , UIPickerViewDa
         
     }
     @IBAction func btnCapacity(_ sender: Any) {
+        PickerFlag = "Capacity"
         configurePicker()
+    }
+    @IBAction func btnCity(_ sender: Any) {
+         PickerFlag = "City"
+        configurePicker()
+    }
+    @IBAction func btnArea(_ sender: Any) {
+    
+        loadAreamData(city_id:City_id)
+        PickerFlag = "Area"
+        
     }
     @IBAction func btnFri(_ sender: Any) {
         if  btnFri.backgroundColor == UIColor.clear {
         btnFri.backgroundColor = UIColor.hexColor(string:"#009C9E")
-            isbtnFri = true
+           days[6].isselected = true
         }else{
             btnFri.backgroundColor = UIColor.clear
-                isbtnFri = false
+                 days[6].isselected = false
         }
     }
     @IBAction func btnThu(_ sender: Any) {
         if  btnThu.backgroundColor == UIColor.clear {
             btnThu.backgroundColor = UIColor.hexColor(string:"#009C9E")
-            isbtnThu = true
+           days[5].isselected = true
         }else{
             btnThu.backgroundColor = UIColor.clear
-            isbtnThu = false
+             days[5].isselected = false
         }
     }
     @IBAction func btnWed(_ sender: Any) {
         if  btnWed.backgroundColor == UIColor.clear {
             btnWed.backgroundColor = UIColor.hexColor(string:"#009C9E")
-            isbtnWed = true
+           days[4].isselected = true
         }else{
             btnWed.backgroundColor = UIColor.clear
-            isbtnWed = false
+             days[4].isselected = false
         }
     }
     @IBAction func btnTus(_ sender: Any) {
         if  btnTus.backgroundColor == UIColor.clear {
             btnTus.backgroundColor = UIColor.hexColor(string:"#009C9E")
-            isbtnTus = true
+             days[3].isselected = true
         }else{
             btnTus.backgroundColor = UIColor.clear
-            isbtnTus = false
+             days[3].isselected = false
         }
     }
     @IBAction func btnMon(_ sender: Any) {
         if  btnMon.backgroundColor == UIColor.clear {
             btnMon.backgroundColor = UIColor.hexColor(string:"#009C9E")
-            isbtnMon = true
+            days[2].isselected = true
         }else{
             btnMon.backgroundColor = UIColor.clear
-            isbtnMon = false
+          days[2].isselected = false
         }
     }
     @IBAction func btnSun(_ sender: Any) {
         if  btnSun.backgroundColor == UIColor.clear {
             btnSun.backgroundColor = UIColor.hexColor(string:"#009C9E")
-            isbtnSun = true
+          
+             days[1].isselected = true
         }else{
             btnSun.backgroundColor = UIColor.clear
-            isbtnSun = false
+            
+            
+             days[1].isselected = false
         }
     }
     @IBAction func btnSat(_ sender: Any) {
         
         if  btnSat.backgroundColor == UIColor.clear {
             btnSat.backgroundColor = UIColor.hexColor(string:"#009C9E")
-            isbtnSat = true
+            
+            days[0].isselected = true
         }else{
             btnSat.backgroundColor = UIColor.clear
-            isbtnSat = false
+            
+             days[0].isselected = false
         }
     }
     @IBAction func btnAddPlayGround(_ sender: Any) {
+        Addplayground()
     }
     
     func configurePicker (){
+        
         picker  = UIPickerView()
         picker = UIPickerView.init()
         picker.delegate = self
@@ -163,22 +224,35 @@ class AddPlayGroundVC: UIViewController  , UIPickerViewDelegate , UIPickerViewDa
         toolBar.items = [UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(onDoneButtonTapped))]
         self.view.addSubview(toolBar)
         
-        // DPicker.addTarget(self, action: #selector(AddPlayGroundVC.ChangeDate(sender:)), for: UIControl.Event.valueChanged)
+        //  DPicker.addTarget(self, action: #selector(AddPlayGroundVC.ChangeDate(sender:)), for: UIControl.Event.valueChanged)
         
     }
     
     @objc func datePickerValueChanged (datePicker: UIDatePicker) {
         
         let dateformatter = DateFormatter()
-        
         dateformatter.dateStyle = DateFormatter.Style.none
-        dateformatter.timeStyle = DateFormatter.Style.medium
-        
+        dateformatter.timeStyle = DateFormatter.Style.long
         let dateValue = dateformatter.string(from: datePicker.date)
+        let datee = dateformatter.date(from: dateValue)
+        dateformatter.dateFormat = "a"
+        let hpm = dateformatter.string(from: datee!)
+        if hpm == "PM" {
+            dateformatter.dateFormat = "HH"
+            let hou = dateformatter.string(from: datee!)
+            dateformatter.dateFormat = "mm"
+            let Min = dateformatter.string(from: datee!)
+            dateformatter.dateFormat = "ss"
+            //  let Sec = dateformatter.string(from: datee!)
+            let Time24 = "\(hou):\(Min):00"
+
+        
         if dateis == "From" {
-            lblFrom.text = dateValue
+            lblFrom.text = Time24
         }else{
-            lblTo.text = dateValue
+            lblTo.text = Time24
+        }
+        
         }
         
     }
@@ -209,21 +283,104 @@ class AddPlayGroundVC: UIViewController  , UIPickerViewDelegate , UIPickerViewDa
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
+        if PickerFlag == "Capacity"
+        {
         return TeamCapacity.count
+        }else if PickerFlag == "City"{
+           return CityArray.count + 1
+        }else{
+          return  AreaArray.count  + 1
+        }
         
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if PickerFlag == "Capacity"
+        {
         if row == 0{
             return "Select The PlayGround Capacity "
         }
         return String(TeamCapacity[row])
-        
+        }
+        else if PickerFlag == "City"{
+            if row == 0{
+                return  AppCommon.sharedInstance.localization("ChoseCity")
+            }else {
+                
+                if SharedData.SharedInstans.getLanguage() == "en"
+                {
+                    return CityArray[row-1].name_en
+                }else
+                {
+                    return CityArray[row-1].name_en
+                }
+                
+            }
+            
+        }else{
+            if row == 0{
+                return  AppCommon.sharedInstance.localization("ChoseArea")
+            }else {
+                
+                if SharedData.SharedInstans.getLanguage() == "en"
+                {
+                    return AreaArray[row-1].name_en
+                }else
+                {
+                    return AreaArray[row-1].name_en
+                }
+                
+            }
+            
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        lblCapacity.text = String(TeamCapacity[row])
+        if PickerFlag == "Capacity"
+        {
+            lblCapacity.text = String(TeamCapacity[row])
+            
+        }
+        else if PickerFlag == "City"{
+            
+            if CityArray.count != 0 {
+                if row == 0 {
+                    lblCity.text = nil
+                    
+                }else {
+                    if SharedData.SharedInstans.getLanguage() == "en"
+                    {
+                        lblCity.text = CityArray[row-1].name_en
+                    }else
+                    {
+                        lblCity.text = CityArray[row-1].name_ar
+                    }
+                   City_id = CityArray[row-1].id
+                   
+                }
+            }
+        }
+        
+        else{
+            if AreaArray.count != 0 {
+                if row == 0 {
+                    lblAream.text = nil
+                    
+                }else {
+                    if SharedData.SharedInstans.getLanguage() == "en"
+                    {
+                        lblAream.text = AreaArray[row-1].name_en
+                    }else
+                    {
+                        lblAream.text = AreaArray[row-1].name_ar
+                    }
+                     Area_id = AreaArray[row-1].id
+                   
+                   
+                }
+            }
+            
+        }
     }
     
     @IBAction func DismissView(_ sender: Any) {
@@ -342,4 +499,230 @@ extension AddPlayGroundVC:UIImagePickerControllerDelegate,UINavigationController
     }
     
     
+}
+ // add playground
+extension AddPlayGroundVC {
+    
+    
+    func setupPara() ->  [String: Any] {
+    var parameters = [:] as [String: Any]
+        
+        var count = -1
+        for  i in days
+        {
+            
+            
+        }
+        
+        
+        
+        return parameters
+    }
+    
+    
+    func Addplayground() {
+       
+        
+    
+        let AccessToken = UserDefaults.standard.string(forKey: "access_token")!
+        let token_type = UserDefaults.standard.string(forKey: "token_type")!
+        var parameters = [:] as [String: Any]
+        print(AccessToken)
+        let imgdata = self.imageProfile.image!.jpegData(compressionQuality: 0.5)
+        print(AccessToken)
+        let headers: HTTPHeaders = [
+            "Accept" : "application/json",
+            "Content-type": "multipart/form-data",
+            "Authorization": "\(token_type) \(AccessToken)"
+    
+        ]
+        
+        parameters = [
+            "name_en" : txtEnglishName.text!,
+            "name_ar" : txtArabicName.text!,
+            "lat" : LatPosition,
+             "lng": LngPosition,
+            "image" :  imgdata!,
+            "price" : txtPrice.text!,
+            "capacity" : lblCapacity.text!,
+            "cancelation_time" : txtHours.text!,
+            "cancel_fee" :txtFees.text!,
+            "address" :txtAddress.text!,
+            "hour_from" : lblFrom.text!,
+            "hour_to" : lblTo.text!,
+            "city_id": Area_id,
+            "phone" : txtPhoneNum.text!,
+            "day[]" : "sun",
+            
+           
+        ]
+        
+        print(parameters)
+        Alamofire.upload(
+            multipartFormData: { multipartFormData in
+                for (key,value) in parameters {
+                    if let value = value as? String {
+                        multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
+                    }
+                }
+                
+                if let data = self.imageProfile.image!.jpegData(compressionQuality: 0.5){
+                    multipartFormData.append(data, withName: "image", fileName: "image\(arc4random_uniform(100))"+".jpeg", mimeType: "jpeg")
+                    
+                }
+                
+        },
+            usingThreshold:UInt64.init(),
+            to: "http://172.107.175.8/api/owner/add-ground",
+            method: .post, headers: headers,
+            encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    
+                    upload.uploadProgress(closure: { (progress) in
+                        print(progress)
+                    })
+                    upload.responseJSON { response in
+                        // If the request to get activities is succesfull, store them
+                        if response.result.isSuccess{
+                            print(response.debugDescription)
+                            AppCommon.sharedInstance.dismissLoader(self.view)
+                            print(response.data!)
+                            print(response.result)
+                            let json = JSON(response.data)
+                            print(json)
+                            let status =  json["status"]
+                            print(status.stringValue)
+                            let message = json["message"]
+                            let data =  JSON(json["data"])
+                            print(message)
+                            
+                            if status.stringValue == "1" {
+                                  Loader.showSuccess(message: "PlayGround Added Successfuly")
+                                    self.dismiss(animated: true, completion: nil)
+                                }
+                                
+                            else{
+                                Loader.showError(message: message.stringValue)
+                            }
+                        }
+                        else {
+                            var errorMessage = "ERROR MESSAGE: "
+                            if let data = response.data {
+                                // Print message
+                                print(errorMessage)
+                                AppCommon.sharedInstance.dismissLoader(self.view)
+                                
+                                
+                                
+                            }
+                            print(errorMessage) //Contains General error message or specific.
+                            print(response.debugDescription)
+                            AppCommon.sharedInstance.dismissLoader(self.view)
+                        }
+                        
+                        
+                    }
+                case .failure(let encodingError):
+                    print("FALLE ------------")
+                    print(encodingError)
+                    AppCommon.sharedInstance.dismissLoader(self.view)
+                }
+        }
+        )
+    }
+    
+    
+    
+    func converttimeTo24(time: String)->String{
+        print(time)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss a"
+      
+        let date12 = dateFormatter.date(from: time)!
+        
+       dateFormatter.dateFormat = "HH:mm:ss"
+        let date24 = dateFormatter.string(from: date12)
+        
+        print(date24)
+        
+       return date24
+    }
+    
+}
+
+extension AddPlayGroundVC: HttpHelperDelegate {
+    func receivedResponse(dictResponse: Any, Tag: Int) {
+        print(dictResponse)
+        AppCommon.sharedInstance.dismissLoader(self.view)
+        let forbiddenMail : String = AppCommon.sharedInstance.localization("Error")
+        if Tag == 1 {
+          
+           
+        }
+            
+        else if Tag == 2 {
+            
+            let json = JSON(dictResponse)
+            let Result =  JSON(json["data"])
+            
+            let status =  JSON(json["status"])
+            print(Result)
+       
+            print(status)
+            CityArray.removeAll()
+            if status.stringValue == "1" {
+                let result =  json["data"].arrayValue
+                for json in result{
+                    let obj = CityModelClass(id: json["id"].stringValue, name_en: json["name_en"].stringValue, name_ar: json["name_ar"].stringValue, name: json["name"].stringValue)
+                    CityArray.append(obj)
+                    
+                }
+                
+               
+                
+            } else {
+                
+                Loader.showError(message: (forbiddenMail))
+            }
+        }
+            
+        else if Tag == 3 {
+            let json = JSON(dictResponse)
+            let Result =  JSON(json["data"])
+            
+            let status =  JSON(json["status"])
+            print(Result)
+            
+            print(status)
+            CityArray.removeAll()
+            if status.stringValue == "1" {
+                let result =  json["data"].arrayValue
+                for json in result{
+                    let obj = AreaModelClass(id: json["id"].stringValue, name_en: json["name_en"].stringValue, name_ar: json["name_ar"].stringValue, name: json["name"].stringValue)
+                    AreaArray.append(obj)
+                    
+                }
+                
+                configurePicker()
+                
+            } else {
+                
+                Loader.showError(message: (forbiddenMail))
+            }
+     }
+            
+       
+    }
+    
+    func receivedErrorWithStatusCode(statusCode: Int) {
+        print(statusCode)
+        AppCommon.sharedInstance.alert(title: "Error", message: "\(statusCode)", controller: self, actionTitle: AppCommon.sharedInstance.localization("ok"), actionStyle: .default)
+        
+        AppCommon.sharedInstance.dismissLoader(self.view)
+    }
+    
+    func retryResponse(numberOfrequest: Int) {
+        
+    }
 }
