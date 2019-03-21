@@ -9,7 +9,8 @@
 import UIKit
 
 class MyMatchVC: UIViewController {
-
+ 
+    var item : PlaygroundModelClass!
     @IBOutlet weak var btn_join: UIButton!
     @IBOutlet weak var lbl_title: UILabel!
     @IBOutlet weak var Constain_IconImge_Height: NSLayoutConstraint!
@@ -21,6 +22,7 @@ class MyMatchVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(item._address)
         setupConstrin()
         lbl_title.text = title
         btn_join.isHidden = true

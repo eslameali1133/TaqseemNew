@@ -9,12 +9,15 @@
 import UIKit
 
 class ChoosePlaygroundVC: UIViewController {
-@IBOutlet weak var TBL_Background: UITableView!
+
+    var items = [PlaygroundModelClass]()
+    var MatchDetais : MatchDetailsModelClass!
+    @IBOutlet weak var TBL_Background: UITableView!
     
      @IBOutlet weak var lbl_title: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(items)
         if comedromneartoplay == true
         {
             
@@ -26,33 +29,43 @@ class ChoosePlaygroundVC: UIViewController {
         // Do any additional setup after loading the view.
     }
    
-    @IBAction func btn_choose(_ sender: UIButton) {
-        if comedromneartoplay == true
-        {
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
-            let cont = storyBoard.instantiateViewController(withIdentifier: "MyMatchVC")as! MyMatchVC
-            self.present(cont, animated: true, completion: nil)
-            
-        }else{
-            
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
-            let cont = storyBoard.instantiateViewController(withIdentifier: "playGroundDetailsVC")as! playGroundDetailsVC
-            self.present(cont, animated: true, completion: nil)
-            
-        }
-    }
+//    @IBAction func btn_choose(_ sender: UIButton) {
+//        if comedromneartoplay == true
+//        {
+//            let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
+//            let cont = storyBoard.instantiateViewController(withIdentifier: "MyMatchVC")as! MyMatchVC
+//            cont.item = items[indexPath.row]
+//            self.present(cont, animated: true, completion: nil)
+//
+//        }else{
+//
+//            let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
+//            let cont = storyBoard.instantiateViewController(withIdentifier: "playGroundDetailsVC")as! playGroundDetailsVC
+//            self.present(cont, animated: true, completion: nil)
+//
+//        }
+//    }
     
     
 
 }
 extension ChoosePlaygroundVC :UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  4
+        return  items.count
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChoosebackgroundCell", for: indexPath) as! ChoosebackgroundCell
         cell.contentView.dropShadow()
+        
+        cell.lblCapacity.text = "\(items[indexPath.row]._capacity) Players"
+        cell.lblName.text = items[indexPath.row]._name
+        cell.lblPrice.text = "\(items[indexPath.row]._price) SAL/h"
+        cell.lblLocation.text = ""
+        cell.imgGround.loadimageUsingUrlString(url: items[indexPath.row]._image)
+        
+        cell.items = items[indexPath.row]
+        cell.MatchDetails = MatchDetais
         return cell
     }
     

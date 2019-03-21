@@ -145,6 +145,7 @@
 		18F62627223159D300030773 /* RequestDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F62625223159D200030773 /* RequestDetailsVC.swift */; };
 		18F62628223159D300030773 /* RequestListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F62626223159D200030773 /* RequestListVC.swift */; };
 		41FE955ED41EF25E4F2FA4A6 /* Pods_Taqseem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2329402FA44DE7A7CCCDD63D /* Pods_Taqseem.framework */; };
+		F408E2BA224391AA00D7299A /* MatchDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F408E2B9224391A900D7299A /* MatchDetailsModel.swift */; };
 		F445BF98221C32F600B1A18E /* Match.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F445BF97221C32F600B1A18E /* Match.storyboard */; };
 		F445BF9A221C4A2E00B1A18E /* AddMatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445BF99221C4A2E00B1A18E /* AddMatchVC.swift */; };
 		F4689F95221DF8F8002EC897 /* PlayerTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4689F94221DF8F8002EC897 /* PlayerTableVC.swift */; };
@@ -311,6 +312,7 @@
 		18F62625223159D200030773 /* RequestDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDetailsVC.swift; sourceTree = "<group>"; };
 		18F62626223159D200030773 /* RequestListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestListVC.swift; sourceTree = "<group>"; };
 		2329402FA44DE7A7CCCDD63D /* Pods_Taqseem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Taqseem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F408E2B9224391A900D7299A /* MatchDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailsModel.swift; sourceTree = "<group>"; };
 		F428857E2236A7B300E85C9C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		F428857F2236A7B400E85C9C /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		F42885802236ABD500E85C9C /* Taqseem-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Taqseem-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -781,6 +783,10 @@
 
 				F499B4E722414E9C00F52D69 /* RequestPlayerModel.swift */,
 
+				F408E2B9224391A900D7299A /* MatchDetailsModel.swift */,
+
+
+
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1105,6 +1111,7 @@
 				F4FA3B49223F8FD900ABE719 /* PlaygroundModel.swift in Sources */,
 				F4FA3B4B223FA9B500ABE719 /* RequestListModel.swift in Sources */,
 				18F3ED9122197CEF008F29F2 /* TableView+EX.swift in Sources */,
+				F408E2BA224391AA00D7299A /* MatchDetailsModel.swift in Sources */,
 				18B95485220B1EBF00FBAC94 /* LoginVC.swift in Sources */,
 				18F625FD22313AA000030773 /* SharedData.swift in Sources */,
 				18BDD5AE2222C55000B98753 /* SendCell.swift in Sources */,

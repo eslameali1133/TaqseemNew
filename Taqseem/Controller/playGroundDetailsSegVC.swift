@@ -10,6 +10,13 @@ import UIKit
 
 class playGroundDetailsSegVC: UIViewController {
     
+    @IBOutlet weak var txtInfo: UITextView!
+    @IBOutlet weak var lblAddress: UILabel!
+    @IBOutlet weak var lblSalary: UILabel!
+    @IBOutlet weak var lblCapacity: UILabel!
+    @IBOutlet weak var lblDuration: UILabel!
+    @IBOutlet weak var lblTime: UILabel!
+    @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var Constain_IconImge_Height: NSLayoutConstraint!
     @IBOutlet weak var Constain_IconImge_Widhtt: NSLayoutConstraint!
     
@@ -19,10 +26,19 @@ class playGroundDetailsSegVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstrin()
-        
+//        FillData()
         // Do any additional setup after loading the view.
     }
-    
+    func FillData(){
+        print(Gitem._address)
+//        lblAddress.text = Gitem._address
+//        lblSalary.text = Gitem._price
+//        lblDate.text = GMatchDetails._Date
+//        lblTime.text = GMatchDetails._Time
+//        lblDuration.text = GMatchDetails._Duration
+//        lblCapacity.text = GMatchDetails._Capacity
+//        txtInfo.text = GMatchDetails._Notes
+    }
     @IBAction func DismissView(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
