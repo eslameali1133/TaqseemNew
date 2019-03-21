@@ -54,8 +54,9 @@ class RequestDetailsVC: UIViewController {
         ChangeStatus()
     }
     @IBAction func btn_player(_ sender: Any) {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
-        let cont = storyBoard.instantiateViewController(withIdentifier: "PlayerNormalVC")as! PlayerNormalVC
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Owner", bundle:nil)
+        let cont = storyBoard.instantiateViewController(withIdentifier: "OwnerRequestPlayersVC")as! OwnerRequestPlayersVC
+        cont.ReservationNum = items._reservation_no
         self.present(cont, animated: true, completion: nil)
         
         
@@ -111,6 +112,7 @@ extension RequestDetailsVC: HttpHelperDelegate {
                 let storyBoard : UIStoryboard = UIStoryboard(name: "Owner", bundle:nil)
                 let cont = storyBoard.instantiateViewController(withIdentifier: "RequestListVC")as! RequestListVC
                 cont.RequestStatus = Status
+                
                 self.present(cont, animated: true, completion: nil)
 
             } else {
