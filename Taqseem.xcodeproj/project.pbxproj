@@ -155,6 +155,9 @@
 		F47AEED4221D8AC2007146CE /* MyMatchesTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47AEED3221D8AC2007146CE /* MyMatchesTableVC.swift */; };
 		F497E0DA2222D8B600060327 /* NearMeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497E0D92222D8B600060327 /* NearMeVC.swift */; };
 		F497E0DC2222DD5700060327 /* BookPlayGroundVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F497E0DB2222DD5700060327 /* BookPlayGroundVC.swift */; };
+		F499B4E4224142FA00F52D69 /* OwnerRequestPlayersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F499B4E3224142FA00F52D69 /* OwnerRequestPlayersVC.swift */; };
+		F499B4E622414CD100F52D69 /* RequestPlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F499B4E522414CD100F52D69 /* RequestPlayerCell.swift */; };
+		F499B4E822414E9C00F52D69 /* RequestPlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F499B4E722414E9C00F52D69 /* RequestPlayerModel.swift */; };
 		F49DB5EE222E976200131DCD /* AddPlayGroundVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49DB5ED222E976200131DCD /* AddPlayGroundVC.swift */; };
 		F4D39CA322203BB300A6D25B /* AddNewVisaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D39CA222203BB300A6D25B /* AddNewVisaVC.swift */; };
 		F4E52E6C221FE1CD0062952D /* PaidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E52E6B221FE1CD0062952D /* PaidVC.swift */; };
@@ -321,6 +324,9 @@
 		F47AEED3221D8AC2007146CE /* MyMatchesTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMatchesTableVC.swift; sourceTree = "<group>"; };
 		F497E0D92222D8B600060327 /* NearMeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearMeVC.swift; sourceTree = "<group>"; };
 		F497E0DB2222DD5700060327 /* BookPlayGroundVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookPlayGroundVC.swift; sourceTree = "<group>"; };
+		F499B4E3224142FA00F52D69 /* OwnerRequestPlayersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerRequestPlayersVC.swift; sourceTree = "<group>"; };
+		F499B4E522414CD100F52D69 /* RequestPlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPlayerCell.swift; sourceTree = "<group>"; };
+		F499B4E722414E9C00F52D69 /* RequestPlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPlayerModel.swift; sourceTree = "<group>"; };
 		F49DB5ED222E976200131DCD /* AddPlayGroundVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayGroundVC.swift; sourceTree = "<group>"; };
 		F4D39CA222203BB300A6D25B /* AddNewVisaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewVisaVC.swift; sourceTree = "<group>"; };
 		F4E52E6B221FE1CD0062952D /* PaidVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaidVC.swift; sourceTree = "<group>"; };
@@ -352,6 +358,7 @@
 				186023FF222D4C8A00B598F2 /* OwnerMatchDetailsVC.swift */,
 				18602401222D520000B598F2 /* OwnerNextMatchVC.swift */,
 				18602403222D5A1D00B598F2 /* OwnerPLAYgroundInfoVC.swift */,
+				F499B4E3224142FA00F52D69 /* OwnerRequestPlayersVC.swift */,
 			);
 			path = owner;
 			sourceTree = "<group>";
@@ -361,6 +368,7 @@
 			children = (
 				18F626232231583D00030773 /* RequestDetailCell.swift */,
 				186023FD222D439900B598F2 /* PlaygroundHomeCell.swift */,
+				F499B4E522414CD100F52D69 /* RequestPlayerCell.swift */,
 			);
 			path = owner;
 			sourceTree = "<group>";
@@ -768,7 +776,11 @@
 				F4705B36223E5AA000E2424F /* PlayerModel.swift */,
 				F4FA3B48223F8FD900ABE719 /* PlaygroundModel.swift */,
 				F4FA3B4A223FA9B500ABE719 /* RequestListModel.swift */,
+
 				18A731052242974000287947 /* CountryModel.swift */,
+
+				F499B4E722414E9C00F52D69 /* RequestPlayerModel.swift */,
+
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1016,6 +1028,7 @@
 				18F6260922313AA000030773 /* DBController.swift in Sources */,
 				18F6261A22313AA000030773 /* Country.swift in Sources */,
 				18F6260822313AA000030773 /* Utilities.swift in Sources */,
+				F499B4E4224142FA00F52D69 /* OwnerRequestPlayersVC.swift in Sources */,
 				18BCB2102227E4E400ABB59E /* AddPlayerForTeamVC.swift in Sources */,
 				18F6260722313AA000030773 /* Loader.swift in Sources */,
 				18F6261322313AA000030773 /* LocalizableLabel.swift in Sources */,
@@ -1095,9 +1108,11 @@
 				18B95485220B1EBF00FBAC94 /* LoginVC.swift in Sources */,
 				18F625FD22313AA000030773 /* SharedData.swift in Sources */,
 				18BDD5AE2222C55000B98753 /* SendCell.swift in Sources */,
+				F499B4E822414E9C00F52D69 /* RequestPlayerModel.swift in Sources */,
 				18F62627223159D300030773 /* RequestDetailsVC.swift in Sources */,
 				18F3ED972219B13A008F29F2 /* EditprofileVC.swift in Sources */,
 				18F2D32F223936D000D8AAA6 /* ChooseLocationToShareViewController.swift in Sources */,
+				F499B4E622414CD100F52D69 /* RequestPlayerCell.swift in Sources */,
 				18F3ED9322198CEB008F29F2 /* View+Ex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
