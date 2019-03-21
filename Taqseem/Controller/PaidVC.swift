@@ -7,31 +7,36 @@
 //
 
 import UIKit
+import SwiftyJSON
 var bookingplayground = false
 class PaidVC: UIViewController {
 
+    var http = HttpHelper()
     @IBOutlet weak var VisaView: UIView!
     @IBOutlet weak var cashView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        http.delegate = self
         // Do any additional setup after loading the view.
     }
     
 
     @IBAction func btn_join(_ sender: Any) {
         
-        if bookingplayground == true
-        {
-            bookingplayground = false
-            let delegate = UIApplication.shared.delegate as! AppDelegate
-            let storyboard = UIStoryboard.init(name: "Player", bundle: nil); delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
-        }else
-        {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
-        let cont = storyBoard.instantiateViewController(withIdentifier: "AddMatchSegmVC")as! AddMatchSegmVC
-        self.present(cont, animated: true, completion: nil)
-        }
+//        if bookingplayground == true
+//        {
+//            bookingplayground = false
+//            let delegate = UIApplication.shared.delegate as! AppDelegate
+//            let storyboard = UIStoryboard.init(name: "Player", bundle: nil); delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
+//        }else
+//        {
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
+//        let cont = storyBoard.instantiateViewController(withIdentifier: "AddMatchSegmVC")as! AddMatchSegmVC
+//        self.present(cont, animated: true, completion: nil)
+//        }
+        
+        AddMatch()
         
         
     }
@@ -50,6 +55,67 @@ class PaidVC: UIViewController {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
         let cont = storyBoard.instantiateViewController(withIdentifier: "AddNewVisaVC")as! AddNewVisaVC
         self.present(cont, animated: true, completion: nil)
+        
+    }
+    
+    func AddMatch(){
+        
+        let AccessToken = UserDefaults.standard.string(forKey: "access_token")!
+        let token_type = UserDefaults.standard.string(forKey: "token_type")!
+        
+        let params = [
+            "ground_id": Gitem._id ,
+            "date" : GMatchDetails._Date ,
+            "time" : GMatchDetails._Time ,
+            "duration" : GMatchDetails._Duration ,
+            "type = all if you want reserve all ground if not remove this row" : "all"
+            ] as [String: Any]
+        
+        let headers = [
+            "Accept-Type": "application/json" ,
+            "Content-Type": "application/json" ,
+            "Authorization" : "\(token_type) \(AccessToken)"
+        ]
+        
+        AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
+        http.requestWithBody(url: APIConstants.AddMatch, method: .post, parameters: params, tag: 1, header: headers)
+    
+    }
+    
+}
+extension PaidVC: HttpHelperDelegate {
+    func receivedResponse(dictResponse: Any, Tag: Int) {
+        print(dictResponse)
+        AppCommon.sharedInstance.dismissLoader(self.view)
+        let json = JSON(dictResponse)
+        
+        
+        if Tag == 1 {
+            
+            let status =  json["status"]
+            let message = json["message"]
+            
+            if status.stringValue == "1" {
+                Loader.showSuccess(message: message.stringValue)
+                
+                    let delegate = UIApplication.shared.delegate as! AppDelegate
+                    //  let storyboard = UIStoryboard(name: "StoryBord", bundle: nil)
+                    let storyboard = UIStoryboard.init(name: "Player", bundle: nil); delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
+            }else {
+                
+                let message = json["message"]
+                Loader.showError(message: message.stringValue )
+            }
+        }
+        
+    }
+    func receivedErrorWithStatusCode(statusCode: Int) {
+        print(statusCode)
+        AppCommon.sharedInstance.alert(title: "Error", message: "\(statusCode)", controller: self, actionTitle: AppCommon.sharedInstance.localization("ok"), actionStyle: .default)
+        
+        AppCommon.sharedInstance.dismissLoader(self.view)
+    }
+    func retryResponse(numberOfrequest: Int) {
         
     }
 }
