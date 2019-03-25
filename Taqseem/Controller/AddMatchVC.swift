@@ -8,6 +8,10 @@
 
 import UIKit
 import SwiftyJSON
+protocol shareLocationDelegateFilter {
+    func shareLocationDelegate(lat: String, Long: String)
+}
+
 class AddMatchVC: UIViewController , UIPickerViewDataSource , UIPickerViewDelegate {
     
     var items = [PlaygroundModelClass]()
@@ -25,6 +29,9 @@ class AddMatchVC: UIViewController , UIPickerViewDataSource , UIPickerViewDelega
     @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var lblCapacity: UILabel!
     @IBOutlet weak var lblFees: UILabel!
+        @IBOutlet weak var lblLocation: UILabel!
+    var LatPosition = "0.0"
+    var LngPosition = "0.0"
     //Uidate picker
     let datePicker = UIDatePicker()
     override func viewDidLoad() {
@@ -72,7 +79,7 @@ class AddMatchVC: UIViewController , UIPickerViewDataSource , UIPickerViewDelega
             Duration: lblDuration.text!,
             Capacity:lblCapacity.text!,
             Salary: lblFees.text!,
-            Notes: txtNotes.text!
+            Notes: ""
         )
         
         Filter()
@@ -104,9 +111,9 @@ class AddMatchVC: UIViewController , UIPickerViewDataSource , UIPickerViewDelega
         ]
         
         AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
-        print("\(APIConstants.Filter)?date=\(lblDate.text!)&time=\(lblTime.text!)&duration=\(lblDuration.text!)&capacity=\(lblCapacity.text!)&price=\(lblFees.text!)&lat=&lng=&city_id=&type=")
+        print("\(APIConstants.Filter)?date=\(lblDate.text!)&time=\(lblTime.text!)&duration=\(lblDuration.text!)&capacity=\(lblCapacity.text!)&price=\(lblFees.text!)&lat=0.0&lng=0.0&city_id=&type=")
         
-        http.Get(url: "\(APIConstants.Filter)?date=\(lblDate.text!)&time=\(lblTime.text!)&duration=\(lblDuration.text!)&capacity=\(lblCapacity.text!)&price=&lat=&lng=&city_id=&type=", parameters:[:], Tag: 1, headers: headers)
+        http.Get(url: "\(APIConstants.Filter)?date=\(lblDate.text!)&time=\(lblTime.text!)&duration=\(lblDuration.text!)&capacity=\(lblCapacity.text!)&price=&lat=\(LatPosition)&lng=\(LngPosition)&city_id=&type=", parameters:[:], Tag: 1, headers: headers)
      
     }
     
@@ -312,3 +319,24 @@ extension AddMatchVC: HttpHelperDelegate {
     }
 }
 
+extension AddMatchVC: shareLocationDelegateFilter {
+    func shareLocationDelegate(lat: String, Long: String){
+      
+        print(lat,Long)
+        self.LatPosition = lat
+        self.LngPosition = Long
+        lblLocation.text = "Lat: \(LatPosition) - Lng: \(LngPosition)"
+        
+}
+    // chose location
+    @IBAction func openMapToShareLocation(_ sender: UIButton) {
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Owner", bundle: nil)
+        let secondView = storyBoard.instantiateViewController(withIdentifier: "ChooseLocationToShareViewController") as! ChooseLocationToShareViewController
+        secondView.shareLocationDelegateFilt = self
+        secondView.isfilter = true
+        self.show(secondView, sender: true)
+        //        show(secondView, sender: nil)
+        
+    }
+}
