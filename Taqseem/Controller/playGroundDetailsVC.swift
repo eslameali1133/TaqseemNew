@@ -39,10 +39,10 @@ class playGroundDetailsVC: UIViewController {
     
     @IBAction func btnChoose(_ sender: Any) {
         print(123)
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
-                   let cont = storyBoard.instantiateViewController(withIdentifier: "PaidVC")as! PaidVC
-       // self.show(cont, sender: true)
-             self.present(cont, animated: true, completion: nil)
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
+//                   let cont = storyBoard.instantiateViewController(withIdentifier: "PaidVC")as! PaidVC
+//       // self.show(cont, sender: true)
+//             self.present(cont, animated: true, completion: nil)
     }
     @IBAction func DismissView(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
