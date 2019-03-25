@@ -84,12 +84,14 @@ extension MoreVC :UITableViewDelegate,UITableViewDataSource{
             else if indexPath.row == 4 {
                 let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
                 let cont = storyBoard.instantiateViewController(withIdentifier: "BookPlayGroundVC")as! BookPlayGroundVC
+                cont.FilterType = ""
                 self.present(cont, animated: true, completion: nil)
             }
             else if indexPath.row == 6 {
                 bookingplayground = true
                 let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
                 let cont = storyBoard.instantiateViewController(withIdentifier: "BookPlayGroundVC")as! BookPlayGroundVC
+                cont.FilterType = "None"
                 self.present(cont, animated: true, completion: nil)
             }
             else if indexPath.row == 7{
@@ -122,12 +124,14 @@ extension MoreVC :UITableViewDelegate,UITableViewDataSource{
             else if indexPath.row == 4 {
                 let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
                 let cont = storyBoard.instantiateViewController(withIdentifier: "BookPlayGroundVC")as! BookPlayGroundVC
+                cont.FilterType = ""
                 self.present(cont, animated: true, completion: nil)
             }
             else if indexPath.row == 6 {
                 bookingplayground = true
                 let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
                 let cont = storyBoard.instantiateViewController(withIdentifier: "BookPlayGroundVC")as! BookPlayGroundVC
+                cont.FilterType = "None"
                 self.present(cont, animated: true, completion: nil)
             }
             else if indexPath.row == 7{

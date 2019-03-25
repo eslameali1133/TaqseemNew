@@ -26,6 +26,7 @@ open class APIConstants {
     static let GetPlayer = SERVER_URL + "players"
     static let Filter = SERVER_URL + "filter"
     static let AddMatch = SERVER_URL + "add-match"
+    static let MyMatchs = SERVER_URL + "my-matches"
     
     //owner
     static let GetGround = SERVER_URL + "owner/ground"

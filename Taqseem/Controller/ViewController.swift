@@ -29,6 +29,7 @@ class ViewController: UIViewController {
     @IBAction func playnow_btn(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
         let cont = storyBoard.instantiateViewController(withIdentifier: "BookPlayGroundVC")as! BookPlayGroundVC
+        cont.FilterType = ""
         self.present(cont, animated: true, completion: nil)
     }
     
@@ -48,6 +49,7 @@ class ViewController: UIViewController {
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
         let cont = storyBoard.instantiateViewController(withIdentifier: "BookPlayGroundVC")as! BookPlayGroundVC
+        cont.FilterType = "None"
         self.present(cont, animated: true, completion: nil)
     }
     
