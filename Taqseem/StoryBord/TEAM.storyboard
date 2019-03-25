@@ -506,9 +506,6 @@
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lL7-1X-E3l">
                                                                     <rect key="frame" x="-5" y="0.0" width="35" height="88.5"/>
-                                                                    <connections>
-                                                                        <action selector="btnDelete:" destination="9fI-m1-2qb" eventType="touchUpInside" id="Aun-Iv-luw"/>
-                                                                    </connections>
                                                                 </button>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dustbin" translatesAutoresizingMaskIntoConstraints="NO" id="CC6-a3-I5G">
                                                                     <rect key="frame" x="0.0" y="32" width="25" height="25"/>
@@ -559,6 +556,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="BtnDelete" destination="lL7-1X-E3l" id="bJ3-FN-RhN"/>
                                             <outlet property="lblPlayerName" destination="jZu-xc-VEu" id="MET-1a-PrQ"/>
                                         </connections>
                                     </tableViewCell>

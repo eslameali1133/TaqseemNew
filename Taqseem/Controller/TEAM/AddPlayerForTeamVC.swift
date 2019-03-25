@@ -43,7 +43,7 @@ class AddPlayerForTeamVC: UIViewController {
     @IBAction func ADD_btn(_ sender: Any) {
         if validation(){
             Add()
-            fillData()
+           
         }
         addViewplayer.isHidden = true
     }
@@ -105,6 +105,36 @@ func Add() {
     AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
         http.requestWithBody(url: APIConstants.AddMember, method: .post, parameters: params, tag: 1, header: headers)
     }
+    
+    
+    @objc func removeService(_ sender:UIButton){
+        
+        
+  let MemberIndex = sender.tag
+       print(items[MemberIndex]._PlayerId)
+        let AccessToken = UserDefaults.standard.string(forKey: "access_token")!
+        let token_type = UserDefaults.standard.string(forKey: "token_type")!
+        
+        let params = [
+            
+            "member_id":items[MemberIndex]._PlayerId
+            
+            ] as [String: Any]
+        
+        let headers = [
+            "Accept-Type": "application/json" ,
+            "Content-Type": "application/json" ,
+            "Authorization": "\(token_type) \(AccessToken)"
+        ]
+        
+        
+        AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
+        http.requestWithBody(url: APIConstants.DeleteMember, method: .post, parameters: params, tag: 3 , header: headers)
+   
+    }
+    
+    
+    
 }
 
 extension AddPlayerForTeamVC: HttpHelperDelegate {
@@ -127,6 +157,7 @@ extension AddPlayerForTeamVC: HttpHelperDelegate {
                 print(AppCommon.sharedInstance.getJSON("Playerdata")["phone"].stringValue)
                 
                 Loader.showSuccess(message: message.stringValue)
+                 self.fillData()
             } else {
                 
                 Loader.showError(message: message.stringValue )
@@ -159,6 +190,23 @@ extension AddPlayerForTeamVC: HttpHelperDelegate {
                 Loader.showError(message: message.stringValue)
             }
             
+        } else if Tag == 3 {
+            print(dictResponse)
+            AppCommon.sharedInstance.dismissLoader(self.view)
+            let json = JSON(dictResponse)
+            print(json)
+            let status =  json["status"]
+            let message = json["message"]
+          
+            
+            if status.stringValue == "1" {
+              
+                Loader.showSuccess(message: message.stringValue)
+                self.fillData()
+            } else {
+                
+                Loader.showError(message: message.stringValue )
+            }
         }
         
     }
@@ -183,6 +231,9 @@ extension AddPlayerForTeamVC :UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCell", for: indexPath) as! PlayerCell
         cell.lblPlayerName.text = items[indexPath.row]._PlayerName
         cell.PlayerID = items[indexPath.row]._PlayerId
+        
+        cell.BtnDelete.tag = indexPath.row
+        cell.BtnDelete.addTarget(self, action: #selector(self.removeService(_:)), for: .touchUpInside)
         return cell
     }
     

@@ -12,6 +12,7 @@ import Alamofire
 class PlayerCell: UITableViewCell {
     var PlayerID = ""
     @IBOutlet weak var lblPlayerName: UILabel!
+     @IBOutlet weak var BtnDelete: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,7 +25,7 @@ class PlayerCell: UITableViewCell {
     }
 
     @IBAction func btnDelete(_ sender: Any) {
-        DeleteMember()
+//        DeleteMember()
     }
     
     
@@ -32,7 +33,7 @@ class PlayerCell: UITableViewCell {
     {
         let AccessToken = UserDefaults.standard.string(forKey: "access_token")!
         let token_type = UserDefaults.standard.string(forKey: "token_type")!
-        
+         print(AccessToken)
        // let params = ["member_id":PlayerID] as [String: Any]
         
 //        let headers = [
@@ -41,6 +42,7 @@ class PlayerCell: UITableViewCell {
 //            "Authorization": "\(token_type) \(AccessToken)"
 //        ]
 
+        print(PlayerID)
         guard let urll = URL(string: APIConstants.DeleteMember) else {
             print("error url")
             return

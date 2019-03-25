@@ -45,7 +45,8 @@ class ChooseLocationToShareViewController: UIViewController, CLLocationManagerDe
     var lng = ""
     var address = ""
     var shareLocationDelegate: shareLocationDelegate?
-    
+    var shareLocationDelegateFilt: shareLocationDelegateFilter?
+    var isfilter = false
     override func viewDidLoad() {
         super.viewDidLoad()
       locationManager.requestWhenInUseAuthorization()
@@ -170,7 +171,13 @@ class ChooseLocationToShareViewController: UIViewController, CLLocationManagerDe
     @IBAction func confirmMyLocationBtn(_ sender: UIButton) {
         if lat != "" && lng != "" {
             print("lat: \(lat)")
+            if isfilter == true
+            {
+                isfilter = false
+                self.shareLocationDelegateFilt?.shareLocationDelegate(lat: lat, Long: lng)
+            }else{
             self.shareLocationDelegate?.shareLocationDelegate(lat: lat, Long: lng)
+            }
 //            self.dismiss(animated: false, completion: nil)
            self.dismiss(animated: true, completion: nil)
         }else {
@@ -181,7 +188,13 @@ class ChooseLocationToShareViewController: UIViewController, CLLocationManagerDe
     @IBAction func confirmSearchLocationBtn(_ sender: UIButton) {
         if latu != "" && long != "" {
             print("lat: \(latu)")
-            self.shareLocationDelegate?.shareLocationDelegate(lat: latu, Long: long)
+            if isfilter == true
+            {
+                 isfilter = false
+                self.shareLocationDelegateFilt?.shareLocationDelegate(lat: lat, Long: lng)
+            }else{
+                self.shareLocationDelegate?.shareLocationDelegate(lat: lat, Long: lng)
+            }
 //            self.dismiss(animated: false, completion: nil)
         self.dismiss(animated: true, completion: nil)
         }else {
