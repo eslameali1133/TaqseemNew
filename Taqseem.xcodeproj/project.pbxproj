@@ -146,6 +146,7 @@
 		18F62628223159D300030773 /* RequestListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F62626223159D200030773 /* RequestListVC.swift */; };
 		41FE955ED41EF25E4F2FA4A6 /* Pods_Taqseem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2329402FA44DE7A7CCCDD63D /* Pods_Taqseem.framework */; };
 		F408E2BA224391AA00D7299A /* MatchDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F408E2B9224391A900D7299A /* MatchDetailsModel.swift */; };
+		F43ADA582248FED50041A60E /* MatchsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43ADA572248FED50041A60E /* MatchsModel.swift */; };
 		F445BF98221C32F600B1A18E /* Match.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F445BF97221C32F600B1A18E /* Match.storyboard */; };
 		F445BF9A221C4A2E00B1A18E /* AddMatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445BF99221C4A2E00B1A18E /* AddMatchVC.swift */; };
 		F4689F95221DF8F8002EC897 /* PlayerTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4689F94221DF8F8002EC897 /* PlayerTableVC.swift */; };
@@ -316,6 +317,7 @@
 		F428857E2236A7B300E85C9C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		F428857F2236A7B400E85C9C /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		F42885802236ABD500E85C9C /* Taqseem-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Taqseem-Bridging-Header.h"; sourceTree = "<group>"; };
+		F43ADA572248FED50041A60E /* MatchsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchsModel.swift; sourceTree = "<group>"; };
 		F445BF97221C32F600B1A18E /* Match.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Match.storyboard; sourceTree = "<group>"; };
 		F445BF99221C4A2E00B1A18E /* AddMatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMatchVC.swift; sourceTree = "<group>"; };
 		F4689F94221DF8F8002EC897 /* PlayerTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTableVC.swift; sourceTree = "<group>"; };
@@ -778,15 +780,10 @@
 				F4705B36223E5AA000E2424F /* PlayerModel.swift */,
 				F4FA3B48223F8FD900ABE719 /* PlaygroundModel.swift */,
 				F4FA3B4A223FA9B500ABE719 /* RequestListModel.swift */,
-
 				18A731052242974000287947 /* CountryModel.swift */,
-
 				F499B4E722414E9C00F52D69 /* RequestPlayerModel.swift */,
-
 				F408E2B9224391A900D7299A /* MatchDetailsModel.swift */,
-
-
-
+				F43ADA572248FED50041A60E /* MatchsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1103,6 +1100,7 @@
 				186023FB222D426700B598F2 /* OwnerHomeVC.swift in Sources */,
 				18BDD5B222234C6000B98753 /* PlayerNormalVC.swift in Sources */,
 				18BCB20E2227E1C000ABB59E /* MYTEAMVC.swift in Sources */,
+				F43ADA582248FED50041A60E /* MatchsModel.swift in Sources */,
 				18BDD5A02222922500B98753 /* ChoosePlaygroundVC.swift in Sources */,
 				18A845FE222EEE3A00D13EED /* ADDMatchVC.swift in Sources */,
 				F497E0DA2222D8B600060327 /* NearMeVC.swift in Sources */,
