@@ -12,7 +12,25 @@ class MyMatchCell: UITableViewCell {
 
      @IBOutlet weak var viewcontent: UIView!
     
-    @IBOutlet weak var lbl_nq: UILabel!
+    @IBOutlet weak var lblTime: UILabel!
+    @IBOutlet weak var lblDate: UILabel!
+    @IBOutlet weak var imgGround: customImageView!{
+        didSet{
+            
+        }
+    }
+    @IBOutlet weak var imgUser: customImageView!{
+        didSet{
+            imgUser.layer.cornerRadius =  imgUser.frame.width / 2
+            imgUser.layer.borderWidth = 1
+            //            ProfileImageView.layer.borderColor =  UIColor(red: 0, green: 156, blue: 158, alpha: 1) as! CGColor
+            
+            imgUser.clipsToBounds = true
+            
+        }
+    }
+    @IBOutlet weak var lblUserNAme: UILabel!
+    @IBOutlet weak var lblGroundName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

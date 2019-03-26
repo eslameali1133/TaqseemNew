@@ -613,7 +613,7 @@
                                     <color key="textColor" red="0.0" green="0.61176470589999998" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 1684" translatesAutoresizingMaskIntoConstraints="NO" id="XDe-hh-y1O" customClass="AMCircleImageView" customModule="Taqseem" customModuleProvider="target">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 1684" translatesAutoresizingMaskIntoConstraints="NO" id="XDe-hh-y1O" customClass="customImageView" customModule="Taqseem" customModuleProvider="target">
                                     <rect key="frame" x="126.5" y="43" width="120" height="120"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="120" id="DIF-8Z-cau"/>

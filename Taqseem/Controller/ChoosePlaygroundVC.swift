@@ -61,7 +61,7 @@ extension ChoosePlaygroundVC :UITableViewDelegate,UITableViewDataSource{
         cell.lblCapacity.text = "\(items[indexPath.row]._capacity) Players"
         cell.lblName.text = items[indexPath.row]._name
         cell.lblPrice.text = "\(items[indexPath.row]._price) SAL/h"
-        cell.lblLocation.text = ""
+//        cell.lblLocation.text = ""
         cell.imgGround.loadimageUsingUrlString(url: items[indexPath.row]._image)
         
         cell.items = items[indexPath.row]
