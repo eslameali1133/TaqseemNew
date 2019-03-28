@@ -107,6 +107,7 @@
                                                                             <rect key="frame" x="10" y="6.5" width="96" height="20"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <color key="tintColor" red="0.97647058823529409" green="0.76078431372549016" blue="0.086274509803921567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <userDefinedRuntimeAttributes>
                                                                                 <userDefinedRuntimeAttribute type="number" keyPath="starSize">
                                                                                     <real key="value" value="20"/>
@@ -848,7 +849,6 @@
                                             </userDefinedRuntimeAttributes>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="lbl_nq" destination="ZqI-dm-res" id="Xha-sW-Vj3"/>
                                             <outlet property="viewcontent" destination="Tjy-wq-h24" id="ndS-g2-aPL"/>
                                         </connections>
                                     </tableViewCell>
@@ -910,7 +910,7 @@
                                                 <color key="tintColor" red="0.64482152459999997" green="0.68071097140000003" blue="0.24898940319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" image="pencil"/>
                                                 <connections>
-                                                    <segue destination="EDw-Ca-TLv" kind="show" id="0hH-ae-atD"/>
+                                                    <action selector="btn_Edit:" destination="7MZ-QB-tT7" eventType="touchUpInside" id="efK-we-KFM"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="edit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIf-pC-2CF">
@@ -1955,8 +1955,8 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kfk-g4-sY2" customClass="AMUIView" customModule="Taqseem" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="158.5" height="50"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Palayground 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htj-An-30K">
-                                                                <rect key="frame" x="15" y="15" width="111" height="20"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select ground" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htj-An-30K">
+                                                                <rect key="frame" x="15" y="15" width="112" height="20"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -2088,8 +2088,8 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ffm-fs-DVg" customClass="AMUIView" customModule="Taqseem" customModuleProvider="target">
                                                         <rect key="frame" x="178.5" y="0.0" width="159" height="50"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E8H-0s-A0i">
-                                                                <rect key="frame" x="19" y="15" width="24" height="20"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E8H-0s-A0i">
+                                                                <rect key="frame" x="19" y="15" width="68.5" height="20"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -2100,7 +2100,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7rz-Vi-CKK">
                                                                 <rect key="frame" x="0.0" y="0.0" width="159" height="50"/>
                                                                 <connections>
-                                                                    <action selector="btnTo:" destination="y2p-Ot-uFo" eventType="touchUpInside" id="epd-ge-LSp"/>
+                                                                    <action selector="btnDur:" destination="y2p-Ot-uFo" eventType="touchUpInside" id="4bM-Sm-heh"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -2135,7 +2135,7 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="30" maxY="0.0"/>
                                         <state key="normal" title="ADD MATCH" image="Group 1607"/>
                                         <connections>
-                                            <action selector="DismissView:" destination="y2p-Ot-uFo" eventType="touchUpInside" id="HQO-pQ-gFD"/>
+                                            <action selector="AddMatch:" destination="y2p-Ot-uFo" eventType="touchUpInside" id="5gl-ie-hpQ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2500,7 +2500,6 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDu-6z-Vrk">
                                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="53"/>
                                                                 <connections>
-                                                                    <action selector="DismissView:" destination="qjv-C0-CkA" eventType="touchUpInside" id="PcY-bh-gNh"/>
                                                                     <action selector="btnAccept:" destination="qjv-C0-CkA" eventType="touchUpInside" id="sjM-Ud-OKk"/>
                                                                 </connections>
                                                             </button>
@@ -3286,7 +3285,6 @@
         <image name="photo-camera" width="50" height="40.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="I7j-ud-YqK"/>
         <segue reference="hiZ-Du-7tT"/>
     </inferredMetricsTieBreakers>
 </document>

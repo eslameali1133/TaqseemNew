@@ -32,6 +32,17 @@ class OwnerPLAYgroundInfoVC: UIViewController {
         FillData()
     }
     
+    
+    @IBAction func btn_Edit(_ sender: Any) {
+      
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Owner", bundle:nil)
+        let cont = storyBoard.instantiateViewController(withIdentifier: "AddPlayGroundVC")as! AddPlayGroundVC
+isEidtplayground = true
+        self.show(cont, sender: true)
+        
+    }
+    
     func FillData(){
        lblDayes.text = "Sat" ///////
         lblPrice.text = items?._price
