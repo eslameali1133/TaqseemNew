@@ -11,6 +11,7 @@ import SwiftyJSON
 class MyMatchVC: UIViewController {
  var comeFrom = ""
     var item : PlaygroundModelClass!
+    var NearItems : NearPlayGroundModelClass!
     var match : MatchsModelClass!
     
     @IBOutlet weak var lblGroundName: UILabel!
@@ -51,7 +52,6 @@ class MyMatchVC: UIViewController {
         btn_join.isHidden = true
         if comedromneartoplay == true
         {
-           comedromneartoplay = false
               btn_join.isHidden = false
             lbl_title.text = "NEAR ME"
         }
@@ -61,7 +61,12 @@ class MyMatchVC: UIViewController {
     @IBAction func btnPlayer(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Owner", bundle:nil)
         let cont = storyBoard.instantiateViewController(withIdentifier: "OwnerRequestPlayersVC")as! OwnerRequestPlayersVC
+        if comedromneartoplay == true {
+            cont.ReservationNum = NearItems._reservation_no
+           
+        }else {
         cont.ReservationNum = match._reservation_no
+        }
         self.present(cont, animated: true, completion: nil)
 
     }
@@ -80,7 +85,20 @@ class MyMatchVC: UIViewController {
     }
     
     func fillData() {
-    
+        if comedromneartoplay == true {
+            lblTime.text = "\(NearItems._time)"
+            lblGroundName.text = NearItems._name
+            lblDate.text = NearItems._date
+            lblSalary.text = "\(NearItems._price) SAR"
+            lblAddress.text = NearItems._address
+            lblCapacity.text = "\(NearItems._capacity) Players"
+            lblDuration.text = "\(NearItems._duration) Hours"
+            lblUserName.isHidden = true
+            imgUser.isHidden = true
+            
+             GNearItems = NearItems
+            
+        }else {
         lblTime.text = "\(match._time)"
         lblGroundName.text = match._ground_name
         lblDate.text = match._date
@@ -93,7 +111,7 @@ class MyMatchVC: UIViewController {
         {
         imgUser.loadimageUsingUrlString(url: match._photo)
         }
-    }
+        }}
    
 
 }

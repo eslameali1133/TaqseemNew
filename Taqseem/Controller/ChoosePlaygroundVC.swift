@@ -11,6 +11,7 @@ import UIKit
 class ChoosePlaygroundVC: UIViewController {
 
     var items = [PlaygroundModelClass]()
+    var NearItems = [NearPlayGroundModelClass]()
     var MatchDetais : MatchDetailsModelClass!
     @IBOutlet weak var TBL_Background: UITableView!
     
@@ -51,13 +52,28 @@ class ChoosePlaygroundVC: UIViewController {
 }
 extension ChoosePlaygroundVC :UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  items.count
+        if comedromneartoplay == true {
+            
+            return  NearItems.count
+        }else{
         
+        return  items.count
+        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChoosebackgroundCell", for: indexPath) as! ChoosebackgroundCell
         cell.contentView.dropShadow()
-        
+        if comedromneartoplay == true {
+            cell.lblCapacity.text = "\(NearItems[indexPath.row]._capacity) Players"
+            cell.lblName.text = NearItems[indexPath.row]._name
+            cell.lblPrice.text = "\(NearItems[indexPath.row]._price) SAL/h"
+            //        cell.lblLocation.text = ""
+            cell.imgGround.loadimageUsingUrlString(url: NearItems[indexPath.row]._image)
+            
+            cell.NearItems = NearItems[indexPath.row]
+           // cell.MatchDetails = MatchDetais
+            
+        }else {
         cell.lblCapacity.text = "\(items[indexPath.row]._capacity) Players"
         cell.lblName.text = items[indexPath.row]._name
         cell.lblPrice.text = "\(items[indexPath.row]._price) SAL/h"
@@ -66,6 +82,7 @@ extension ChoosePlaygroundVC :UITableViewDelegate,UITableViewDataSource{
         
         cell.items = items[indexPath.row]
         cell.MatchDetails = MatchDetais
+        }
         return cell
     }
     

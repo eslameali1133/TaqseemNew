@@ -24,7 +24,7 @@ class BookPlayGroundVC: UIViewController , UIPickerViewDelegate , UIPickerViewDa
     var Duration = [0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10]
     var TeamCapacity = [0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 , 11 , 12]
     
-    
+    var PTime = ""
     @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var lblCapacity: UILabel!
     @IBOutlet weak var lblDuration: UILabel!
@@ -76,6 +76,7 @@ class BookPlayGroundVC: UIViewController , UIPickerViewDelegate , UIPickerViewDa
         
         MatchDetails = MatchDetailsModelClass(
             Time: lblTime.text!,
+            PTime: PTime,
             Date: lblDate.text!,
             Duration: lblDuration.text!,
             Capacity:lblCapacity.text!,
@@ -134,11 +135,14 @@ class BookPlayGroundVC: UIViewController , UIPickerViewDelegate , UIPickerViewDa
                 dateformatter.dateFormat = "ss"
                 //  let Sec = dateformatter.string(from: datee!)
                 let Time24 = "\(hou):\(Min):00"
+                PTime = "\(hou):\(Min)"
                 lblTime.text = Time24
             }else {
                 
                 dateformatter.dateFormat = "HH:mm:00"
                 let Time24 = dateformatter.string(from : datee!)
+                dateformatter.dateFormat = "HH:mm"
+                PTime = dateformatter.string(from : datee!)
                 lblTime.text = Time24
             }
         }else {

@@ -1,24 +1,16 @@
 //
-//  MyMatchCell.swift
+//  MyPMatchCellTableViewCell.swift
 //  Taqseem
 //
-//  Created by Husseinomda16 on 2/20/19.
+//  Created by Husseinomda16 on 3/27/19.
 //  Copyright © 2019 OnTime. All rights reserved.
 //
 
 import UIKit
 
-class MyMatchCell: UITableViewCell {
+class MyPMatchCellTableViewCell: UITableViewCell {
 
-     @IBOutlet weak var viewcontent: UIView!
-    
-    @IBOutlet weak var lblTime: UILabel!
-    @IBOutlet weak var lblDate: UILabel!
-    @IBOutlet weak var imgGround: customImageView!{
-        didSet{
-            
-        }
-    }
+    @IBOutlet weak var viewContent: UIView!
     @IBOutlet weak var imgUser: customImageView!{
         didSet{
             imgUser.layer.cornerRadius =  imgUser.frame.width / 2
@@ -29,13 +21,17 @@ class MyMatchCell: UITableViewCell {
             
         }
     }
-
+    @IBOutlet weak var imgGround: customImageView!{
+        didSet {
+            
+        }
+    }
+    @IBOutlet weak var lblTime: UILabel!
+    @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var lblUName: UILabel!
-    @IBOutlet weak var lblGroundName: UILabel!
-    
+    @IBOutlet weak var lblUserName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        viewcontent.dropShadow()
         // Initialization code
     }
 
@@ -44,6 +40,5 @@ class MyMatchCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 
 }

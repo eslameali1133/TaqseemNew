@@ -137,7 +137,7 @@ extension MyMatchesTableVC: HttpHelperDelegate {
             cell.lblDate.text = Matchs[indexPath.row]._date
             cell.lblGroundName.text = Matchs[indexPath.row]._ground_name
             cell.lblTime.text = Matchs[indexPath.row]._time
-            cell.lblUserNAme.text = Matchs[indexPath.row]._user_name
+            cell.lblUName.text = Matchs[indexPath.row]._user_name
             print(Matchs[indexPath.row]._photo)
             if Matchs[indexPath.row]._photo != "" {
             cell.imgUser.loadimageUsingUrlString(url: Matchs[indexPath.row]._photo)
