@@ -10,10 +10,11 @@ import UIKit
 
 var GMatchDetails : MatchDetailsModelClass!
 var Gitem : PlaygroundModelClass!
-
+var GNearItems : NearPlayGroundModelClass!
 class playGroundDetailsVC: UIViewController {
     var MatchDetails : MatchDetailsModelClass!
     var item : PlaygroundModelClass!
+    var NearItems : NearPlayGroundModelClass!
     @IBOutlet weak var Constain_IconImge_Height: NSLayoutConstraint!
     @IBOutlet weak var Constain_IconImge_Widhtt: NSLayoutConstraint!
     
@@ -55,6 +56,17 @@ class playGroundDetailsVC: UIViewController {
     func fillData(){
         
         lblLocation.text = ""
+        if comedromneartoplay == true {
+            lblName.text = NearItems._name
+            lblSalary.text = "\(NearItems._price) SAR/h"
+            lblAddress.text = NearItems._address
+            
+            lblCapacity.text = "\(NearItems._capacity) Players"
+            lblDuration.text = "\(NearItems._duration) Hours"
+            lblTime.text = NearItems._time
+            lblDate.text = NearItems._date
+            GNearItems = NearItems
+        }else {
         lblName.text = item._name
         lblSalary.text = "\(item._price) SAR/h"
         lblAddress.text = item._address
@@ -66,7 +78,7 @@ class playGroundDetailsVC: UIViewController {
         
         Gitem = item
         GMatchDetails = MatchDetails
-        
+        }
     }
 
 }

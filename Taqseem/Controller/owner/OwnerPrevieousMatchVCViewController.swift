@@ -1,29 +1,28 @@
 //
-//  OwnerNextMatchVC.swift
+//  OwnerPrevieousMatchVCViewController.swift
 //  Taqseem
 //
-//  Created by apple on 3/4/19.
+//  Created by Husseinomda16 on 3/26/19.
 //  Copyright © 2019 OnTime. All rights reserved.
 //
 
 import UIKit
 import SwiftyJSON
 import Alamofire
-class OwnerNextMatchVC: UIViewController{
+class OwnerPrevieousMatchVCViewController: UIViewController {
         var http = HttpHelper()
-        var nextR = "get-next-requests"
+        var previousR = "get-previous-requests"
         var Matchs = [MatchsModelClass]()
-     //   var items : PlaygroundModelClass!
-  
-    @IBOutlet weak var tblMyMatch: UITableView!
+        var items : PlaygroundModelClass!
+    
+    @IBOutlet weak var tblPrevMatch: UITableView!
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        tblMyMatch.reloadData()
-        tblMyMatch.reloadData()
-        tblMyMatch.dataSource = self
-        tblMyMatch.delegate = self
-        tblMyMatch.changeView()
+        tblPrevMatch.reloadData()
+        tblPrevMatch.reloadData()
+        tblPrevMatch.dataSource = self
+        tblPrevMatch.delegate = self
+        tblPrevMatch.changeView()
         http.delegate = self
         FillData()
         // Do any additional setup after loading the view.
@@ -35,12 +34,12 @@ class OwnerNextMatchVC: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         print(Matchs.count)
-         tblMyMatch.reloadData()
+        tblPrevMatch.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         print(Matchs.count)
-        tblMyMatch.reloadData()
+        tblPrevMatch.reloadData()
     }
     
 func FillData() {
@@ -60,14 +59,12 @@ func FillData() {
     ]
     
     AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
-    http.requestWithBody(url: "\(APIConstants.Owner)\(nextR)", method: .post, parameters: params, tag: 1, header: headers)
+    http.requestWithBody(url: "\(APIConstants.Owner)\(previousR)", method: .post, parameters: params, tag: 1, header: headers)
 
     
 }
-
-
 }
-extension OwnerNextMatchVC: HttpHelperDelegate {
+extension OwnerPrevieousMatchVCViewController: HttpHelperDelegate {
     func receivedResponse(dictResponse: Any, Tag: Int) {
         
         if Tag == 1 {
@@ -105,7 +102,7 @@ extension OwnerNextMatchVC: HttpHelperDelegate {
                     Matchs.append(obj)
                 }
                 
-              tblMyMatch.reloadData()
+                tblPrevMatch.reloadData()
                 //Loader.showSuccess(message: message.stringValue)
                 
                 
@@ -131,19 +128,19 @@ extension OwnerNextMatchVC: HttpHelperDelegate {
     }
 }
 
-
-extension OwnerNextMatchVC :UITableViewDelegate,UITableViewDataSource{
-  
+extension OwnerPrevieousMatchVCViewController :UITableViewDelegate,UITableViewDataSource{
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return  Matchs.count
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyMatchCell", for: indexPath) as! MyMatchCell
-        cell.viewcontent.dropShadow()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyPMatchCellTableViewCell", for: indexPath) as! MyPMatchCellTableViewCell
+        cell.viewContent.dropShadow()
+        print(Matchs[indexPath.row]._date)
         cell.lblDate.text = Matchs[indexPath.row]._date
-        cell.lblGroundName.text = Matchs[indexPath.row]._ground_name
+        cell.lblUserName.text = Matchs[indexPath.row]._ground_name
         cell.lblTime.text = Matchs[indexPath.row]._time
         cell.lblUName.text = Matchs[indexPath.row]._user_name
         print(Matchs[indexPath.row]._photo)
@@ -163,7 +160,7 @@ extension OwnerNextMatchVC :UITableViewDelegate,UITableViewDataSource{
         let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
         let cont = storyBoard.instantiateViewController(withIdentifier: "MyMatchVC")as! MyMatchVC
         cont.match = Matchs[indexPath.row]
-       // cont.item =
+        //cont.item = items
         cont.title = "MATCH DETAILS"
         self.present(cont, animated: true, completion: nil)
         print(123)
@@ -180,4 +177,5 @@ extension OwnerNextMatchVC :UITableViewDelegate,UITableViewDataSource{
     
     
 }
+
 

@@ -6,8 +6,10 @@
 
 
 import UIKit
-
+var Git : PlaygroundModelClass!
 class OwnerMatchDetailsVC: UIViewController {
+    
+    var Matchs = [MatchsModelClass]()
     var items : PlaygroundModelClass!
     @IBOutlet weak var btn_next: UIButton!
     @IBOutlet weak var btn_previc: UIButton!
@@ -22,6 +24,7 @@ class OwnerMatchDetailsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Git = items
         Next.isHidden = false
         Previce.isHidden = true
         info.isHidden = true
@@ -29,6 +32,7 @@ class OwnerMatchDetailsVC: UIViewController {
     }
 
     @IBAction func btnnextAC(_ sender: Any) {
+        
         Next.isHidden = false
         Previce.isHidden = true
         info.isHidden = true
@@ -40,6 +44,7 @@ class OwnerMatchDetailsVC: UIViewController {
         
     }
     @IBAction func btnPreviceAC(_ sender: Any) {
+       
         Next.isHidden = true
         Previce.isHidden = false
         info.isHidden = true
@@ -64,5 +69,4 @@ class OwnerMatchDetailsVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-   
 }

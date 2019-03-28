@@ -11,6 +11,10 @@ import SwiftyJSON
 var bookingplayground = false
 class PaidVC: UIViewController {
 
+    var Pground_id = ""
+    var Pdate = ""
+    var Ptime = ""
+    var Pduration = ""
     var http = HttpHelper()
     @IBOutlet weak var VisaView: UIView!
     @IBOutlet weak var cashView: UIView!
@@ -62,15 +66,24 @@ class PaidVC: UIViewController {
         
         let AccessToken = UserDefaults.standard.string(forKey: "access_token")!
         let token_type = UserDefaults.standard.string(forKey: "token_type")!
-        
+        if comedromneartoplay == true {
+             Pground_id = GNearItems._id
+             Pdate = GNearItems._date
+             Ptime = GNearItems._time
+             Pduration = GNearItems._duration
+        }else {
+             Pground_id = Gitem._id
+             Pdate = GMatchDetails._Date
+             Ptime = GMatchDetails._Time
+             Pduration = GMatchDetails._Duration
+        }
         let params = [
-            "ground_id": Gitem._id ,
-            "date" : GMatchDetails._Date ,
-            "time" : GMatchDetails._Time ,
-            "duration" : GMatchDetails._Duration ,
+            "ground_id": Pground_id ,
+            "date" : Pdate ,
+            "time" : Ptime ,
+            "duration" : Pduration ,
             "type = all if you want reserve all ground if not remove this row" : "all"
             ] as [String: Any]
-        
         let headers = [
             "Accept-Type": "application/json" ,
             "Content-Type": "application/json" ,
@@ -97,7 +110,7 @@ extension PaidVC: HttpHelperDelegate {
             
             if status.stringValue == "1" {
                 Loader.showSuccess(message: message.stringValue)
-                
+                comedromneartoplay = false
                     let delegate = UIApplication.shared.delegate as! AppDelegate
                     //  let storyboard = UIStoryboard(name: "StoryBord", bundle: nil)
                     let storyboard = UIStoryboard.init(name: "Player", bundle: nil); delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
@@ -105,6 +118,7 @@ extension PaidVC: HttpHelperDelegate {
                 
                 let message = json["message"]
                 Loader.showError(message: message.stringValue )
+                  self.dismiss(animated: true, completion: nil)
             }
         }
         

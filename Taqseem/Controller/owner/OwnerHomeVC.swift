@@ -21,6 +21,7 @@ class OwnerHomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        comedromneartoplay = false
         http.delegate = self
         TBL_Playground.dataSource = self
         TBL_Playground.delegate = self
@@ -131,7 +132,7 @@ extension OwnerHomeVC :UITableViewDelegate,UITableViewDataSource{
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Owner", bundle:nil)
         let cont = storyBoard.instantiateViewController(withIdentifier: "OwnerMatchDetailsVC")as! OwnerMatchDetailsVC
-        
+        cont.items = items[indexPath.row]
         GlobalGroundDetails = items[indexPath.row]
         self.present(cont, animated: true, completion: nil)
     }

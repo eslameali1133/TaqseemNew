@@ -32,6 +32,7 @@ class FavaVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         MatchDetais = MatchDetailsModelClass(
             Time: "",
+            PTime: "",
             Date: "",
             Duration: "",
             Capacity:"",

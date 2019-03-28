@@ -24,13 +24,16 @@ open class APIConstants {
     static let GetMember = SERVER_URL + "get-member"
     static let DeleteMember = SERVER_URL + "delete-team_member"
     static let GetPlayer = SERVER_URL + "players"
+    static let PlayersMatch = SERVER_URL + "players-match"
     static let Filter = SERVER_URL + "filter"
+    static let NearMe = SERVER_URL + "near-me"
     static let AddMatch = SERVER_URL + "add-match"
     static let MyMatchs = SERVER_URL + "my-matches"
     static let Favorits = SERVER_URL + "favorite"
     static let AddToFav = SERVER_URL + "add-favorite"
     //owner
     static let GetGround = SERVER_URL + "owner/ground"
+    static let Owner = SERVER_URL + "owner/"
     static let GetRequest = SERVER_URL + "owner/get-requests"
     static let ChangeStatus = SERVER_URL + "owner/change-status"
    
