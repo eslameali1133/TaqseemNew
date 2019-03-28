@@ -123,7 +123,7 @@ extension RequestListVC: HttpHelperDelegate {
             } else if items[indexPath.row]._reservation_status == "REJECTED" {
                 cell.btnStatus.backgroundColor = UIColor.red
             }else {
-                cell.btnStatus.backgroundColor = UIColor.yellow
+                cell.btnStatus.backgroundColor = UIColor.hexColor(string:"#F9C216")
             }
             return cell
         }

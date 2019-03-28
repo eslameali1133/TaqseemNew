@@ -19,6 +19,11 @@ class customImageView: UIImageView{
         
         let Url = URL(string: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
         //            URL(string:url)
+        if Url == nil{
+            print("Error : Url is Emty")
+            self.image = #imageLiteral(resourceName: "officePlaceholder-1")
+            return
+        }
         let urlRequest = URLRequest(url: Url!)
         
         image = #imageLiteral(resourceName: "officePlaceholder-1")

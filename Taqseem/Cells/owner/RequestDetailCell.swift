@@ -27,7 +27,13 @@ class RequestDetailCell: UITableViewCell {
         }
     }
     @IBOutlet weak var lblDate: UILabel!
-    @IBOutlet weak var btnStatus: UIButton!
+    @IBOutlet weak var btnStatus: UIButton!{
+        didSet{
+            btnStatus.layer.cornerRadius = 4
+            btnStatus.clipsToBounds = true
+            
+        }
+    }
     @IBOutlet weak var lblCapacity: UILabel!
     @IBOutlet weak var lblPlayerName: UILabel!
     @IBOutlet weak var lblGroundName: UILabel!
