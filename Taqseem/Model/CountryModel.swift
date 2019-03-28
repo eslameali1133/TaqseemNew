@@ -38,6 +38,25 @@ class AreaModelClass: NSObject {
     }
 }
 
+
+class OwnerPlaygroundModelClass: NSObject {
+    var id = ""
+    var name_en = ""
+    var name_ar = ""
+    
+    
+    init(id:String , name_en : String , name_ar : String) {
+        self.id = id
+        self.name_en = name_en
+        self.name_ar = name_ar
+       
+        
+    }
+}
+
+
+
+
 class DayModel: NSObject {
     var index = 0
     var name = ""

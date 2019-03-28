@@ -291,6 +291,7 @@ extension BookPlayGroundVC: HttpHelperDelegate {
             let message = json["message"]
             
             if status.stringValue == "1" {
+                items.removeAll()
                 let result =  json["data"].arrayValue
                 for json in result{
                     let obj = PlaygroundModelClass(

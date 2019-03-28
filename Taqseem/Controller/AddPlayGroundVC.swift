@@ -9,16 +9,18 @@
 import UIKit
 import  Alamofire
 import SwiftyJSON
+ var isEidtplayground = false
 protocol shareLocationDelegate {
     func shareLocationDelegate(lat: String, Long: String)
 }
 class AddPlayGroundVC: UIViewController  , UIPickerViewDelegate , UIPickerViewDataSource{
-   
+     var items = GlobalGroundDetails
   var  daysname = ["sat","sun","mon","tue","wed","thu","fri"]
     var CityArray: [CityModelClass] = [CityModelClass]()
     var AreaArray: [AreaModelClass] = [AreaModelClass]()
     var days:[DayModel] = [DayModel]()
-    
+    var groundid = ""
+   var isEidt = false
     var CityID = ""
     var AreaID = ""
     
@@ -92,7 +94,31 @@ class AddPlayGroundVC: UIViewController  , UIPickerViewDelegate , UIPickerViewDa
          SetupUploadImage()
         http.delegate = self
         loadCityData()
+        
+        
+        if isEidtplayground == true{
+            isEidtplayground = false
+            isEidt = true
+            setDataEidt()
+        }
         // Do any additional setup after loading the view.
+    }
+    
+    
+    func setDataEidt()
+    {
+      
+        txtPrice.text = items?._price
+        lblTo.text = items!._hour_to
+           lblFrom.text = items!._hour_from
+        lblCapacity.text = items?._capacity
+        txtAddress.text = items?._address
+        txtPhoneNum.text = items?._phone
+         txtArabicName.text = items?._name_ar
+         txtEnglishName.text = items?._name_en
+      txtFees.text = items?._cancel_fee
+          txtHours.text = items?._cancelation_time
+        imageProfile.loadimageUsingUrlString(url: (items?._image)!)
     }
     
     func loadCityData(){
@@ -204,7 +230,14 @@ class AddPlayGroundVC: UIViewController  , UIPickerViewDelegate , UIPickerViewDa
         }
     }
     @IBAction func btnAddPlayGround(_ sender: Any) {
+        if isEidt == true
+        {
+            isEidt = false
+            
+            Editlayground()
+        }else{
         Addplayground()
+        }
     }
     
     func configurePicker (){
@@ -633,21 +666,118 @@ extension AddPlayGroundVC {
     }
     
     
+    /////// edit playground
     
-    func converttimeTo24(time: String)->String{
-        print(time)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss a"
-      
-        let date12 = dateFormatter.date(from: time)!
+    func Editlayground() {
+    
+        let AccessToken = UserDefaults.standard.string(forKey: "access_token")!
+        let token_type = UserDefaults.standard.string(forKey: "token_type")!
+        var parameters = [:] as [String: Any]
+        print(AccessToken)
+        let imgdata = self.imageProfile.image!.jpegData(compressionQuality: 0.5)
+        print(AccessToken)
+        let headers: HTTPHeaders = [
+            "Accept" : "application/json",
+            "Content-type": "multipart/form-data",
+            "Authorization": "\(token_type) \(AccessToken)"
+            
+        ]
         
-       dateFormatter.dateFormat = "HH:mm:ss"
-        let date24 = dateFormatter.string(from: date12)
+        parameters = [
+            "name_en" : txtEnglishName.text!,
+            "name_ar" : txtArabicName.text!,
+            "lat" : LatPosition,
+            "lng": LngPosition,
+            "image" :  imgdata!,
+            "price" : txtPrice.text!,
+            "capacity" : lblCapacity.text!,
+            "cancelation_time" : txtHours.text!,
+            "cancel_fee" :txtFees.text!,
+            "address" :txtAddress.text!,
+            "hour_from" : lblFrom.text!,
+            "hour_to" : lblTo.text!,
+            "city_id": Area_id,
+            "phone" : txtPhoneNum.text!,
+            "day[]" : "sun",
+            "ground_id": items!._id
+            
+        ]
         
-        print(date24)
-        
-       return date24
+        print(parameters)
+        Alamofire.upload(
+            multipartFormData: { multipartFormData in
+                for (key,value) in parameters {
+                    if let value = value as? String {
+                        multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
+                    }
+                }
+                
+                if let data = self.imageProfile.image!.jpegData(compressionQuality: 0.5){
+                    multipartFormData.append(data, withName: "image", fileName: "image\(arc4random_uniform(100))"+".jpeg", mimeType: "jpeg")
+                    
+                }
+                
+        },
+            usingThreshold:UInt64.init(),
+            to: "http://172.107.175.8/api/owner/ground-ios-update",
+            method: .post, headers: headers,
+            encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    
+                    upload.uploadProgress(closure: { (progress) in
+                        print(progress)
+                    })
+                    upload.responseJSON { response in
+                        // If the request to get activities is succesfull, store them
+                        if response.result.isSuccess{
+                            print(response.debugDescription)
+                            AppCommon.sharedInstance.dismissLoader(self.view)
+                            print(response.data!)
+                            print(response.result)
+                            let json = JSON(response.data)
+                            print(json)
+                            let status =  json["status"]
+                            print(status.stringValue)
+                            let message = json["message"]
+                            let data =  JSON(json["data"])
+                            print(message)
+                            
+                            if status.stringValue == "1" {
+                                Loader.showSuccess(message: "PlayGround Added Successfuly")
+                                self.dismiss(animated: true, completion: nil)
+                            }
+                                
+                            else{
+                                Loader.showError(message: message.stringValue)
+                            }
+                        }
+                        else {
+                            var errorMessage = "ERROR MESSAGE: "
+                            if let data = response.data {
+                                // Print message
+                                print(errorMessage)
+                                AppCommon.sharedInstance.dismissLoader(self.view)
+                                
+                                
+                                
+                            }
+                            print(errorMessage) //Contains General error message or specific.
+                            print(response.debugDescription)
+                            AppCommon.sharedInstance.dismissLoader(self.view)
+                        }
+                        
+                        
+                    }
+                case .failure(let encodingError):
+                    print("FALLE ------------")
+                    print(encodingError)
+                    AppCommon.sharedInstance.dismissLoader(self.view)
+                }
+        }
+        )
     }
+    
     
 }
 
