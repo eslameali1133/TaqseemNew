@@ -186,7 +186,7 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
                      AppCommon.sharedInstance.saveJSON(json: data, key: "Profiledata")
                    // UserDefaults.standard.array(forKey: "Profiledata")
                    // print(data["email"])
-                    print(AppCommon.sharedInstance.getJSON("Profiledata")["phone"].stringValue)
+                    print(AppCommon.sharedInstance.getJSON("Profiledata")["photo"].stringValue)
                     SharedData.SharedInstans.SetIsLogin(true)
                     if data["type"] == "ground_owner"{
                         let delegate = UIApplication.shared.delegate as! AppDelegate
@@ -196,7 +196,10 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
                     else {
                         let delegate = UIApplication.shared.delegate as! AppDelegate
                         //  let storyboard = UIStoryboard(name: "StoryBord", bundle: nil)
-                        let storyboard = UIStoryboard.init(name: "Player", bundle: nil); delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
+                        let storyboard = UIStoryboard.init(name: "Player", bundle: nil);
+                        memberType = data["type"].stringValue
+                        print(memberType)
+                        delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
                     }
                     
                 }else if status.stringValue  == "4" {
@@ -246,7 +249,11 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
                     else {
                         let delegate = UIApplication.shared.delegate as! AppDelegate
                         //  let storyboard = UIStoryboard(name: "StoryBord", bundle: nil)
-                        let storyboard = UIStoryboard.init(name: "Player", bundle: nil); delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
+                        let storyboard = UIStoryboard.init(name: "Player", bundle: nil);
+                        memberType = data["type"].stringValue
+                        print(memberType)
+                        delegate.window?.rootViewController =
+                        storyboard.instantiateInitialViewController()
                     }
                 }
             }

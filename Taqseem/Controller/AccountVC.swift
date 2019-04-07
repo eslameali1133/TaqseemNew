@@ -53,7 +53,8 @@ class AccountVC: UIViewController {
         lblPhone.text = AppCommon.sharedInstance.getJSON("Profiledata")["phone"].stringValue
         lblPosition.text = AppCommon.sharedInstance.getJSON("Profiledata")["position"].stringValue
         lblnumOfMatches.text = AppCommon.sharedInstance.getJSON("Profiledata")["matches"].stringValue
-        ProfileImageView.loadimageUsingUrlString(url: "\(APIConstants.Base_Image_URL)\(AppCommon.sharedInstance.getJSON("Profiledata")["photo"].stringValue)")
+       print(AppCommon.sharedInstance.getJSON("Profiledata")["photo"].stringValue)
+        ProfileImageView.loadimageUsingUrlString(url:"\(APIConstants.Base_Image_URL)\(AppCommon.sharedInstance.getJSON("Profiledata")["photo"].stringValue)")
         
     }
     

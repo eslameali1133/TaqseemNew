@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        comedromneartoplay = false
+        comedromneartoplay = ""
         addmatch.dropShadow()
         mymatch.dropShadow()
         Sucplayground.dropShadow()
@@ -27,6 +27,12 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func btnNearYou(_ sender: Any) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
+        let cont = storyBoard.instantiateViewController(withIdentifier: "NearMeVC")as! NearMeVC
+        self.present(cont, animated: true, completion: nil)
+
+    }
     @IBAction func playnow_btn(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
         let cont = storyBoard.instantiateViewController(withIdentifier: "BookPlayGroundVC")as! BookPlayGroundVC

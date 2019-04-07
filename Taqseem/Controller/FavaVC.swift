@@ -11,8 +11,9 @@ import SwiftyJSON
 import Alamofire
 class FavaVC: UIViewController {
 @IBOutlet weak var TBL_FAV: UITableView!
-    var items = [PlaygroundModelClass]()
-    var MatchDetais : MatchDetailsModelClass!
+    //var items = [PlaygroundModelClass]()
+    var FavItem = [NearPlayGroundModelClass]()
+    //var MatchDetais : MatchDetailsModelClass!
     var http = HttpHelper()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,21 +31,13 @@ class FavaVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
-        MatchDetais = MatchDetailsModelClass(
-            Time: "",
-            PTime: "",
-            Date: "",
-            Duration: "",
-            Capacity:"",
-            Salary: "",
-            Notes: ""
-        )
+        
         
         Filter()
     }
 
     func Filter() {
-        items.removeAll()
+        FavItem.removeAll()
         AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
         let AccessToken = UserDefaults.standard.string(forKey: "access_token")!
         let token_type = UserDefaults.standard.string(forKey: "token_type")!
@@ -71,7 +64,19 @@ extension FavaVC: HttpHelperDelegate {
             if status.stringValue  == "1" {
                 let result =  json["data"].arrayValue
                 for json in result{
-                    let obj = PlaygroundModelClass(
+                    
+                   // print(json["days"].arrayValue)
+                   // var str:[String] = []
+//                    if json["days"].array!.count > 0
+//                    {
+//                        for i in json["days"].array!{
+//                            str.append(i.stringValue)
+//                        }
+//                    }
+//                    print(str.joined(separator: ","))
+                    
+                    
+                    let obj = NearPlayGroundModelClass(
                         owner_id: json["owner_id"].stringValue,
                         updated_at: json["updated_at"].stringValue,
                         name: json["name"].stringValue,
@@ -91,10 +96,15 @@ extension FavaVC: HttpHelperDelegate {
                         hour_from: json["hour_from"].stringValue,
                         cancel_fee: json["cancel_fee"].stringValue,
                         price: json["price"].stringValue,
-                        cancelation_time: json["cancelation_time"].stringValue
+                        cancelation_time: json["cancelation_time"].stringValue,
+                        member: json["member"].stringValue,
+                        reservation_no: json["reservation_no"].stringValue,
+                        duration: json["duration"].stringValue,
+                        time: json["time"].stringValue,
+                        date: json["date"].stringValue
                         
                     )
-                    items.append(obj)
+                    FavItem.append(obj)
                 }
                 TBL_FAV.reloadData()
             } else {
@@ -116,21 +126,21 @@ extension FavaVC: HttpHelperDelegate {
 
 extension FavaVC :UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  items.count
+        return  FavItem.count
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FAVOURITESCell", for: indexPath) as! FAVOURITESCell
         
         
-        cell.lblCapacity.text = items[indexPath.row]._capacity
-        cell.lblAddress.text = items[indexPath.row]._address
-        cell.lblSalary.text = items[indexPath.row]._price
-        cell.lblGroundName.text = items[indexPath.row]._name
-        cell.imgGround.loadimageUsingUrlString(url: items[indexPath.row]._image)
+        cell.lblCapacity.text = FavItem[indexPath.row]._capacity
+        cell.lblAddress.text = FavItem[indexPath.row]._address
+        cell.lblSalary.text = FavItem[indexPath.row]._price
+        cell.lblGroundName.text = FavItem[indexPath.row]._name
+        cell.imgGround.loadimageUsingUrlString(url:"\(APIConstants.Base_Image_URL)\(FavItem[indexPath.row]._image)")
         
-        cell.items = items[indexPath.row]
-        cell.MatchDetails = MatchDetais
+        cell.FavItems = FavItem[indexPath.row]
+       
       
         return cell
     }

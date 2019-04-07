@@ -118,7 +118,7 @@ class AddPlayGroundVC: UIViewController  , UIPickerViewDelegate , UIPickerViewDa
          txtEnglishName.text = items?._name_en
       txtFees.text = items?._cancel_fee
           txtHours.text = items?._cancelation_time
-        imageProfile.loadimageUsingUrlString(url: (items?._image)!)
+        imageProfile.loadimageUsingUrlString(url: "\(APIConstants.Base_Image_URL)\((items?._image)!)")
     }
     
     func loadCityData(){
@@ -285,8 +285,18 @@ class AddPlayGroundVC: UIViewController  , UIPickerViewDelegate , UIPickerViewDa
         }else{
             lblTo.text = Time24
         }
-        
+            
+        }else {
+            
+            dateformatter.dateFormat = "HH:mm:00"
+            let Time24 = dateformatter.string(from : datee!)
+            if dateis == "From" {
+                lblFrom.text = Time24
+            }else{
+                lblTo.text = Time24
+            }
         }
+
         
     }
     
@@ -563,6 +573,7 @@ extension AddPlayGroundVC {
         print(AccessToken)
         let imgdata = self.imageProfile.image!.jpegData(compressionQuality: 0.5)
         print(AccessToken)
+        AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
         let headers: HTTPHeaders = [
             "Accept" : "application/json",
             "Content-type": "multipart/form-data",
@@ -632,6 +643,7 @@ extension AddPlayGroundVC {
                             
                             if status.stringValue == "1" {
                                   Loader.showSuccess(message: "PlayGround Added Successfuly")
+                                
                                     self.dismiss(animated: true, completion: nil)
                                 }
                                 
@@ -669,13 +681,14 @@ extension AddPlayGroundVC {
     /////// edit playground
     
     func Editlayground() {
-    
+        
         let AccessToken = UserDefaults.standard.string(forKey: "access_token")!
         let token_type = UserDefaults.standard.string(forKey: "token_type")!
         var parameters = [:] as [String: Any]
         print(AccessToken)
         let imgdata = self.imageProfile.image!.jpegData(compressionQuality: 0.5)
         print(AccessToken)
+        AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
         let headers: HTTPHeaders = [
             "Accept" : "application/json",
             "Content-type": "multipart/form-data",
@@ -745,6 +758,7 @@ extension AddPlayGroundVC {
                             
                             if status.stringValue == "1" {
                                 Loader.showSuccess(message: "PlayGround Added Successfuly")
+                                
                                 self.dismiss(animated: true, completion: nil)
                             }
                                 

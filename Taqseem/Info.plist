@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.9</string>
+	<string>1.2</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -38,6 +38,8 @@
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
 	</array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -45,12 +47,10 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>This app will use camera to upload car imges or profile image</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>You can select photo</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>To Get your location for emergency services </string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>You can select photo</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

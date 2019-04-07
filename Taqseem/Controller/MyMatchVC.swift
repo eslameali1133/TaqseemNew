@@ -9,9 +9,10 @@
 import UIKit
 import SwiftyJSON
 class MyMatchVC: UIViewController {
- var comeFrom = ""
+ var comeFrom = "MyMatches"
     var item : PlaygroundModelClass!
     var NearItems : NearPlayGroundModelClass!
+    var FavItems : NearPlayGroundModelClass!
     var match : MatchsModelClass!
     
     @IBOutlet weak var lblGroundName: UILabel!
@@ -46,11 +47,14 @@ class MyMatchVC: UIViewController {
         super.viewDidLoad()
 
        // print(item._address)
-        //setupConstrin()
-
+//        setupConstrin()
+        if comeFrom == "MyMatches"{
+            lbl_title.text = "My Matches"
+        }else{
         lbl_title.text = title
+        }
         btn_join.isHidden = true
-        if comedromneartoplay == true
+        if comedromneartoplay == "NearME"
         {
               btn_join.isHidden = false
             lbl_title.text = "NEAR ME"
@@ -61,7 +65,7 @@ class MyMatchVC: UIViewController {
     @IBAction func btnPlayer(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Owner", bundle:nil)
         let cont = storyBoard.instantiateViewController(withIdentifier: "OwnerRequestPlayersVC")as! OwnerRequestPlayersVC
-        if comedromneartoplay == true {
+        if comedromneartoplay == "NearME" {
             cont.ReservationNum = NearItems._reservation_no
            
         }else {
@@ -85,7 +89,7 @@ class MyMatchVC: UIViewController {
     }
     
     func fillData() {
-        if comedromneartoplay == true {
+        if comedromneartoplay == "NearME" {
             lblTime.text = "\(NearItems._time)"
             lblGroundName.text = NearItems._name
             lblDate.text = NearItems._date
@@ -109,7 +113,7 @@ class MyMatchVC: UIViewController {
         lblUserName.text = match._user_name
         if match._photo != ""
         {
-        imgUser.loadimageUsingUrlString(url: match._photo)
+        imgUser.loadimageUsingUrlString(url:"\(APIConstants.Base_Image_URL)\(match._photo)")
         }
         }}
    

@@ -44,14 +44,18 @@ isEidtplayground = true
     }
     
     func FillData(){
-       lblDayes.text = "Sat" ///////
+
+        
+     
+
+        lblDayes.text = items?._days
         lblPrice.text = items?._price
         lblTimes.text = "From : \(items!._hour_from)   To : \(items!._hour_to)"
         lblCapacity.text = items?._capacity
         lblLocation.text = items?._address
         lblGroundName.text = items?._name
-        lblMatchPlayed.text = "25" //////
-        imgGround.loadimageUsingUrlString(url: (items?._image)!)
+        lblMatchPlayed.text = items?._matches //////
+        imgGround.loadimageUsingUrlString(url:"\(APIConstants.Base_Image_URL)\((items?._image)!)")
     }
     
 

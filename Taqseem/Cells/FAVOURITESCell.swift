@@ -11,8 +11,8 @@ import SwiftyJSON
 import Alamofire
 class FAVOURITESCell: UITableViewCell {
     var http = HttpHelper()
-    var MatchDetails : MatchDetailsModelClass!
-    var items : PlaygroundModelClass!
+   // var MatchDetails : MatchDetailsModelClass!
+    var FavItems : NearPlayGroundModelClass!
     @IBOutlet weak var imgGround: customImageView!{
         didSet{
             
@@ -37,7 +37,7 @@ class FAVOURITESCell: UITableViewCell {
         let token_type = UserDefaults.standard.string(forKey: "token_type")!
         
         let params = [
-            "ground_id":items._id
+            "ground_id":FavItems._id
             ] as [String: Any]
         
         let headers = [
@@ -53,11 +53,12 @@ class FAVOURITESCell: UITableViewCell {
     }
     
     @IBAction func btnChoose(_ sender: Any) {
+        comedromneartoplay = "Fav"
         let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
         let cont = storyBoard.instantiateViewController(withIdentifier: "playGroundDetailsVC")as! playGroundDetailsVC
         
-        cont.item = items
-        cont.MatchDetails = MatchDetails
+        cont.FavItem = FavItems
+       // cont.MatchDetails = MatchDetails
         
         let currentController = self.getCurrentViewController()
         currentController?.present(cont, animated: true, completion: nil)

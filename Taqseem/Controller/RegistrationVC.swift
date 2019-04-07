@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 class RegistrationVC: UIViewController {
     var http = HttpHelper()
-    var type = "user"
+    var type = ""
     var facebook_id = ""
     var ComeFromFaceBook = false
     
@@ -29,7 +29,7 @@ class RegistrationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         http.delegate = self
-        
+        type = "user"
         if ComeFromFaceBook == true
         {
             passWordView.isHidden = true
@@ -76,7 +76,8 @@ class RegistrationVC: UIViewController {
         {
 
         }else{
-            if txtPassword.text! != txtPassword.text { Loader.showError(message: AppCommon.sharedInstance.localization("Password and Confirm password is not match!"))
+            print(txtPassword.text, txtConfirmPassword.text)
+            if txtPassword.text! != txtConfirmPassword.text { Loader.showError(message: AppCommon.sharedInstance.localization("Password and Confirm password is not match!"))
                 isValid = false
             }
             
@@ -91,10 +92,10 @@ class RegistrationVC: UIViewController {
         
       
         
-        if (txtPhoneNumber.text?.count)! != 11  {
-            Loader.showError(message: AppCommon.sharedInstance.localization("Phone number must be between 7 and 17 characters long"))
-            isValid = false
-        }
+//        if (txtPhoneNumber.text?.count)! != 11  {
+//            Loader.showError(message: AppCommon.sharedInstance.localization("Phone number must be between 7 and 17 characters long"))
+//            isValid = false
+//        }
         
         if txtPhoneNumber.text! == "" {
             Loader.showError(message: AppCommon.sharedInstance.localization("Phone field cannot be left blank"))
@@ -127,7 +128,12 @@ class RegistrationVC: UIViewController {
             
             
         }else{
-            let params = ["name":txtName.text!, "email":txtEmail.text!,"user_name":txtUserName.text!,"password": txtPassword.text!,"phone": txtPhoneNumber.text! , "type": type] as [String: Any]
+            let params = ["name":txtName.text!,
+                          "email":txtEmail.text!,
+                          "user_name":txtUserName.text!,
+                          "password": txtPassword.text!,
+                          "phone": txtPhoneNumber.text! ,
+                          "type": type] as [String: Any]
             let headers = ["Accept-Type": "application/json" , "Content-Type": "application/json"]
             AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
             http.requestWithBody(url: APIConstants.Register, method: .post, parameters: params, tag: 1, header: headers)

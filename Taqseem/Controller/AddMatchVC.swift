@@ -74,7 +74,7 @@ class AddMatchVC: UIViewController , UIPickerViewDataSource , UIPickerViewDelega
     
     
     @IBAction func btnAddMatch(_ sender: Any) {
-        comedromneartoplay = false
+        comedromneartoplay = ""
         MatchDetails = MatchDetailsModelClass(
             Time: lblTime.text!,
             PTime: PTime,
@@ -278,6 +278,18 @@ extension AddMatchVC: HttpHelperDelegate {
                    items.removeAll()
                 let result =  json["data"].arrayValue
                 for json in result{
+                    
+                   // print(json["days"].arrayValue)
+                //    var str:[String] = []
+//                    if json["days"].array!.count > 0
+//                    {
+//                        for i in json["days"].array!{
+//                            str.append(i.stringValue)
+//                        }
+//                    }
+//                    print(str.joined(separator: ","))
+                    
+                    
                     let obj = PlaygroundModelClass(
                         owner_id: json["owner_id"].stringValue,
                         updated_at: json["updated_at"].stringValue,
@@ -298,7 +310,9 @@ extension AddMatchVC: HttpHelperDelegate {
                         hour_from: json["hour_from"].stringValue,
                         cancel_fee: json["cancel_fee"].stringValue,
                         price: json["price"].stringValue,
-                        cancelation_time: json["cancelation_time"].stringValue
+                        cancelation_time: json["cancelation_time"].stringValue,
+                        days: "",
+                        matches: ""
                         
                     )
                     items.append(obj)

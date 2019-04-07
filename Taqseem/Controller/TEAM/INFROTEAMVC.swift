@@ -44,7 +44,8 @@ class INFROTEAMVC: UIViewController {
         
         lblCapacity.text = AppCommon.sharedInstance.getJSON("Teamdata")["capacity"].stringValue
         lblName.text = AppCommon.sharedInstance.getJSON("Teamdata")["name"].stringValue
-        imgLogo.loadimageUsingUrlString(url: "\(APIConstants.Base_Image_URL)\(AppCommon.sharedInstance.getJSON("Teamdata")["logo"].stringValue)")
+        print(AppCommon.sharedInstance.getJSON("Teamdata")["logo"].stringValue)
+        imgLogo.loadimageUsingUrlString(url:"\(APIConstants.Base_Image_URL)\(AppCommon.sharedInstance.getJSON("Teamdata")["logo"].stringValue)")
     }
 
 }

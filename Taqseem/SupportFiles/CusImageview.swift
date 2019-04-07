@@ -14,7 +14,7 @@ class customImageView: UIImageView{
     var imageUrlString : String?
     //use setup image to download from api
     func loadimageUsingUrlString(url:String){
-        
+        print(url)
         imageUrlString = url
         
         let Url = URL(string: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)

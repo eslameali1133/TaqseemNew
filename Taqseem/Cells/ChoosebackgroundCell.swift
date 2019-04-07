@@ -31,6 +31,7 @@ class ChoosebackgroundCell: UITableViewCell {
         http.delegate = self
         // Initialization code
         viewcontent.dropShadow()
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -65,7 +66,7 @@ class ChoosebackgroundCell: UITableViewCell {
     }
     
     @IBAction func btnChoose(_ sender: Any) {
-        if comedromneartoplay == true
+        if comedromneartoplay == "NearME"
                 {
                     
                     let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)

@@ -47,21 +47,24 @@ class OwnerADDMatchVC: UIViewController,UIPickerViewDataSource,UIPickerViewDeleg
     
     @IBAction func btnDate(_ sender: Any) {
         PickerFlag1 = "Date"
+        onDoneButtonTapped()
         showDatePicker(isDate: true)
         datePicker.addTarget(self, action: #selector(OwnerADDMatchVC.datePickerValueChanged), for: UIControl.Event.valueChanged)
     }
     @IBAction func btnFrom(_ sender: Any) {
         DateIs = "From"
+        onDoneButtonTapped()
         showDatePicker(isDate: false)
         datePicker.addTarget(self, action: #selector(OwnerADDMatchVC.datePickerValueChanged), for: UIControl.Event.valueChanged)
     }
-    @IBAction func btnTo(_ sender: Any) {
-        DateIs = "To"
-        showDatePicker(isDate: false)
-        datePicker.addTarget(self, action: #selector(OwnerADDMatchVC.datePickerValueChanged), for: UIControl.Event.valueChanged)
-    }
+//    @IBAction func btnTo(_ sender: Any) {
+//        DateIs = "To"
+//        showDatePicker(isDate: false)
+//        datePicker.addTarget(self, action: #selector(OwnerADDMatchVC.datePickerValueChanged), for: UIControl.Event.valueChanged)
+//    }
     @IBAction func btnDuration(_ sender: Any) {
         PickerFlag = "Playground"
+        onDoneButtonTapped()
         configurePicker()
     }
     

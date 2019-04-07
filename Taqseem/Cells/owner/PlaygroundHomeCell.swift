@@ -13,7 +13,11 @@ class PlaygroundHomeCell: UITableViewCell {
     @IBOutlet weak var contentview: UIView!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblCapacity: UILabel!
-    @IBOutlet weak var imgGround: UIImage!
+    @IBOutlet weak var imgGround: customImageView!{
+        didSet{
+            
+        }
+    }
     @IBOutlet weak var lblPrice: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

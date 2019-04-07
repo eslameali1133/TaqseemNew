@@ -107,7 +107,7 @@ extension OwnerRequestPlayersVC: HttpHelperDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "RequestPlayerCell", for: indexPath) as! RequestPlayerCell
             cell.lblPlayerName.text = items[indexPath.row]._name
             if items[indexPath.row]._photo != ""{
-            cell.imgPlayer.loadimageUsingUrlString(url: items[indexPath.row]._photo)
+            cell.imgPlayer.loadimageUsingUrlString(url:"\(APIConstants.Base_Image_URL)\(items[indexPath.row]._photo)")
             }
             return cell
         }

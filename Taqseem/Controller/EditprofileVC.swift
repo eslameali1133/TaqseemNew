@@ -10,37 +10,45 @@ import UIKit
 import Alamofire
 import Cosmos
 import SwiftyJSON
-class EditprofileVC: UIViewController , UIImagePickerControllerDelegate ,UINavigationControllerDelegate {
+class EditprofileVC: UIViewController , UIImagePickerControllerDelegate ,UINavigationControllerDelegate , UIPickerViewDelegate , UIPickerViewDataSource {
+    var Position = ["FD مهاجم" , "MD لاعب وسط" , "DF مدافع" , "GK  حارس مرمي"]
+    var pickerview  = UIPickerView()
 
-    @IBOutlet weak var txtPosition: UITextField!
+    var toolBar = UIToolbar()
     @IBOutlet weak var txtEmail: UITextField!
+    @IBOutlet weak var lblPosition: UILabel!
     @IBOutlet weak var txtPhoneNumber: UITextField!
     @IBOutlet weak var txtUserName: UITextField!
     @IBOutlet weak var imgProfile:customImageView!{
         didSet{
-            ProfileImgeView.layer.cornerRadius =  ProfileImgeView.frame.width / 2
-            ProfileImgeView.layer.borderWidth = 1
+            imgProfile.layer.cornerRadius =  imgProfile.frame.width / 2
+            imgProfile.layer.borderWidth = 1
             //            ProfileImageView.layer.borderColor =  UIColor(red: 0, green: 156, blue: 158, alpha: 1) as! CGColor
             
-            ProfileImgeView.clipsToBounds = true
+            imgProfile.clipsToBounds = true
             
         }
     }
     
-    @IBOutlet weak var ProfileImgeView: AMCircleImageView!
-    
     var AlertController: UIAlertController!
     let http = HttpHelper()
     let picker = UIImagePickerController()
+    @IBOutlet weak var pickerPosition: UIPickerView!
     override func viewDidLoad() {
         super.viewDidLoad()
-      ProfileImgeView.dropShadow()
+      imgProfile.dropShadow()
        // http.delegate = self
         SetData()
         SetupUploadImage()
+        picker.delegate = self
        
     }
     
+    @IBAction func btnPosition(_ sender: Any) {
+        onDoneButtonTapped()
+        configurePicker()
+        
+    }
     @IBAction func btnSaveChanges(_ sender: Any) {
         if validation(){
             AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
@@ -57,13 +65,66 @@ class EditprofileVC: UIViewController , UIImagePickerControllerDelegate ,UINavig
         self.dismiss(animated: true, completion: nil)
     }
     
+    
+    func configurePicker (){
+        pickerview = UIPickerView.init()
+        pickerview.delegate = self
+        pickerview.backgroundColor = UIColor.white
+        pickerview.setValue(UIColor.black, forKey: "textColor")
+        pickerview.autoresizingMask = .flexibleWidth
+        pickerview.contentMode = .center
+        pickerview.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 255)
+        self.view.addSubview(pickerview)
+        
+        
+        toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
+        toolBar.barStyle = .default
+        
+        toolBar.items = [UIBarButtonItem.init(title: "Done", style: .plain, target: self, action: #selector(onDoneButtonTapped))]
+        
+        
+        self.view.addSubview(toolBar)
+    }
+    
+    @objc func onDoneButtonTapped() {
+        toolBar.removeFromSuperview()
+        pickerview.removeFromSuperview()
+        self.view.endEditing(true)
+    }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+            return Position.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+            return String(Position[row])
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if row == 0 {
+            lblPosition.text = "FD"
+        }else if row == 1{
+            lblPosition.text = "MD"
+        }else if row == 2{
+    lblPosition.text = "DF"
+        }else if row == 3{
+    lblPosition.text = "GK"
+    }
+        
+}
+    
     func  SetData(){
         txtUserName.text = AppCommon.sharedInstance.getJSON("Profiledata")["name"].stringValue
         txtEmail.text = AppCommon.sharedInstance.getJSON("Profiledata")["email"].stringValue
         txtPhoneNumber.text = AppCommon.sharedInstance.getJSON("Profiledata")["phone"].stringValue
-        txtPosition.text = AppCommon.sharedInstance.getJSON("Profiledata")["position"].stringValue
-        imgProfile.loadimageUsingUrlString(url: "\(APIConstants.Base_Image_URL)\(AppCommon.sharedInstance.getJSON("Profiledata")["photo"].stringValue)")
+        
+        lblPosition.text = AppCommon.sharedInstance.getJSON("Profiledata")["position"].stringValue
         print("\(APIConstants.Base_Image_URL)\(AppCommon.sharedInstance.getJSON("Profiledata")["photo"].stringValue)")
+        
+        imgProfile.loadimageUsingUrlString(url: "\(APIConstants.Base_Image_URL)\(AppCommon.sharedInstance.getJSON("Profiledata")["photo"].stringValue)")
+        
     }
     
     func SetupUploadImage()
@@ -140,7 +201,7 @@ class EditprofileVC: UIViewController , UIImagePickerControllerDelegate ,UINavig
         if txtUserName.text! == "" { Loader.showError(message: AppCommon.sharedInstance.localization("Name field cannot be left blank"))
             isValid = false
         }
-        if txtPosition.text! == "" { Loader.showError(message: AppCommon.sharedInstance.localization("Position field cannot be left blank"))
+        if lblPosition.text! == "" { Loader.showError(message: AppCommon.sharedInstance.localization("Position field cannot be left blank"))
             isValid = false
         }
         
@@ -172,7 +233,7 @@ class EditprofileVC: UIViewController , UIImagePickerControllerDelegate ,UINavig
             "phone": txtPhoneNumber.text!,
             "email": txtEmail.text!,
             "photo" : imgdata!,
-            "position": txtPosition.text!,
+            "position": lblPosition.text!,
             
         ]
         
@@ -185,9 +246,12 @@ class EditprofileVC: UIViewController , UIImagePickerControllerDelegate ,UINavig
                     }
                 }
                 
+//                if let data = self.imgProfile.image!.jpegData(compressionQuality: 0.5){
+//                    multipartFormData.append(data, withName: "image", fileName: "Venderphoto\(arc4random_uniform(100))"+".jpeg", mimeType: "image/jpeg")
                 if let data = self.imgProfile.image!.jpegData(compressionQuality: 0.5){
-                    multipartFormData.append(data, withName: "image", fileName: "Venderphoto\(arc4random_uniform(100))"+".jpeg", mimeType: "image/jpeg")
-                    
+                    multipartFormData.append(data, withName: "photo", fileName: "photo\(arc4random_uniform(100))"+".jpeg", mimeType: "jpeg")
+                
+                
                 }
                 
                 //                let data = self.imageProfile.image!.jpegData(compressionQuality: 0.5)
@@ -223,7 +287,7 @@ class EditprofileVC: UIViewController , UIImagePickerControllerDelegate ,UINavig
                             if status.stringValue == "1" {
                         
                                 AppCommon.sharedInstance.saveJSON(json: data, key: "Profiledata")
-                                print(AppCommon.sharedInstance.getJSON("Profiledata")["phone"].stringValue)
+                                print(AppCommon.sharedInstance.getJSON("Profiledata")["photo"].stringValue)
                                 Loader.showSuccess(message: "Profile Data Updated Successfuly")
                                 
                                 self.dismiss(animated: true, completion: nil)

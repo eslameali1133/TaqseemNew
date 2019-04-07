@@ -114,8 +114,8 @@ extension RequestListVC: HttpHelperDelegate {
             cell.btnStatus.setTitle(items[indexPath.row]._reservation_status, for : .normal)
             cell.lblGroundName.text = items[indexPath.row]._ground_name
             cell.lblPlayerName.text = items[indexPath.row]._user_name
-            cell.imgGround.loadimageUsingUrlString(url: items[indexPath.row]._ground_image)
-            cell.imgUser.loadimageUsingUrlString(url: items[indexPath.row]._photo)
+            cell.imgGround.loadimageUsingUrlString(url: "\(APIConstants.Base_Image_URL)\(items[indexPath.row]._ground_image)")
+            cell.imgUser.loadimageUsingUrlString(url:"\(APIConstants.Base_Image_URL)\(items[indexPath.row]._photo)")
             if items[indexPath.row]._reservation_status == "ACCEPTED"
             {
                 //cell.btnStatus.backgroundColor = UIColor(hex: "#259FA1")

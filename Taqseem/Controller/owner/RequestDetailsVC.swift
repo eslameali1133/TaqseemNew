@@ -85,10 +85,10 @@ class RequestDetailsVC: UIViewController {
         lblGroundName.text = items._ground_name
         lblTime.text = items._time
         lblDate.text = items._date
-        lblCapacity.text = items._capacity
-        lblDuration.text = items._duration
+        lblCapacity.text = "\(items._capacity) Players"
+        lblDuration.text = "\(items._duration) Hours"
         lblUserName.text = items._user_name
-        imgUser.loadimageUsingUrlString(url: items._photo)
+        imgUser.loadimageUsingUrlString(url: "\(APIConstants.Base_Image_URL)\(items._photo)")
         Status = items._reservation_status
         
        if (Status == "ACCEPTED") || (Status == "REJECTED"){

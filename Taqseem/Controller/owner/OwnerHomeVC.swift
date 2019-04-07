@@ -21,7 +21,7 @@ class OwnerHomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        comedromneartoplay = false
+        comedromneartoplay = ""
         http.delegate = self
         TBL_Playground.dataSource = self
         TBL_Playground.delegate = self
@@ -68,6 +68,16 @@ extension OwnerHomeVC: HttpHelperDelegate {
             if status.stringValue  == "1" {
                 let result =  json["data"].arrayValue
                 for json in result{
+                print(json["days"].arrayValue)
+                    var str:[String] = []
+                    if json["days"].array!.count > 0
+                    {
+                    for i in json["days"].array!{
+                        str.append(i.stringValue)
+                    }
+                    }
+                    print(str.joined(separator: ","))
+                   
                     let obj = PlaygroundModelClass(
                         owner_id: json["owner_id"].stringValue,
                         updated_at: json["updated_at"].stringValue,
@@ -88,7 +98,9 @@ extension OwnerHomeVC: HttpHelperDelegate {
                         hour_from: json["hour_from"].stringValue,
                         cancel_fee: json["cancel_fee"].stringValue,
                         price: json["price"].stringValue,
-                        cancelation_time: json["cancelation_time"].stringValue)
+                        cancelation_time: json["cancelation_time"].stringValue,
+                        days:str.joined(separator: ","),
+                        matches: json["matches"].stringValue)
                     items.append(obj)
                 }
                 TBL_Playground.reloadData()
@@ -123,7 +135,7 @@ extension OwnerHomeVC :UITableViewDelegate,UITableViewDataSource{
         cell.Ground_ID = items[indexPath.row]._id
         cell.lblCapacity.text = items[indexPath.row]._capacity
         cell.lblPrice.text = items[indexPath.row]._price
-        cell.imgGround = UIImage(named: items[indexPath.row]._image)
+        cell.imgGround.loadimageUsingUrlString(url: "\(APIConstants.Base_Image_URL)\(items[indexPath.row]._image)")
         
         return cell
     }

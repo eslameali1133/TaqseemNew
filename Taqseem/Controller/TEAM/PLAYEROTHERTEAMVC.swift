@@ -9,11 +9,11 @@
 import UIKit
 
 class PLAYEROTHERTEAMVC: UIViewController {
-
+var Players = [PlayerModelClass]()
     @IBOutlet weak var tblPlayer: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tblPlayer.reloadData()
         tblPlayer.dataSource = self
         tblPlayer.delegate = self
         tblPlayer.changeView()
@@ -26,21 +26,21 @@ class PLAYEROTHERTEAMVC: UIViewController {
 }
 extension PLAYEROTHERTEAMVC :UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  10
+        return  Players.count
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCell", for: indexPath) as! PlayerCell
-        
+        cell.lblPlayerName.text = Players[indexPath.row]._PlayerName
+        cell.PlayerID = Players[indexPath.row]._PlayerId
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
-        let cont = storyBoard.instantiateViewController(withIdentifier: "MyMatchVC")as! MyMatchVC
-        self.present(cont, animated: true, completion: nil)
-        print(123)
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "Match", bundle:nil)
+//        let cont = storyBoard.instantiateViewController(withIdentifier: "MyMatchVC")as! MyMatchVC
+//        self.present(cont, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -87,8 +87,8 @@ extension OwnerNextMatchVC: HttpHelperDelegate {
                 for json in result{
                     let obj = MatchsModelClass(
                         ground_id: json["ground_id"].stringValue,
-                        note: json["ground_image"].stringValue,
-                        ground_image: json["note"].stringValue,
+                        note: json["note"].stringValue,
+                        ground_image: json["ground_image"].stringValue,
                         ground_name: json["ground_name"].stringValue,
                         price: json["price"].stringValue,
                         address: json["address"].stringValue,
@@ -142,18 +142,19 @@ extension OwnerNextMatchVC :UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyMatchCell", for: indexPath) as! MyMatchCell
         cell.viewcontent.dropShadow()
+        print(Matchs[indexPath.row]._date)
         cell.lblDate.text = Matchs[indexPath.row]._date
         cell.lblGroundName.text = Matchs[indexPath.row]._ground_name
         cell.lblTime.text = Matchs[indexPath.row]._time
         cell.lblUName.text = Matchs[indexPath.row]._user_name
         print(Matchs[indexPath.row]._photo)
         if Matchs[indexPath.row]._photo != "" {
-            cell.imgUser.loadimageUsingUrlString(url: Matchs[indexPath.row]._photo)
+            cell.imgUser.loadimageUsingUrlString(url: "\(APIConstants.Base_Image_URL)\(Matchs[indexPath.row]._photo)")
         }
         
         print(Matchs[indexPath.row]._ground_image)
         if Matchs[indexPath.row]._ground_image != "" {
-            cell.imgGround.loadimageUsingUrlString(url: Matchs[indexPath.row]._ground_image)
+            cell.imgGround.loadimageUsingUrlString(url:"\(APIConstants.Base_Image_URL)\(Matchs[indexPath.row]._ground_image)") 
         }
         return cell
     }
@@ -164,6 +165,7 @@ extension OwnerNextMatchVC :UITableViewDelegate,UITableViewDataSource{
         let cont = storyBoard.instantiateViewController(withIdentifier: "MyMatchVC")as! MyMatchVC
         cont.match = Matchs[indexPath.row]
        // cont.item =
+        cont.comeFrom = "Ground"
         cont.title = "MATCH DETAILS"
         self.present(cont, animated: true, completion: nil)
         print(123)

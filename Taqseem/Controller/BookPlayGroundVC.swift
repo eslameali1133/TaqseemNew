@@ -73,7 +73,7 @@ class BookPlayGroundVC: UIViewController , UIPickerViewDelegate , UIPickerViewDa
     }
     
     @IBAction func btnSearch(_ sender: Any) {
-        
+        comedromneartoplay = ""
         MatchDetails = MatchDetailsModelClass(
             Time: lblTime.text!,
             PTime: PTime,
@@ -298,6 +298,19 @@ extension BookPlayGroundVC: HttpHelperDelegate {
                 items.removeAll()
                 let result =  json["data"].arrayValue
                 for json in result{
+                    
+                    
+                    print(json["days"].arrayValue)
+                    var str:[String] = []
+//                    if json["days"].array!.count > 0
+//                    {
+//                        for i in json["days"].array!{
+//                            str.append(i.stringValue)
+//                        }
+//                    }
+//                    print(str.joined(separator: ","))
+//
+                    
                     let obj = PlaygroundModelClass(
                         owner_id: json["owner_id"].stringValue,
                         updated_at: json["updated_at"].stringValue,
@@ -318,7 +331,9 @@ extension BookPlayGroundVC: HttpHelperDelegate {
                         hour_from: json["hour_from"].stringValue,
                         cancel_fee: json["cancel_fee"].stringValue,
                         price: json["price"].stringValue,
-                        cancelation_time: json["cancelation_time"].stringValue
+                        cancelation_time: "",
+                        days:str.joined(separator: ","),
+                        matches: ""
                         
                     )
                     items.append(obj)

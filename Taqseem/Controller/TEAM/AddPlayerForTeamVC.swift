@@ -13,7 +13,7 @@ class AddPlayerForTeamVC: UIViewController {
     var http = HttpHelper()
     var items = [PlayerModelClass]()
     var itemSelectedid:[Int] = []
-    
+    var MemberIndex = 0
     @IBOutlet weak var txtPhoneNumber: UITextField!
     @IBOutlet weak var txtPlayerName: UITextField!
     @IBOutlet var addViewplayer: UIView!
@@ -43,13 +43,15 @@ class AddPlayerForTeamVC: UIViewController {
     @IBAction func ADD_btn(_ sender: Any) {
         if validation(){
             Add()
-           
+            txtPlayerName.text = ""
+            txtPhoneNumber.text = ""
         }
         addViewplayer.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         fillData()
+        
     }
     
     func fillData()  {
@@ -67,11 +69,11 @@ class AddPlayerForTeamVC: UIViewController {
         var isValid = true
         
         
-        if (txtPhoneNumber.text?.count)! != 11  {
-            Loader.showError(message: AppCommon.sharedInstance.localization("Phone number must be between 7 and 17 characters long"))
-            isValid = false
-        }
-        
+//        if (txtPhoneNumber.text?.count)! != 11  {
+//            Loader.showError(message: AppCommon.sharedInstance.localization("Phone number must be between 7 and 17 characters long"))
+//            isValid = false
+//        }
+//
         if txtPhoneNumber.text! == "" {
             Loader.showError(message: AppCommon.sharedInstance.localization("Phone field cannot be left blank"))
             isValid = false
@@ -108,10 +110,31 @@ func Add() {
     
     
     @objc func removeService(_ sender:UIButton){
+        MemberIndex = sender.tag
+        let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this player", preferredStyle: .alert)
         
+        // Create OK button with action handler
+        let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+            print("Ok button tapped")
+            self.deleteRecord()
+        })
         
-  let MemberIndex = sender.tag
-       print(items[MemberIndex]._PlayerId)
+        // Create Cancel button with action handlder
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+            dialogMessage.dismiss(animated: false, completion: nil)
+        }
+        
+        //Add OK and Cancel button to dialog message
+        dialogMessage.addAction(ok)
+        dialogMessage.addAction(cancel)
+        
+        // Present dialog message to user
+        self.present(dialogMessage, animated: true, completion: nil)
+    }
+    
+    func deleteRecord() {
+        
+        print(items[MemberIndex]._PlayerId)
         let AccessToken = UserDefaults.standard.string(forKey: "access_token")!
         let token_type = UserDefaults.standard.string(forKey: "token_type")!
         
@@ -130,12 +153,9 @@ func Add() {
         
         AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
         http.requestWithBody(url: APIConstants.DeleteMember, method: .post, parameters: params, tag: 3 , header: headers)
-   
+        
     }
-    
-    
-    
-}
+    }
 
 extension AddPlayerForTeamVC: HttpHelperDelegate {
     func receivedResponse(dictResponse: Any, Tag: Int) {

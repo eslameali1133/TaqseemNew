@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-var comedromneartoplay = false
+var comedromneartoplay = "false"
 class NearMeVC: UIViewController  , UIPickerViewDataSource , UIPickerViewDelegate{
     
     var NearItems = [NearPlayGroundModelClass]()
@@ -21,13 +21,14 @@ class NearMeVC: UIViewController  , UIPickerViewDataSource , UIPickerViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         http.delegate = self
+
         pickerDate.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControl.Event.valueChanged)
         // Do any additional setup after loading the view.
     }
     
     
     @IBAction func Search_Reaseult(_ sender: Any) {
-        comedromneartoplay = true
+        comedromneartoplay = "NearME"
         
         Filter()
         

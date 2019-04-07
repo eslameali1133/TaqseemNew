@@ -30,6 +30,8 @@ class PlaygroundModelClass: NSObject {
     var _cancel_fee = ""
     var _price = ""
     var _cancelation_time = ""
+    var _days = ""
+    var _matches = ""
     
     init(owner_id:String ,
          updated_at : String ,
@@ -50,7 +52,10 @@ class PlaygroundModelClass: NSObject {
          hour_from :String,
          cancel_fee :String,
          price :String,
-         cancelation_time :String) {
+         cancelation_time :String,
+        days :String,
+        matches :String
+        ) {
         
         self._owner_id = owner_id
         self._updated_at = updated_at
@@ -72,5 +77,7 @@ class PlaygroundModelClass: NSObject {
         self._cancel_fee = cancel_fee
         self._price = price
         self._cancelation_time = cancelation_time
+        self._days = days
+        self._matches = matches
     }
 }

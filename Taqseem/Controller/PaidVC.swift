@@ -66,7 +66,7 @@ class PaidVC: UIViewController {
         
         let AccessToken = UserDefaults.standard.string(forKey: "access_token")!
         let token_type = UserDefaults.standard.string(forKey: "token_type")!
-        if comedromneartoplay == true {
+        if comedromneartoplay == "NearME" {
              Pground_id = GNearItems._id
              Pdate = GNearItems._date
              Ptime = GNearItems._time
@@ -110,7 +110,7 @@ extension PaidVC: HttpHelperDelegate {
             
             if status.stringValue == "1" {
                 Loader.showSuccess(message: message.stringValue)
-                comedromneartoplay = false
+                comedromneartoplay = ""
                     let delegate = UIApplication.shared.delegate as! AppDelegate
                     //  let storyboard = UIStoryboard(name: "StoryBord", bundle: nil)
                     let storyboard = UIStoryboard.init(name: "Player", bundle: nil); delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
