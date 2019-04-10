@@ -7,10 +7,10 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 class MoreVC: UIViewController {
-    
-    
+    let DeviceID = UIDevice.current.identifierForVendor!.uuidString
+    var http = HttpHelper()
     var arrylabelimagplayer = ["Group 1607","Symbol 85 – 1","Group 1673","star-1","Symbol 83 – 1","terms","ic_exit"]
     var arrylabel1player = ["ADD","NOFIFICATIONS","MY","FAVOURITES","SHARE","TERMS &","LOGOUT"]
     var arrylabel2player = ["MATCH","","MATCHES","","APP","COUNDITIONS",""]
@@ -42,10 +42,22 @@ class MoreVC: UIViewController {
         TBL_Menu.delegate = self
         TBL_Menu.changeView()
         
-        
+         http.delegate = self
         // Do any additional setup after loading the view.
     }
     
+    
+    func Logout() {
+        let AccessToken = UserDefaults.standard.string(forKey: "access_token")!
+        let token_type = UserDefaults.standard.string(forKey: "token_type")!
+        
+        
+        let headers = [
+            "Authorization" : "\(token_type) \(AccessToken)"
+        ]
+        AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
+        http.requestWithBody(url: "\(APIConstants.logout)?device_id=\(DeviceID)", method: .post, tag: 1, header: headers)
+    }
     
 }
 
@@ -102,6 +114,7 @@ extension MoreVC :UITableViewDelegate,UITableViewDataSource{
                 self.present(cont, animated: true, completion: nil)
             }
             else if indexPath.row == 6{
+                Logout()
                 AppCommon.sharedInstance.showlogin(vc: self)
             }
         }else
@@ -153,6 +166,7 @@ extension MoreVC :UITableViewDelegate,UITableViewDataSource{
                 self.present(cont, animated: true, completion: nil)
             }
             else if indexPath.row == 10{
+                Logout()
                AppCommon.sharedInstance.showlogin(vc: self)
             }
             
@@ -166,4 +180,42 @@ extension MoreVC :UITableViewDelegate,UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+}
+extension MoreVC: HttpHelperDelegate {
+    func receivedResponse(dictResponse: Any, Tag: Int) {
+        print(dictResponse)
+        AppCommon.sharedInstance.dismissLoader(self.view)
+        
+        let json = JSON(dictResponse)
+        if Tag == 1 {
+            
+            let status =  json["status"]
+            let message = json["message"]
+            
+            print(json["status"])
+            if status.stringValue  == "1" {
+                SharedData.SharedInstans.SetIsLogin(false)
+                Loader.showSuccess(message: message.stringValue)
+            }
+            else {
+                Loader.showError(message: message.stringValue)
+            }
+            
+        }
+        
+    }
+    
+    
+    func receivedErrorWithStatusCode(statusCode: Int) {
+        print(statusCode)
+        AppCommon.sharedInstance.alert(title: "Error", message: "\(statusCode)", controller: self, actionTitle: AppCommon.sharedInstance.localization("ok"), actionStyle: .default)
+        
+        AppCommon.sharedInstance.dismissLoader(self.view)
+    }
+    
+    func retryResponse(numberOfrequest: Int) {
+        
+    }
+    
+    
 }

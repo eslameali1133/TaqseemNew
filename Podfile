@@ -23,5 +23,5 @@ pod 'FBSDKCoreKit'
 pod 'FBSDKShareKit'
 pod 'FBSDKLoginKit'
 pod 'KKPinCodeTextField'
-
+pod 'Socket.IO-Client-Swift', '~> 11.1.3'
 end

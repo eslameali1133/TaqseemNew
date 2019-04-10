@@ -45,9 +45,6 @@ isEidtplayground = true
     
     func FillData(){
 
-        
-     
-
         lblDayes.text = items?._days
         lblPrice.text = items?._price
         lblTimes.text = "From : \(items!._hour_from)   To : \(items!._hour_to)"

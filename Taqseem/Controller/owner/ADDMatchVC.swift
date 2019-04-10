@@ -11,6 +11,9 @@ import  Alamofire
 import SwiftyJSON
 
 class OwnerADDMatchVC: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
+    
+    let date = Date()
+    let calendar = Calendar.current
     var PlaygroundArray: [OwnerPlaygroundModelClass] = [OwnerPlaygroundModelClass]()
     @IBOutlet weak var lblTo: UILabel!
     @IBOutlet weak var lblFrom: UILabel!
@@ -30,6 +33,7 @@ class OwnerADDMatchVC: UIViewController,UIPickerViewDataSource,UIPickerViewDeleg
         super.viewDidLoad()
         http.delegate = self
         loadPlayground()
+        DefaultValues()
         // Do any additional setup after loading the view.
     }
     
@@ -53,6 +57,7 @@ class OwnerADDMatchVC: UIViewController,UIPickerViewDataSource,UIPickerViewDeleg
     }
     @IBAction func btnFrom(_ sender: Any) {
         DateIs = "From"
+        PickerFlag1 = "Time"
         onDoneButtonTapped()
         showDatePicker(isDate: false)
         datePicker.addTarget(self, action: #selector(OwnerADDMatchVC.datePickerValueChanged), for: UIControl.Event.valueChanged)
@@ -80,6 +85,33 @@ class OwnerADDMatchVC: UIViewController,UIPickerViewDataSource,UIPickerViewDeleg
     
     @IBAction func AddMatch(_ sender: Any) {
        AddMatch()
+    }
+    
+    func DefaultValues(){
+        let Year = calendar.component(.year, from: date)
+        var Month = String(calendar.component(.month, from: date))
+        if Month.count == 1{
+            Month = "0\(Month)"
+        }
+        var Day = String(calendar.component(.day, from: date))
+        if Day.count == 1{
+            Day = "0\(Day)"
+        }
+        var hour = String(calendar.component(.hour, from: date))
+        if hour.count == 1{
+            hour = "0\(hour)"
+        }
+        var minutes = String(calendar.component(.minute, from: date))
+        if minutes.count == 1{
+            minutes = "0\(minutes)"
+        }
+        let defaultDate = "\(Year)-\(Month)-\(Day)"
+        let defaultTime = "\(hour):\(minutes):00"
+        print(defaultDate,defaultTime)
+        lblDate.text = defaultDate
+        lblFrom.text = defaultTime
+        lblTo.text = "1"
+        
     }
     
     func AddMatch(){

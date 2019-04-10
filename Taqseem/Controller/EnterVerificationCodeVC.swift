@@ -88,8 +88,6 @@ extension EnterVerificationCodeVC : HttpHelperDelegate {
         print(dictResponse)
         AppCommon.sharedInstance.dismissLoader(self.view)
         let json = JSON(dictResponse)
-        let forbiddenMail : String = AppCommon.sharedInstance.localization("Duplicated user")
-        
           if Tag == 1 {
             let status =  json["status"]
             let token = json["token"]

@@ -9,10 +9,11 @@
 import UIKit
 import SwiftyJSON
 class BookPlayGroundVC: UIViewController , UIPickerViewDelegate , UIPickerViewDataSource {
-   
+    let date = Date()
+    let calendar = Calendar.current
     var CityArray: [CityModelClass] = [CityModelClass]()
     var CityID = ""
-    
+    var Title = ""
     var items = [PlaygroundModelClass]()
     var MatchDetails : MatchDetailsModelClass!
     var http = HttpHelper()
@@ -22,12 +23,13 @@ class BookPlayGroundVC: UIViewController , UIPickerViewDelegate , UIPickerViewDa
     var picker  = UIPickerView()
     let datePicker = UIDatePicker()
     var Duration = [0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10]
-    var TeamCapacity = [0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 , 11 , 12]
+    var TeamCapacity = [0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 , 11 , 12 , 13 , 14]
     
     var PTime = ""
     @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var lblCapacity: UILabel!
     @IBOutlet weak var lblDuration: UILabel!
+    @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblTime: UILabel!
     @IBOutlet weak var lblCity: UILabel!
     @IBAction func btnCapacity(_ sender: Any) {
@@ -64,6 +66,7 @@ class BookPlayGroundVC: UIViewController , UIPickerViewDelegate , UIPickerViewDa
         super.viewDidLoad()
         http.delegate = self
         loadCityData()
+        DefaultValues()
         // Do any additional setup after loading the view.
     }
     
@@ -71,7 +74,34 @@ class BookPlayGroundVC: UIViewController , UIPickerViewDelegate , UIPickerViewDa
         AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
         http.GetWithoutHeader(url: APIConstants.GetCity, Tag: 2)
     }
-    
+    func DefaultValues(){
+        lblTitle.text = Title
+        let Year = calendar.component(.year, from: date)
+        var Month = String(calendar.component(.month, from: date))
+        if Month.count == 1{
+            Month = "0\(Month)"
+        }
+        var Day = String(calendar.component(.day, from: date))
+        if Day.count == 1{
+            Day = "0\(Day)"
+        }
+        var hour = String(calendar.component(.hour, from: date))
+        if hour.count == 1{
+            hour = "0\(hour)"
+        }
+        var minutes = String(calendar.component(.minute, from: date))
+        if minutes.count == 1{
+            minutes = "0\(minutes)"
+        }
+        let defaultDate = "\(Year)-\(Month)-\(Day)"
+        let defaultTime = "\(hour):\(minutes):00"
+        print(defaultDate,defaultTime)
+        lblDate.text = defaultDate
+        lblTime.text = defaultTime
+        lblCapacity.text = "1"
+        lblDuration.text = "1"
+       // lblCity.text = CityArray[1].name_en
+    }
     @IBAction func btnSearch(_ sender: Any) {
         comedromneartoplay = ""
         MatchDetails = MatchDetailsModelClass(

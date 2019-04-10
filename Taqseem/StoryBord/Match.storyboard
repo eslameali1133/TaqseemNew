@@ -3469,6 +3469,7 @@
                         <outlet property="lblDate" destination="6QQ-cs-VC8" id="s82-fO-ndk"/>
                         <outlet property="lblDuration" destination="4OY-mM-3LB" id="EFe-qt-dQp"/>
                         <outlet property="lblTime" destination="7gK-gP-JoA" id="AGX-4s-BJd"/>
+                        <outlet property="lblTitle" destination="2oJ-tl-X6O" id="mRQ-lP-s8y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XTZ-fx-YMZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

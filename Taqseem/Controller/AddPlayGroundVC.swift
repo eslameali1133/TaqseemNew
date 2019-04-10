@@ -31,7 +31,7 @@ class AddPlayGroundVC: UIViewController  , UIPickerViewDelegate , UIPickerViewDa
     var toolBar = UIToolbar()
     var picker  = UIPickerView()
     var datePicker = UIDatePicker()
-    var TeamCapacity = [0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 , 11 , 12]
+    var TeamCapacity = [0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 , 11 , 12 , 13 , 14]
     @IBOutlet weak var lblCapacity: UILabel!
       @IBOutlet weak var lblCity: UILabel!
       @IBOutlet weak var lblAream: UILabel!
@@ -596,7 +596,8 @@ extension AddPlayGroundVC {
             "hour_to" : lblTo.text!,
             "city_id": Area_id,
             "phone" : txtPhoneNum.text!,
-            "day[]" : "sun",
+            "day[0]" : "sun",
+            "day[1]" : "mon",
             
            
         ]
@@ -711,7 +712,7 @@ extension AddPlayGroundVC {
             "hour_to" : lblTo.text!,
             "city_id": Area_id,
             "phone" : txtPhoneNum.text!,
-            "day[]" : "sun",
+            "day[]" : "sun",   // //sun
             "ground_id": items!._id
             
         ]
@@ -799,7 +800,6 @@ extension AddPlayGroundVC: HttpHelperDelegate {
     func receivedResponse(dictResponse: Any, Tag: Int) {
         print(dictResponse)
         AppCommon.sharedInstance.dismissLoader(self.view)
-        let forbiddenMail : String = AppCommon.sharedInstance.localization("Error")
         if Tag == 1 {
           
            
@@ -809,7 +809,7 @@ extension AddPlayGroundVC: HttpHelperDelegate {
             
             let json = JSON(dictResponse)
             let Result =  JSON(json["data"])
-            
+            let message = json["message"]
             let status =  JSON(json["status"])
             print(Result)
        
@@ -827,14 +827,14 @@ extension AddPlayGroundVC: HttpHelperDelegate {
                 
             } else {
                 
-                Loader.showError(message: (forbiddenMail))
+                Loader.showError(message: message.stringValue)
             }
         }
             
         else if Tag == 3 {
             let json = JSON(dictResponse)
             let Result =  JSON(json["data"])
-            
+            let message = json["message"]
             let status =  JSON(json["status"])
             print(Result)
             
@@ -852,7 +852,7 @@ extension AddPlayGroundVC: HttpHelperDelegate {
                 
             } else {
                 
-                Loader.showError(message: (forbiddenMail))
+                Loader.showError(message: message.stringValue )
             }
      }
             

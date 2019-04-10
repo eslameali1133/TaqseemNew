@@ -57,7 +57,6 @@ extension MobileVerificationVC : HttpHelperDelegate {
         AppCommon.sharedInstance.dismissLoader(self.view)
         let json = JSON(dictResponse)
         
-        let forbiddenMail : String = AppCommon.sharedInstance.localization("Error")
         if Tag == 1 {
             
             let status =  json["status"]

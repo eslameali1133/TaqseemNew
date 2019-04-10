@@ -14,6 +14,9 @@ protocol shareLocationDelegateFilter {
 
 class AddMatchVC: UIViewController , UIPickerViewDataSource , UIPickerViewDelegate {
     
+    let date = Date()
+    let calendar = Calendar.current
+    
     var items = [PlaygroundModelClass]()
     var MatchDetails : MatchDetailsModelClass!
     var http = HttpHelper()
@@ -21,7 +24,7 @@ class AddMatchVC: UIViewController , UIPickerViewDataSource , UIPickerViewDelega
     var toolBar = UIToolbar()
     var picker  = UIPickerView()
     var Duration = [0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10]
-    var TeamCapacity = [0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 , 11 , 12]
+    var TeamCapacity = [0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 , 11 , 12 , 13 , 14]
     var Fees = [0 , 1,2,3,4,5,6,7,8,9,10]
     var PTime = ""
     @IBOutlet weak var lblDuration: UILabel!
@@ -39,6 +42,7 @@ class AddMatchVC: UIViewController , UIPickerViewDataSource , UIPickerViewDelega
         
         super.viewDidLoad()
         http.delegate = self
+        DefaultValues()
         // Do any additional setup after loading the view.
     }
     @IBAction func DismissView(_ sender: Any) {
@@ -86,6 +90,34 @@ class AddMatchVC: UIViewController , UIPickerViewDataSource , UIPickerViewDelega
         )
         
         Filter()
+    }
+  
+    func DefaultValues(){
+        let Year = calendar.component(.year, from: date)
+        var Month = String(calendar.component(.month, from: date))
+        if Month.count == 1{
+            Month = "0\(Month)"
+        }
+        var Day = String(calendar.component(.day, from: date))
+        if Day.count == 1{
+            Day = "0\(Day)"
+        }
+        var hour = String(calendar.component(.hour, from: date))
+        if hour.count == 1{
+            hour = "0\(hour)"
+        }
+        var minutes = String(calendar.component(.minute, from: date))
+        if minutes.count == 1{
+            minutes = "0\(minutes)"
+        }
+        let defaultDate = "\(Year)-\(Month)-\(Day)"
+        let defaultTime = "\(hour):\(minutes):00"
+        print(defaultDate,defaultTime)
+        lblDate.text = defaultDate
+        lblTime.text = defaultTime
+        lblCapacity.text = "1"
+        lblDuration.text = "1"
+        
     }
     
     func Filter(){

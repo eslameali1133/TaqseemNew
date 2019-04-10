@@ -13,7 +13,7 @@ class RegistrationVC: UIViewController {
     var type = ""
     var facebook_id = ""
     var ComeFromFaceBook = false
-    
+    let DeviceID = UIDevice.current.identifierForVendor!.uuidString
     @IBOutlet weak var passWordView: UIView!
     @IBOutlet weak var passConfirmWordView: UIView!
     
@@ -121,7 +121,7 @@ class RegistrationVC: UIViewController {
         if ComeFromFaceBook == true
         {
             
-            let params = ["name":txtName.text!, "email":txtEmail.text!,"user_name":txtUserName.text!,"facebook_id": facebook_id,"phone": txtPhoneNumber.text! , "type": type] as [String: Any]
+            let params = ["name":txtName.text!, "email":txtEmail.text!,"user_name":txtUserName.text!,"facebook_id": facebook_id,"phone": txtPhoneNumber.text! , "type": type,"device_id":DeviceID] as [String: Any]
             let headers = ["Accept-Type": "application/json" , "Content-Type": "application/json"]
             AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
             http.requestWithBody(url: APIConstants.facebookregister, method: .post, parameters: params, tag: 1, header: headers)
@@ -133,7 +133,7 @@ class RegistrationVC: UIViewController {
                           "user_name":txtUserName.text!,
                           "password": txtPassword.text!,
                           "phone": txtPhoneNumber.text! ,
-                          "type": type] as [String: Any]
+                          "type": type,"device_id":DeviceID] as [String: Any]
             let headers = ["Accept-Type": "application/json" , "Content-Type": "application/json"]
             AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
             http.requestWithBody(url: APIConstants.Register, method: .post, parameters: params, tag: 1, header: headers)
@@ -147,13 +147,13 @@ extension RegistrationVC: HttpHelperDelegate {
         AppCommon.sharedInstance.dismissLoader(self.view)
         let json = JSON(dictResponse)
         
-        let forbiddenMail : String = AppCommon.sharedInstance.localization("Duplicated user")
         if Tag == 1 {
         
             let status =  json["status"]
             let message = json["message"]
             let access_token = json["access_token"]
             let token_type = json["token_type"]
+            let chat_token = json["chat_token"]
             // let data = json["data"]
             let data =  JSON(json["data"])
             let expires_at = json["expires_at"]
@@ -165,6 +165,7 @@ extension RegistrationVC: HttpHelperDelegate {
                 
                 UserDefaults.standard.set(access_token.stringValue, forKey: "access_token")
                 UserDefaults.standard.set(token_type.stringValue, forKey: "token_type")
+                UserDefaults.standard.set(chat_token.stringValue, forKey: "chat_token")
                 // UserDefaults.standard.set(data.array, forKey: "Profiledata")
                 UserDefaults.standard.set(expires_at.stringValue, forKey: "expires_at")
                 UserDefaults.standard.set(code.stringValue, forKey: "code")
@@ -189,11 +190,11 @@ extension RegistrationVC: HttpHelperDelegate {
                     
             }
             }else if status.stringValue == "5"{
-                let message = json["message"]
+                //let message = json["message"]
                 Loader.showError(message: message.stringValue )
             } else {
                 
-                let message = json["message"]
+                //let message = json["message"]
                 Loader.showError(message: message.stringValue )
             }
         }

@@ -11,7 +11,8 @@ import SwiftyJSON
 
 var comedromneartoplay = "false"
 class NearMeVC: UIViewController  , UIPickerViewDataSource , UIPickerViewDelegate{
-    
+    let date = Date()
+    let calendar = Calendar.current
     var NearItems = [NearPlayGroundModelClass]()
     //var MatchDetails : MatchDetailsModelClass!
     var http = HttpHelper()
@@ -22,6 +23,7 @@ class NearMeVC: UIViewController  , UIPickerViewDataSource , UIPickerViewDelegat
         super.viewDidLoad()
         http.delegate = self
 
+        DefaultValues()
         pickerDate.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControl.Event.valueChanged)
         // Do any additional setup after loading the view.
     }
@@ -54,6 +56,32 @@ class NearMeVC: UIViewController  , UIPickerViewDataSource , UIPickerViewDelegat
             
         }
 
+    func DefaultValues(){
+        let Year = calendar.component(.year, from: date)
+        var Month = String(calendar.component(.month, from: date))
+        if Month.count == 1{
+            Month = "0\(Month)"
+        }
+        var Day = String(calendar.component(.day, from: date))
+        if Day.count == 1{
+            Day = "0\(Day)"
+        }
+        var hour = String(calendar.component(.hour, from: date))
+        if hour.count == 1{
+            hour = "0\(hour)"
+        }
+        var minutes = String(calendar.component(.minute, from: date))
+        if minutes.count == 1{
+            minutes = "0\(minutes)"
+        }
+        let defaultDate = "\(Year)-\(Month)-\(Day)"
+        let defaultTime = "\(hour):\(minutes):00"
+        print(defaultDate,defaultTime)
+        lblDate.text = defaultDate
+    
+    }
+    
+    
 func Filter(){
     NearItems.removeAll()
     let AccessToken = UserDefaults.standard.string(forKey: "access_token")!

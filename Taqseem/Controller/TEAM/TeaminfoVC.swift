@@ -30,7 +30,7 @@ class TeaminfoVC: UIViewController , UIPickerViewDelegate , UIPickerViewDataSour
     }
     @IBOutlet weak var txtTeamName: UITextField!
     @IBOutlet weak var lblCapacity: UILabel!
-     var TeamCapacity = [0 , 5 , 6 , 7 , 8 ]
+     var TeamCapacity = [0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 , 11 , 12 , 13 , 14 ]   //was from 5 to 8
     var toolBar = UIToolbar()
     var picker  = UIPickerView()
     override func viewDidLoad() {

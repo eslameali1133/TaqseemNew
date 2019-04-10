@@ -113,7 +113,8 @@ extension RequestDetailsVC: HttpHelperDelegate {
                 let cont = storyBoard.instantiateViewController(withIdentifier: "RequestListVC")as! RequestListVC
                 cont.RequestStatus = Status
                 
-                self.present(cont, animated: true, completion: nil)
+                self.dismiss(animated: false, completion: nil)
+//                self.present(cont, animated: true, completion: nil)
 
             } else {
                 

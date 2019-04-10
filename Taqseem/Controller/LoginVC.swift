@@ -11,12 +11,13 @@ var memberType = ""
 var FBID = ""
 import SwiftyJSON
 import FBSDKLoginKit
+var ChatToken = ""
 class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
     
     
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var facebookloginview: UIView!
-    
+    let DeviceID = UIDevice.current.identifierForVendor!.uuidString
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("Did log out of facebook")
     }
@@ -105,6 +106,7 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
     }
    
     @IBAction func LoginBtn(_ sender: Any) {
+        print(DeviceID)
         if validation(){
             Login()
         }
@@ -127,13 +129,16 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
     }
     
     func Login() {
-        let params = ["user_name":TXT_UserName.text!,"password":txtPassword.text!] as [String: Any]
+        let params = ["user_name":TXT_UserName.text!,
+                      "password":txtPassword.text!,
+                      "device_id":DeviceID
+            ] as [String: Any]
         let headers = ["Accept": "application/json" , "Content-Type": "application/json"]
         AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
         http.requestWithBody(url: APIConstants.Login, method: .post, parameters: params, tag: 1, header: headers)
     }
     func FBLogin() {
-        let params = ["facebook_id":FBID] as [String: Any]
+        let params = ["facebook_id":FBID,"device_id":DeviceID] as [String: Any]
         let headers = ["Accept": "application/json" , "Content-Type": "application/json"]
         AppCommon.sharedInstance.ShowLoader(self.view,color: UIColor.hexColorWithAlpha(string: "#000000", alpha: 0.35))
         http.requestWithBody(url: APIConstants.facebookLogin, method: .post, parameters: params, tag: 2, header: headers)
@@ -164,13 +169,12 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
             AppCommon.sharedInstance.dismissLoader(self.view)
             
             let json = JSON(dictResponse)
-            
-            let forbiddenMail : String = AppCommon.sharedInstance.localization("Username")
             if Tag == 1 {
                 
                 let status =  json["status"]
                 let access_token = json["access_token"]
                 let token_type = json["token_type"]
+                let chat_token = json["chat_token"]
                 let data = json["data"]
                 //let data =  JSON(json["data"])
                 print(status)
@@ -182,7 +186,8 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
                 if status.stringValue  == "1" {
                     UserDefaults.standard.set(access_token.stringValue, forKey: "access_token")
                     UserDefaults.standard.set(token_type.stringValue, forKey: "token_type")
-                  
+                    UserDefaults.standard.set(chat_token.stringValue, forKey: "chat_token")
+                    ChatToken = UserDefaults.standard.string(forKey: "chat_token")!
                      AppCommon.sharedInstance.saveJSON(json: data, key: "Profiledata")
                    // UserDefaults.standard.array(forKey: "Profiledata")
                    // print(data["email"])
@@ -196,7 +201,10 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
                     else {
                         let delegate = UIApplication.shared.delegate as! AppDelegate
                         //  let storyboard = UIStoryboard(name: "StoryBord", bundle: nil)
-                        let storyboard = UIStoryboard.init(name: "Player", bundle: nil);
+//                        let storyboard = UIStoryboard.init(name: "Player", bundle: nil);
+//                        memberType = data["type"].stringValue
+//                        print(memberType)
+                        let storyboard = UIStoryboard.init(name: "Chat", bundle: nil);
                         memberType = data["type"].stringValue
                         print(memberType)
                         delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
@@ -207,7 +215,8 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
                     Loader.showError(message: message.stringValue )
                 }
                 else {
-                    Loader.showError(message: (forbiddenMail))
+                    let message = json["message"]
+                    Loader.showError(message: message.stringValue)
                 }
                 
             }
@@ -217,7 +226,7 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
                 let token_type = json["token_type"]
                 let data =  JSON(json["data"])
                 let expires_at = json["expires_at"]
-                
+                let chat_token = json["chat_token"]
                 if status.stringValue  == "4" {
                     let message = json["message"]
                     Loader.showError(message: message.stringValue )
@@ -231,6 +240,7 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
                 else if status.stringValue  == "1" {
                     UserDefaults.standard.set(access_token.stringValue, forKey: "access_token")
                     UserDefaults.standard.set(token_type.stringValue, forKey: "token_type")
+                    UserDefaults.standard.set(chat_token.stringValue, forKey: "chat_token")
 //                    UserDefaults.standard.set(data.array, forKey: "Profiledata")
                     UserDefaults.standard.set(expires_at.stringValue, forKey: "expires_at")
 //                    UserDefaults.standard.array(forKey: "Profiledata")
