@@ -24,6 +24,46 @@ class PlayerCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func btnChatt(_ sender: Any) {
+        let SelectedPlay = User(
+            user_id:PlayerID ,
+            from: lblPlayerName.text!
+        )
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Chat", bundle:nil)
+        let cont = storyBoard.instantiateViewController(withIdentifier: "ChatpageVC")as! ChatpageVC
+        print(SelectedPlay)
+        cont.SelectedPlayer = SelectedPlay
+        let currentController = self.getCurrentViewController()
+        currentController?.present(cont, animated: true, completion: nil)
+    }
+    func getCurrentViewController() -> UIViewController? {
+        
+        if let rootController = UIApplication.shared.keyWindow?.rootViewController {
+            var currentController: UIViewController! = rootController
+            while( currentController.presentedViewController != nil ) {
+                currentController = currentController.presentedViewController
+            }
+            return currentController
+        }
+        return nil
+        
+    }
+    
+    @IBAction func btnChat(_ sender: Any) {
+        let SelectedPlay = User(
+            user_id:PlayerID ,
+            from: lblPlayerName.text!
+        )
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Chat", bundle:nil)
+        let cont = storyBoard.instantiateViewController(withIdentifier: "ChatpageVC")as! ChatpageVC
+        print(SelectedPlay)
+        cont.SelectedPlayer = SelectedPlay
+        let currentController = self.getCurrentViewController()
+        currentController?.present(cont, animated: true, completion: nil)
+    }
+    
     @IBAction func btnDelete(_ sender: Any) {
 //        DeleteMember()
     }

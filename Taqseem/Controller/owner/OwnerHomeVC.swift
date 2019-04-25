@@ -26,6 +26,11 @@ class OwnerHomeVC: UIViewController {
         TBL_Playground.dataSource = self
         TBL_Playground.delegate = self
         TBL_Playground.changeView()
+        SocketManger.shared.connect()
+        //        SocketManger.shared.handleNewMessage { (message) in
+        //        }
+        SocketManger.shared.handleNotificationMessage { (message) in
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -35,7 +40,13 @@ class OwnerHomeVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        fillData()
+        if GisNewnotification == true {
+            GisNewnotification = false
+            self.tabBarController?.selectedIndex = 1
+        }else{
+            fillData()
+            
+        }
     }
     
     

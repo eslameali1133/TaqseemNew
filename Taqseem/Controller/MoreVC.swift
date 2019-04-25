@@ -15,10 +15,16 @@ class MoreVC: UIViewController {
     var arrylabel1player = ["ADD","NOFIFICATIONS","MY","FAVOURITES","SHARE","TERMS &","LOGOUT"]
     var arrylabel2player = ["MATCH","","MATCHES","","APP","COUNDITIONS",""]
     
+    var arrylabel1playerArabic =
+["تسجيل الخروج","الصلاحيات و","أنشر","المفضله","","الإشعارات","أضف"]
+    var arrylabel2playerArabic = ["الشروط","التطبيق","","مبارياتي","","مباراه",""]
     
     var arrylabelimagteam = ["Group 1607","Group 1610","Symbol 85 – 1","Group 1673","Group 1608","Group 1609","Group 170","star-1","Symbol 83 – 1","terms","ic_exit"]
     var arrylabel1team = ["ADD","NEAR","NOFIFICATIONS","MY","PLAY","BOOKING","MY","FAVOURITES","SHARE","TERMS &","LOGOUT"]
     var arrylabel2team = ["MATCH","you","","MATCHES","NOW","PLAYGROUND","TEAM","","APP","COUNDITIONS",""]
+    
+    var arrylabel1teamArabic = ["الخروج","الصلاحيات","أنشر","","","حجز","إلعب","","الإشعارات","قريب","أضف"]
+    var arrylabel2teamArabic = ["والشروط","التطبيق","المفضله","فريقي","ملعب","الآن","مبارياتي","","مني","مباراة",""]
     
     @IBOutlet weak var lblUserName: UILabel!
     @IBOutlet weak var imgUser: customImageView!{
@@ -75,14 +81,28 @@ extension MoreVC :UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell", for: indexPath) as! menuCell
         if  memberType == "user"
         {
+            if SharedData.SharedInstans.getLanguage() == "en"
+            {
             cell.lbl_1.text = arrylabel1player[indexPath.row]
             cell.lbl_2.text = arrylabel2player[indexPath.row]
             cell.iconImageView.image = UIImage(named: arrylabelimagplayer[indexPath.row])
+            }else{
+                cell.lbl_1.text = arrylabel1playerArabic[indexPath.row]
+                cell.lbl_2.text = arrylabel2playerArabic[indexPath.row]
+                cell.iconImageView.image = UIImage(named: arrylabelimagplayer[indexPath.row])
+            }
         } else{
-            
+            if SharedData.SharedInstans.getLanguage() == "en"
+            {
             cell.lbl_1.text = arrylabel1team[indexPath.row]
             cell.lbl_2.text = arrylabel2team[indexPath.row]
-            cell.iconImageView.image = UIImage(named: arrylabelimagteam[indexPath.row])
+                cell.iconImageView.image = UIImage(named: arrylabelimagteam[indexPath.row])
+                
+            }else{
+                cell.lbl_1.text = arrylabel1teamArabic[indexPath.row]
+                cell.lbl_2.text = arrylabel2teamArabic[indexPath.row]
+                cell.iconImageView.image = UIImage(named: arrylabelimagteam[indexPath.row])
+            }
         }
         
         return cell

@@ -63,7 +63,7 @@ class RequestDetailsVC: UIViewController {
     }
     
     func ChangeStatus(){
-    
+    print(items._reservation_no)
         let AccessToken = UserDefaults.standard.string(forKey: "access_token")!
         let token_type = UserDefaults.standard.string(forKey: "token_type")!
         
@@ -111,6 +111,7 @@ extension RequestDetailsVC: HttpHelperDelegate {
                 Loader.showSuccess(message: message.stringValue)
                 let storyBoard : UIStoryboard = UIStoryboard(name: "Owner", bundle:nil)
                 let cont = storyBoard.instantiateViewController(withIdentifier: "RequestListVC")as! RequestListVC
+                print(Status)
                 cont.RequestStatus = Status
                 
                 self.dismiss(animated: false, completion: nil)

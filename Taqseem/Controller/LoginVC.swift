@@ -201,12 +201,12 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate{
                     else {
                         let delegate = UIApplication.shared.delegate as! AppDelegate
                         //  let storyboard = UIStoryboard(name: "StoryBord", bundle: nil)
-//                        let storyboard = UIStoryboard.init(name: "Player", bundle: nil);
-//                        memberType = data["type"].stringValue
-//                        print(memberType)
-                        let storyboard = UIStoryboard.init(name: "Chat", bundle: nil);
+                        let storyboard = UIStoryboard.init(name: "Player", bundle: nil);
                         memberType = data["type"].stringValue
                         print(memberType)
+//                        let storyboard = UIStoryboard.init(name: "Chat", bundle: nil);
+//                        memberType = data["type"].stringValue
+//                        print(memberType)
                         delegate.window?.rootViewController = storyboard.instantiateInitialViewController()
                     }
                     

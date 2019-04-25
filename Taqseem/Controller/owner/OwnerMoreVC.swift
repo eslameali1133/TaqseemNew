@@ -16,6 +16,9 @@ class OwnerMoreVC: UIViewController {
     var arrylabel1 = ["ADD","ADD","NOFIFICATIONS","SHARE","TERMS &","LOGOUT"]
     var arrylabel2 = ["MATCH","PLAYGROUND","","APP","COUNDITIONS",""]
     
+    var arrylabel1Arabic = ["الخروج","الصلاحيات","أنشر","الإشعارات","أضف","أضف"]
+    var arrylabel2Arabic = ["والشروط","التطبيق","","ملعب","مباراة",""]
+    
     
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var imgUser: customImageView!{
@@ -66,9 +69,17 @@ extension OwnerMoreVC :UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell", for: indexPath) as! menuCell
        
+        if SharedData.SharedInstans.getLanguage() == "en"
+        {
             cell.lbl_1.text = arrylabel1[indexPath.row]
             cell.lbl_2.text = arrylabel2[indexPath.row]
             cell.iconImageView.image = UIImage(named: arrylabelimag[indexPath.row])
+            
+        }else{
+            cell.lbl_1.text = arrylabel1Arabic[indexPath.row]
+            cell.lbl_2.text = arrylabel2Arabic[indexPath.row]
+            cell.iconImageView.image = UIImage(named: arrylabelimag[indexPath.row])
+        }
        
         return cell
     }

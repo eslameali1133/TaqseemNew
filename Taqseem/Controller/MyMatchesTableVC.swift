@@ -27,7 +27,15 @@ class MyMatchesTableVC: UIViewController {
     }
     
     @IBAction func DismissView(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        if GisAcceptNotification == true {
+            GisAcceptNotification = false
+            let delegate = UIApplication.shared.delegate as! AppDelegate
+            let storyboard = UIStoryboard.init(name: "Player", bundle: nil);
+            delegate.window?.rootViewController =
+        storyboard.instantiateInitialViewController()
+        }else{
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

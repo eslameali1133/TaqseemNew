@@ -6,15 +6,63 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Taqseem/Cells/PlayerCell.swift"
+            timestampString = "577029915.943617"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "DeleteMember()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Taqseem/Cells/PlayerCell.swift"
+            timestampString = "577029915.943712"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "DeleteMember()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Taqseem/Cells/PlayerCell.swift"
+            timestampString = "577029915.943803"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "DeleteMember()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Taqseem/Controller/AddPlayGroundVC.swift"
-            timestampString = "575405232.147997"
+            timestampString = "577029915.943879"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "559"
-            endingLineNumber = "559"
+            startingLineNumber = "692"
+            endingLineNumber = "692"
             landmarkName = "Addplayground()"
             landmarkType = "7">
          </BreakpointContent>
@@ -25,13 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Taqseem/Cells/PlayerCell.swift"
-            timestampString = "575218040.593015"
+            filePath = "Taqseem/Controller/AddPlayGroundVC.swift"
+            timestampString = "577029915.943985"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "DeleteMember()"
+            startingLineNumber = "660"
+            endingLineNumber = "660"
+            landmarkName = "Addplayground()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,29 +89,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Taqseem/Cells/PlayerCell.swift"
-            timestampString = "575218040.593102"
+            filePath = "Taqseem/Controller/AddPlayGroundVC.swift"
+            timestampString = "577029915.94405"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "DeleteMember()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Taqseem/Cells/PlayerCell.swift"
-            timestampString = "575218040.593179"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "DeleteMember()"
+            startingLineNumber = "784"
+            endingLineNumber = "784"
+            landmarkName = "Editlayground()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

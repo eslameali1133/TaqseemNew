@@ -384,7 +384,6 @@ extension AddMatchVC: shareLocationDelegateFilter {
 }
     // chose location
     @IBAction func openMapToShareLocation(_ sender: UIButton) {
-        
         let storyBoard : UIStoryboard = UIStoryboard(name: "Owner", bundle: nil)
         let secondView = storyBoard.instantiateViewController(withIdentifier: "ChooseLocationToShareViewController") as! ChooseLocationToShareViewController
         secondView.shareLocationDelegateFilt = self
